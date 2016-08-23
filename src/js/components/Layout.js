@@ -1,5 +1,4 @@
 import React from "react";
-import toastr from "../toastr";
 
 import CreateQuestion from "./CreateQuestion";
 import CreateSurvey from "./CreateSurvey";
@@ -16,12 +15,14 @@ export default class Layout extends React.Component {
 			case "success":
 			this.refs.container.success(message, title, {
 				closeButton: true,
+				preventDuplicates: false
 			});
 			break;
 
 			case "error":
 			this.refs.container.error(message, title, {
 				closeButton: true,
+				preventDuplicates: false
 			});
 			break;
 		}
