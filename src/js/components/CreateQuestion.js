@@ -2,7 +2,7 @@ import React from "react";
 
 import * as questionProxy from "../questionProxy";
 
-import QuestionTypeOption from "./QuestionTypeOption";
+import CustomOption from "./CustomOption";
 
 export default class CreateQuestion extends React.Component {
 	constructor() {
@@ -12,7 +12,7 @@ export default class CreateQuestion extends React.Component {
 			questionTypes: [],
 			questionText: "",
 			questionType: ""
-		}
+		};
 	}
 
 	componentWillMount() {
@@ -54,7 +54,7 @@ export default class CreateQuestion extends React.Component {
 		var ListOfQuestionTypes = [];
 		if (this.state.questionTypes.length > 0) {
 			ListOfQuestionTypes = this.state.questionTypes.map((questionType) => {
-				return <QuestionTypeOption key={questionType} questionType={questionType} />
+				return <CustomOption key={questionType} value={questionType} text={questionType} />
 			});
 		}
 
@@ -62,10 +62,10 @@ export default class CreateQuestion extends React.Component {
 			<div>
 				<h2>Create a Question</h2>
 				<form onSubmit={this.createQuestion.bind(this)}>
-					<label for="questionText">Question text:</label>
+					<h3>Question Text</h3>
 					<input id="questionText" value={this.state.questionText} onChange={this.handleChange.bind(this, 'questionText')} required />
 
-					<label for="questionType">Question type:</label>
+					<h3>Question Type</h3>
 					<select id="questionType" value={this.state.questionType} onChange={this.handleChange.bind(this, 'questionType')} required>
 						<option value="">==SELECT==</option>
 						{ListOfQuestionTypes}

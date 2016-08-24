@@ -2,6 +2,7 @@ import React from "react";
 
 import CreateQuestion from "./CreateQuestion";
 import CreateSurvey from "./CreateSurvey";
+import Survey from "./Survey";
 
 import {
 	ToastContainer,
@@ -50,7 +51,13 @@ export default class Layout extends React.Component {
 
 					<CreateQuestion toastr={this.toastr.bind(this)} />
 
+					<hr />
+
 					<CreateSurvey toastr={this.toastr.bind(this)} />
+
+					<hr />
+
+					<Survey toastr={this.toastr.bind(this)} />
 				</div>
 			</div>
 		)

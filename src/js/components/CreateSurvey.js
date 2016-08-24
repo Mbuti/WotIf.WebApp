@@ -3,7 +3,7 @@ import React from "react";
 import * as questionProxy from "../questionProxy";
 import * as surveyProxy from "../surveyProxy";
 
-import QuestionOption from "./QuestionOption";
+import CustomOption from "./CustomOption";
 
 export default class CreateSurvey extends React.Component {
 	constructor() {
@@ -12,7 +12,7 @@ export default class CreateSurvey extends React.Component {
 		this.state = {
 			questions: [],
 			surveyName: ""
-		}
+		};
 	}
 
 	componentWillMount() {
@@ -42,7 +42,7 @@ export default class CreateSurvey extends React.Component {
 		var ListOfQuestions = [];
 		if (this.state.questions.length > 0) {
 			ListOfQuestions = this.state.questions.map((question) => {
-				return <QuestionOption key={question.QuestionId} questionId={question.QuestionId} questionText={question.Text} questionType={question.Type} />
+				return <CustomOption key={question.QuestionId} value={question.QuestionId} text={"(" + question.Type + ") " + question.Text} />
 			});
 		}
 		
@@ -58,6 +58,8 @@ export default class CreateSurvey extends React.Component {
 						<option value="">==SELECT==</option>
 						{ListOfQuestions}
 					</select>
+
+					<input type="submit" value="Create" />
 				</form>
 			</div>
 		)
