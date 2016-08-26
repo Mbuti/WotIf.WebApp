@@ -36,7 +36,7 @@ export function getQuestions(success, toast) {
 
 export function createQuestion(data, success, toast) {
 	var xmlhttp = new XMLHttpRequest();
-	var title = "Create Question"
+	var title = "Create Question";
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState === XMLHttpRequest.DONE && xmlhttp.status !== 200) {
 			toast(title, xmlhttp.status + " " + xmlhttp.responseText, "error");

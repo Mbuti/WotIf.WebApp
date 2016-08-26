@@ -70,7 +70,7 @@ export default class CreateQuestion extends React.Component {
 						<option value="">==SELECT==</option>
 						{ListOfQuestionTypes}
 					</select>
-
+					<br />
 					<input type="submit" value="Create" />
 				</form>
 			</div>
