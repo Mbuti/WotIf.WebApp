@@ -9,7 +9,7 @@ The frontend for the WotIf? project
 
 # Developers
 ## Set Up
-### The wep application solution
+### The web application solution
 First clone this repository to anywhere are you computer. Once you have done this, move on to the instructions for Nginx.
 
 ### Nginx
