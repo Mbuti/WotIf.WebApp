@@ -1,9 +1,6 @@
 import React from "react";
 
-import CreateQuestion from "./CreateQuestion";
-import CreateSurvey from "./CreateSurvey";
-import Nav from "./Nav";
-import Survey from "./Survey";
+import Nav from "../components/Nav";
 
 import {
 	ToastContainer,

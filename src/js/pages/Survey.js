@@ -3,8 +3,8 @@ import React from "react";
 import * as questionnaireProxy from "../questionnaireProxy";
 import * as surveyProxy from "../surveyProxy";
 
-import CustomOption from "./CustomOption";
-import Questionnaire from "./Questionnaire";
+import CustomOption from "../components/CustomOption";
+import Questionnaire from "../components/Questionnaire";
 
 export default class Survey extends React.Component {
 	constructor() {

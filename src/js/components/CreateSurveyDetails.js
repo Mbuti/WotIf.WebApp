@@ -6,7 +6,7 @@ import * as surveyProxy from "../surveyProxy";
 
 import CustomOption from "./CustomOption";
 
-export default class CreateSurvey extends React.Component {
+export default class CreateSurveyDetails extends React.Component {
 	constructor() {
 		super();
 

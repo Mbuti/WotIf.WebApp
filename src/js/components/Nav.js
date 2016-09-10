@@ -31,10 +31,10 @@ export default class Nav extends React.Component {
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
             <li>
-              <a>Link1</a>
+              <Link to="createsurvey">Create a Survey</Link>
             </li>
             <li>
-              <a>Link2</a>
+              <Link to="completesurvey">Complete a Survey</Link>
             </li>
           </ul>
 
