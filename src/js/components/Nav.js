@@ -26,18 +26,22 @@ export default class Nav extends React.Component {
       <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="../" class="navbar-brand">Wot-If?</a>
+          <IndexLink to="/" class="navbar-brand">Wot-If?</IndexLink>
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
             <li>
-              <Link to="login">Login</Link>
+              <a>Link1</a>
+            </li>
+            <li>
+              <a>Link2</a>
             </li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://builtwithbootstrap.com/" target="_blank">Built With Bootstrap</a></li>
-            <li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank">WrapBootstrap</a></li>
+            <li>
+              <Link to="login">Login</Link>
+            </li>
           </ul>
 
         </div>
