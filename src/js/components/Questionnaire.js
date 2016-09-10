@@ -47,6 +47,18 @@ export default class Questionnaire extends React.Component {
 		this.props.toastr(title, body, type);
 	}
 
+	confirmQuestionnaireSubmission(e) {
+		if(confirm("Are you sure you want to submit your answers?")) {
+			e.preventDefault();
+			this.submitQuestionnaire();
+		}
+	}
+
+	submitQuestionnaire() {
+		console.log(this.state);
+		// questionnaireProxy.submitQuestionnaireAnswers()
+	}
+
 	render() {
 		this.updateQuestionnaire(); // This is what causes the warning in the console
 
@@ -65,12 +77,23 @@ export default class Questionnaire extends React.Component {
 		}
 		
 		return (
-			<div>
-				<h3>Questionnaire</h3>
-				<h4>{title}</h4>
-				<h5>{description}</h5>
-				<h5>{date}</h5>
-				{ListOfQuestions}
+			<div class="row">
+      		<div class="col-lg-6">
+    		<div class="well bs-component">
+			<form onSubmit={this.submitQuestionnaire.bind(this)} class="form-horizontal">
+				<fieldset>
+					<legend>
+						{title}<br />
+						<h5>{description}</h5>
+						<h6>({date})</h6>
+					</legend>
+					{ListOfQuestions}
+				</fieldset>
+				<button type="reset" class="btn btn-default">Cancel</button>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+			</div>
+			</div>
 			</div>
 		)
 	}

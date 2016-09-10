@@ -1,6 +1,5 @@
 import React from "react";
 
-import * as questionnaireProxy from "../questionnaireProxy";
 import * as surveyProxy from "../surveyProxy";
 
 import CustomOption from "../components/CustomOption";
@@ -41,18 +40,6 @@ export default class Survey extends React.Component {
 		console.log(this.state.answers);
 	}
 
-	confirmQuestionnaireSubmission(e) {
-		if(confirm("Are you sure you want to submit your answers?")) {
-			e.preventDefault();
-			this.submitQuestionnaire();
-		}
-	}
-
-	submitQuestionnaire() {
-		console.log(this.state);
-		// questionnaireProxy.submitQuestionnaireAnswers()
-	}
-
 	submitQuestionnaireSuccess() {
 		this.toast("Submit Answers", "Successfully submitted your answers", "success");
 	}
@@ -89,16 +76,13 @@ export default class Survey extends React.Component {
 
 		return (
 			<div>
-				<h2>Complete a Survey</h2>
+				<label for="surveyId">Choose a survey</label>
 				<select id="surveyId" value={this.state.surveyId} onChange={this.changeSurvey.bind(this)}>
 					<option value="">==SELECT==</option>
 					{ListOfSurveys}
 				</select>
-
-				<form onSubmit={this.submitQuestionnaire.bind(this)}>
-					<Questionnaire surveyId={this.state.surveyId} handleChange={this.handleChange.bind(this)} setDefaultAnswers={this.setDefaultAnswers.bind(this)} />
-					<button onClick={this.confirmQuestionnaireSubmission.bind(this)}>Submit</button>
-				</form>
+				
+				<Questionnaire surveyId={this.state.surveyId} handleChange={this.handleChange.bind(this)} setDefaultAnswers={this.setDefaultAnswers.bind(this)} />
 			</div>
 		)
 	}
