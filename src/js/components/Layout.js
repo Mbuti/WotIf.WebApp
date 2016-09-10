@@ -31,6 +31,7 @@ export default class Layout extends React.Component {
 	}
 
 	render() {
+		const { location } = this.props;
 		var divStyle = {
 			margin: '50px',
 		};
@@ -39,7 +40,7 @@ export default class Layout extends React.Component {
 
 		return (
 			<div>
-				<Nav />
+				<Nav location={location} />
 
 				<div style={divStyle}>
 					<ToastContainer
@@ -49,19 +50,7 @@ export default class Layout extends React.Component {
 					/>
 				</div>
 
-				<div>
-					<h1>WotIf?</h1>
-
-					<CreateQuestion toastr={this.toastr.bind(this)} />
-
-					<hr />
-
-					<CreateSurvey toastr={this.toastr.bind(this)} />
-
-					<hr />
-
-					<Survey toastr={this.toastr.bind(this)} />
-				</div>
+				{this.props.children}
 			</div>
 		)
 	}

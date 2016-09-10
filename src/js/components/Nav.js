@@ -31,7 +31,7 @@ export default class Nav extends React.Component {
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
             <li>
-              <a href="../help/">Help</a>
+              <Link to="login">Login</Link>
             </li>
           </ul>
 
