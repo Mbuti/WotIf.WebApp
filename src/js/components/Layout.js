@@ -50,7 +50,9 @@ export default class Layout extends React.Component {
 					/>
 				</div>
 
-				{this.props.children}
+				<div class="container">
+					{this.props.children}
+				</div>
 			</div>
 		)
 	}
