@@ -2,6 +2,7 @@ import React from "react";
 
 import CreateQuestion from "./CreateQuestion";
 import CreateSurvey from "./CreateSurvey";
+import Nav from "./Nav";
 import Survey from "./Survey";
 
 import {
@@ -38,6 +39,8 @@ export default class Layout extends React.Component {
 
 		return (
 			<div>
+				<Nav />
+
 				<div style={divStyle}>
 					<ToastContainer
 					toastMessageFactory={ToastMessageFactory}
