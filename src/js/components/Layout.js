@@ -49,7 +49,7 @@ export default class Layout extends React.Component {
 					/>
 				</div>
 
-				<div>
+				<div class="container">
 					<h1>WotIf?</h1>
 
 					<CreateQuestion toastr={this.toastr.bind(this)} />
