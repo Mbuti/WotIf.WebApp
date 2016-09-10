@@ -95,26 +95,46 @@ export default class CreateSurveyDetails extends React.Component {
 		}
 		
 		return (
-			<div>
-				<h2>Create a Survey</h2>
-				<form onSubmit={this.createSurvey.bind(this)}>
-					<h3>Survey Name</h3>
-					<input id="surveyName" value={this.state.surveyName} onChange={this.handleChange.bind(this, 'surveyName')} required />
+			<div class="row">
+      		<div class="col-lg-6">
+    		<div class="well bs-component">
+			<form onSubmit={this.createSurvey.bind(this)} class="form-horizontal">
+				<fieldset>
+					<legend>Make a new survey</legend>
 
-					<h3>Survey Description</h3>
-					<input id="surveyDescription" value={this.state.surveyDescription} onChange={this.handleChange.bind(this, 'surveyDescription')} required />
+					<div class="form-group">
+						<label for="surveyName" class="col-lg-2 control-label">Survey name</label>
+						<div class="col-lg-10">
+							<input id="surveyName" value={this.state.surveyName} onChange={this.handleChange.bind(this, 'surveyName')} required />
+						</div>
+					</div>
 
-					<h3>Questions</h3>
-					<ul>
-						{SelectedQuestions}
-					</ul>
-					<select id="question" onChange={this.questionSelected.bind(this)}>
-						<option value="">==SELECT==</option>
-						{ListOfQuestions}
-					</select>
+					<div class="form-group">
+						<label for="surveyDescription" class="col-lg-2 control-label">Survey description</label>
+						<div class="col-lg-10">
+							<input id="surveyDescription" value={this.state.surveyDescription} onChange={this.handleChange.bind(this, 'surveyDescription')} required />
+						</div>
+					</div>
 
-					<input type="submit" value="Create" />
-				</form>
+					<div class="form-group">
+						<label for="question" class="col-lg-2 control-label">Questions</label>
+						<div class="col-lg-10">
+							<ul>
+								{SelectedQuestions}
+							</ul>
+							<select id="question" onChange={this.questionSelected.bind(this)} class="form-control">
+								<option value="">==SELECT==</option>
+								{ListOfQuestions}
+							</select>
+						</div>
+					</div>
+
+					<button type="reset" class="btn btn-default">Cancel</button>
+    				<button type="submit" class="btn btn-primary">Create</button>
+				</fieldset>
+			</form>
+			</div>
+			</div>
 			</div>
 		)
 	}
