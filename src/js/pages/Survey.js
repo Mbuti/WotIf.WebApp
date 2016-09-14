@@ -34,15 +34,7 @@ export default class Survey extends React.Component {
 		this.setState({surveyId: e.target.value});
 	}
 
-	setDefaultAnswers(defaultAnswers) {
-		this.setState({answers: defaultAnswers});
-		this.toast("Default Answers", "Default answers have been updated", "success");
-		console.log(this.state.answers);
-	}
-
-	submitQuestionnaireSuccess() {
-		this.toast("Submit Answers", "Successfully submitted your answers", "success");
-	}
+	
 
 	handleChange(questionId, e) {
 		var answers = this.state.answers;

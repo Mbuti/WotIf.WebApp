@@ -29,6 +29,10 @@ export default class Questionnaire extends React.Component {
 		this.updateDefaultAnswers();
 	}
 
+	setDefaultAnswers(defaultAnswers) {
+		this.setState({answers: defaultAnswers});
+	}
+
 	updateDefaultAnswers() {
 		var defaults = [];
 		for (var i = 0; i < this.state.questionnaire.Questions.length; i++) {
@@ -40,7 +44,7 @@ export default class Questionnaire extends React.Component {
 			defaults = defaults.concat([entry]);
 		}
 
-		this.props.setDefaultAnswers(defaults);
+		this.setDefaultAnswers(defaults);
 	}
 
 	toast(title, body, type) {
@@ -55,8 +59,7 @@ export default class Questionnaire extends React.Component {
 	}
 
 	submitQuestionnaire() {
-		console.log(this.state);
-		// questionnaireProxy.submitQuestionnaireAnswers()
+		questionnaireProxy.submitQuestionnaireAnswers({}, () => {}, this.toast.bind(this));
 	}
 
 	render() {
@@ -80,7 +83,7 @@ export default class Questionnaire extends React.Component {
 			<div class="row">
       		<div class="col-lg-6">
     		<div class="well bs-component">
-			<form onSubmit={this.submitQuestionnaire.bind(this)} class="form-horizontal">
+			<form onSubmit={this.confirmQuestionnaireSubmission.bind(this)} class="form-horizontal">
 				<fieldset>
 					<legend>
 						{title}<br />
