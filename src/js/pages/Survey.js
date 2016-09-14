@@ -12,9 +12,7 @@ export default class Survey extends React.Component {
 
 		this.state = {
 			surveys: [],
-			surveyId: "",
-			questions: [],
-			answers: [] // [{questionId: 1, answer: "Answer1"}, {questionId: 2, answer: "Answer2"}]
+			surveyId: ""
 		};
 	}
 
@@ -34,30 +32,6 @@ export default class Survey extends React.Component {
 		this.setState({surveyId: e.target.value});
 	}
 
-	
-
-	handleChange(questionId, e) {
-		var answers = this.state.answers;
-		for (var i = 0; i < this.state.answers.length; i++) {
-			var entry = this.state.answers[i];
-
-			if (entry.questionId == questionId) {
-				entry.answer = e.target.value;
-				answers[i] = entry;
-
-				this.setState({answers: answers});
-				return;
-			}
-		}
-
-		var newEntry = {
-			questionId: questionId,
-			answer: e.target.value
-		};
-
-		this.setState({answers: this.state.answers.concat([newEntry])});
-	}
-
 	render() {
 		var ListOfSurveys = [];
 		if (this.state.surveys.length > 0) {
@@ -74,7 +48,7 @@ export default class Survey extends React.Component {
 					{ListOfSurveys}
 				</select>
 				
-				<Questionnaire surveyId={this.state.surveyId} handleChange={this.handleChange.bind(this)} setDefaultAnswers={this.setDefaultAnswers.bind(this)} />
+				<Questionnaire surveyId={this.state.surveyId} />
 			</div>
 		)
 	}

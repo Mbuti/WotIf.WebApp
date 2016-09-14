@@ -12,7 +12,9 @@ export default class Questionnaire extends React.Component {
 		super();
 		this.state = {
 			surveyId: "",
-			questionnaire: {}
+			questionnaire: {},
+			questions: [],
+			answers: [] // [{questionId: 1, answer: "Answer1"}, {questionId: 2, answer: "Answer2"}]
 		};
 	}
 
@@ -47,6 +49,28 @@ export default class Questionnaire extends React.Component {
 		this.setDefaultAnswers(defaults);
 	}
 
+	handleChange(questionId, e) {
+		var answers = this.state.answers;
+		for (var i = 0; i < this.state.answers.length; i++) {
+			var entry = this.state.answers[i];
+
+			if (entry.questionId == questionId) {
+				entry.answer = e.target.value;
+				answers[i] = entry;
+
+				this.setState({answers: answers});
+				return;
+			}
+		}
+
+		var newEntry = {
+			questionId: questionId,
+			answer: e.target.value
+		};
+
+		this.setState({answers: this.state.answers.concat([newEntry])});
+	}
+
 	toast(title, body, type) {
 		dispatcher.dispatch({type: "TOAST", title: title, message: body, messageType: type});
 	}
@@ -59,7 +83,16 @@ export default class Questionnaire extends React.Component {
 	}
 
 	submitQuestionnaire() {
-		questionnaireProxy.submitQuestionnaireAnswers({}, () => {}, this.toast.bind(this));
+		var questionnaireData = {
+			SurveyId: this.state.surveyId,
+			Answers: this.state.answers
+		};
+		
+		questionnaireProxy.submitQuestionnaireAnswers(questionnaireData, this.submitQuestionnaireAnswersSuccess.bind(this), this.toast.bind(this));
+	}
+
+	submitQuestionnaireAnswersSuccess() {
+		this.toast("Submitted", "Your answers to the questionnaire have been submitted", "success");
 	}
 
 	render() {
@@ -75,7 +108,7 @@ export default class Questionnaire extends React.Component {
 			description = this.state.questionnaire.SurveyDescription;
 			date = this.state.questionnaire.SurveyCreatedDate;
 			ListOfQuestions = this.state.questionnaire.Questions.map((question) => {
-				return <SurveyQuestion key={question.QuestionId} questionId={question.QuestionId} type={question.Type} text={question.Text} handleChange={this.props.handleChange} />
+				return <SurveyQuestion key={question.QuestionId} questionId={question.QuestionId} type={question.Type} text={question.Text} handleChange={this.handleChange.bind(this)} />
 			});
 		}
 		
