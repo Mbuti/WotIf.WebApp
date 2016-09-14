@@ -1,5 +1,6 @@
 import React from "react";
 
+import dispatcher from "../dispatcher";
 import * as surveyProxy from "../surveyProxy";
 
 import CustomOption from "../components/CustomOption";
@@ -26,8 +27,7 @@ export default class Survey extends React.Component {
 	}
 
 	toast(title, body, type) {
-		this.props.toastr();
-		this.props.toastr(title, body, type);
+		dispatcher.dispatch({type: "TOAST", title: title, message: body, messageType: type});
 	}
 
 	changeSurvey(e) {

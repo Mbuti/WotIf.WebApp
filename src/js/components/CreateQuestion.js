@@ -1,5 +1,6 @@
 import React from "react";
 
+import dispatcher from "../dispatcher";
 import * as questionProxy from "../questionProxy";
 
 import CustomOption from "./CustomOption";
@@ -24,8 +25,7 @@ export default class CreateQuestion extends React.Component {
 	}
 
 	toast(title, body, type) {
-		this.props.toastr();
-		this.props.toastr(title, body, type);
+		dispatcher.dispatch({type: "TOAST", title: title, message: body, messageType: type});
 	}
 
 	handleChange(propertyName, e) {

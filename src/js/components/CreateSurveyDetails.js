@@ -1,5 +1,6 @@
 import React from "react";
 
+import dispatcher from "../dispatcher";
 import * as questionProxy from "../questionProxy";
 import * as questionnaireProxy from "../questionnaireProxy";
 import * as surveyProxy from "../surveyProxy";
@@ -27,8 +28,7 @@ export default class CreateSurveyDetails extends React.Component {
 	}
 
 	toast(title, body, type) {
-		this.props.toastr();
-		this.props.toastr(title, body, type);
+		dispatcher.dispatch({type: "TOAST", title: title, message: body, messageType: type});
 	}
 
 	handleChange(propertyName, e) {

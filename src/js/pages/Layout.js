@@ -1,5 +1,7 @@
 import React from "react";
 
+import dispatcher from "../dispatcher";
+
 import Nav from "../components/Nav";
 
 import {
@@ -8,6 +10,19 @@ import {
 } from "react-toastr";
 
 export default class Layout extends React.Component {
+	constructor() {
+		super();
+		dispatcher.register(this.handleAction.bind(this));
+	}
+
+	handleAction(action) {
+		switch(action.type) {
+			case "TOAST": {
+				this.toastr(action.title, action.message, action.messageType);
+			}
+		}
+	}
+
 	toastr(title, message, type) {
 		switch(type)
 		{

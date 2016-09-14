@@ -2,6 +2,7 @@ import _ from "lodash";
 import React from "react";
 
 import * as defaultAnswerService from "../defaultAnswerService";
+import dispatcher from "../dispatcher";
 import * as questionnaireProxy from "../questionnaireProxy";
 
 import SurveyQuestion from "./SurveyQuestion";
@@ -43,8 +44,7 @@ export default class Questionnaire extends React.Component {
 	}
 
 	toast(title, body, type) {
-		this.props.toastr();
-		this.props.toastr(title, body, type);
+		dispatcher.dispatch({type: "TOAST", title: title, message: body, messageType: type});
 	}
 
 	confirmQuestionnaireSubmission(e) {
