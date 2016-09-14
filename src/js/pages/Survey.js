@@ -32,6 +32,18 @@ export default class Survey extends React.Component {
 		this.setState({surveyId: e.target.value});
 	}
 
+	getQuestionnaire() {
+		console.log(this.state.surveyId);
+		if (this.state.surveyId !== "") {
+			console.log("returning questionnaire");
+			return <Questionnaire surveyId={this.state.surveyId} />
+		}
+		else
+		{
+			return null;
+		}
+	}
+
 	render() {
 		var ListOfSurveys = [];
 		if (this.state.surveys.length > 0) {
@@ -39,6 +51,8 @@ export default class Survey extends React.Component {
 				return <CustomOption key={survey.SurveyId} value={survey.SurveyId} text={survey.Title} />
 			});
 		}
+
+		var Questionnaire = this.getQuestionnaire();
 
 		return (
 			<div>
@@ -48,7 +62,7 @@ export default class Survey extends React.Component {
 					{ListOfSurveys}
 				</select>
 				
-				<Questionnaire surveyId={this.state.surveyId} />
+				{Questionnaire}
 			</div>
 		)
 	}

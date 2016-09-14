@@ -18,7 +18,7 @@ export default class Questionnaire extends React.Component {
 		};
 	}
 
-	updateQuestionnaire() {
+	componentWillMount() {
 		if (this.props.surveyId !== "" && this.props.surveyId !== this.state.surveyId)
 		{
 			this.setState({surveyId: this.props.surveyId});
@@ -96,7 +96,7 @@ export default class Questionnaire extends React.Component {
 	}
 
 	render() {
-		this.updateQuestionnaire(); // This is what causes the warning in the console
+		//this.updateQuestionnaire(); // This is what causes the warning in the console
 
 		var title = "";
 		var description = "";
