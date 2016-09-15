@@ -36,6 +36,9 @@ export default class Nav extends React.Component {
             <li>
               <Link to="completesurvey">Complete a Survey</Link>
             </li>
+            <li>
+              <Link to="businessintelligence">Business Intelligence</Link>
+            </li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">

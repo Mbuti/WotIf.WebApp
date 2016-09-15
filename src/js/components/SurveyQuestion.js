@@ -20,7 +20,7 @@ export default class SurveyQuestion extends React.Component {
 					<div class="form-group">
 						<label for={this.props.questionId} class="control-label">{this.props.text}</label>
 						<div class="col-lg-10">
-							<input id={this.props.questionId} onChange={this.props.handleChange.bind(this, this.props.questionId)} />
+							<input id={this.props.questionId} onChange={this.props.handleChange.bind(this, this.props.questionId)} class="form-control" />
 						</div>
 					</div>
 				)
@@ -31,7 +31,7 @@ export default class SurveyQuestion extends React.Component {
 					<div class="form-group">
 						<label for={this.props.questionId} class="control-label">{this.props.text}</label>
 						<div class="col-lg-10">
-							<input type="number" id={this.props.questionId} onChange={this.props.handleChange.bind(this, this.props.questionId)} />
+							<input type="number" id={this.props.questionId} onChange={this.props.handleChange.bind(this, this.props.questionId)} class="form-control" />
 						</div>
 					</div>
 				)
@@ -42,7 +42,7 @@ export default class SurveyQuestion extends React.Component {
 					<div class="form-group">
 						<label for={this.props.questionId} class="control-label">{this.props.text}</label>
 						<div class="col-lg-10">
-							R <input type="number" id={this.props.questionId} step="0.01" onChange={this.props.handleChange.bind(this, this.props.questionId)} />
+							R <input type="number" id={this.props.questionId} step="0.01" onChange={this.props.handleChange.bind(this, this.props.questionId)} class="form-control" />
 						</div>
 					</div>
 				)
@@ -53,7 +53,7 @@ export default class SurveyQuestion extends React.Component {
 					<div class="form-group">
 						<label for={this.props.questionId} class="control-label">{this.props.text}</label>
 						<div class="col-lg-10">
-							<textarea id={this.props.questionId} onChange={this.props.handleChange.bind(this, this.props.questionId)} />
+							<textarea id={this.props.questionId} onChange={this.props.handleChange.bind(this, this.props.questionId)} class="form-control" />
 						</div>
 					</div>
 				)
