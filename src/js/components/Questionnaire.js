@@ -17,15 +17,16 @@ export default class Questionnaire extends React.Component {
 			answers: [] // [{questionId: 1, answer: "Answer1"}, {questionId: 2, answer: "Answer2"}]
 		};
 	}
-
-	componentWillMount() {
-		if (this.props.surveyId !== "" && this.props.surveyId !== this.state.surveyId)
-		{
-			this.setState({surveyId: this.props.surveyId});
-			questionnaireProxy.getQuestionnaire(this.props.surveyId, this.getQuestionnaireSuccess.bind(this), this.toast.bind(this));
-		}
+	componentWillMount(){
+		this.setState({surveyId: this.props.surveyId});
+		questionnaireProxy.getQuestionnaire(this.props.surveyId, this.getQuestionnaireSuccess.bind(this), this.toast.bind(this));
 	}
 
+	componentWillReceiveProps(nextProps) {
+		console.log(this.state);
+		this.setState({surveyId: nextProps.surveyId});
+		questionnaireProxy.getQuestionnaire(nextProps.surveyId, this.getQuestionnaireSuccess.bind(this), this.toast.bind(this));
+	}
 	getQuestionnaireSuccess(questionnaire) {
 		this.setState({questionnaire: JSON.parse(questionnaire)});
 		this.updateDefaultAnswers();
@@ -97,7 +98,6 @@ export default class Questionnaire extends React.Component {
 
 	render() {
 		//this.updateQuestionnaire(); // This is what causes the warning in the console
-
 		var title = "";
 		var description = "";
 		var date = "";

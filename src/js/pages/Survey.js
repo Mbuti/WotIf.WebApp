@@ -33,9 +33,7 @@ export default class Survey extends React.Component {
 	}
 
 	getQuestionnaire() {
-		console.log(this.state.surveyId);
 		if (this.state.surveyId !== "") {
-			console.log("returning questionnaire");
 			return <Questionnaire surveyId={this.state.surveyId} />
 		}
 		else
@@ -52,8 +50,6 @@ export default class Survey extends React.Component {
 			});
 		}
 
-		var Questionnaire = this.getQuestionnaire();
-
 		return (
 			<div>
 				<label for="surveyId">Choose a survey</label>
@@ -62,7 +58,7 @@ export default class Survey extends React.Component {
 					{ListOfSurveys}
 				</select>
 				
-				{Questionnaire}
+				{this.getQuestionnaire()}
 			</div>
 		)
 	}
