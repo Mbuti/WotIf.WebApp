@@ -1,5 +1,6 @@
 import React from "react";
 
+import dispatcher from "../dispatcher";
 import * as questionProxy from "../questionProxy";
 
 import CustomOption from "./CustomOption";
@@ -24,8 +25,7 @@ export default class CreateQuestion extends React.Component {
 	}
 
 	toast(title, body, type) {
-		this.props.toastr();
-		this.props.toastr(title, body, type);
+		dispatcher.dispatch({type: "TOAST", title: title, message: body, messageType: type});
 	}
 
 	handleChange(propertyName, e) {
@@ -59,20 +59,36 @@ export default class CreateQuestion extends React.Component {
 		}
 
 		return (
-			<div>
-				<h2>Create a Question</h2>
-				<form onSubmit={this.createQuestion.bind(this)}>
-					<h3>Question Text</h3>
-					<input id="questionText" value={this.state.questionText} onChange={this.handleChange.bind(this, 'questionText')} required />
+			<div class="row">
+      		<div class="col-lg-6">
+    		<div class="well bs-component">
+			<form onSubmit={this.createQuestion.bind(this)} class="form-horizontal">
+				<fieldset>
+					<legend>Add a new question</legend>
 
-					<h3>Question Type</h3>
-					<select id="questionType" value={this.state.questionType} onChange={this.handleChange.bind(this, 'questionType')} required>
-						<option value="">==SELECT==</option>
-						{ListOfQuestionTypes}
-					</select>
-					<br />
-					<input type="submit" value="Create" />
-				</form>
+					<div class="form-group">
+						<label for="questionText" class="col-lg-2 control-label">Question text</label>
+						<div class="col-lg-10">
+							<input id="questionText" value={this.state.questionText} onChange={this.handleChange.bind(this, 'questionText')} required />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="questionType" class="col-lg-2 control-label">Question type</label>
+						<div class="col-lg-10">
+							<select id="questionType" value={this.state.questionType} onChange={this.handleChange.bind(this, 'questionType')} class="form-control" required>
+								<option value="">==SELECT==</option>
+								{ListOfQuestionTypes}
+							</select>
+						</div>
+					</div>
+					
+					<button type="reset" class="btn btn-default">Cancel</button>
+    				<button type="submit" class="btn btn-primary">Create</button>
+				</fieldset>
+			</form>
+			</div>
+			</div>
 			</div>
 		)
 	}
