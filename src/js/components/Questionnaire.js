@@ -94,6 +94,15 @@ export default class Questionnaire extends React.Component {
 
 	submitQuestionnaireAnswersSuccess() {
 		this.toast("Submitted", "Your answers to the questionnaire have been submitted", "success");
+		this.resetQuestionnaire().bind(this);
+	}
+
+	cancelQuestionnaire() {
+		this.resetQuestionnaire();
+	}
+
+	resetQuestionnaire() {
+		dispatcher.dispatch({type: "RESET_QUESTIONNAIRE"});
 	}
 
 	render() {
@@ -113,7 +122,7 @@ export default class Questionnaire extends React.Component {
 		
 		return (
     		<div class="well bs-component">
-			<form onSubmit={this.confirmQuestionnaireSubmission.bind(this)} class="form-horizontal">
+			<form onSubmit={this.confirmQuestionnaireSubmission.bind(this)}  class="form-horizontal">
 				<fieldset>
 					<legend>
 						{title}<br />
@@ -121,7 +130,7 @@ export default class Questionnaire extends React.Component {
 						<h6>({date})</h6>
 					</legend>
 					{ListOfQuestions}
-					<button type="reset" class="btn btn-default">Cancel</button>
+					<button type="reset" class="btn btn-default" onClick={this.cancelQuestionnaire.bind(this)}>Cancel</button>
 					<button type="submit" class="pull-right btn btn-primary">Submit</button>
 				</fieldset>
 			</form>

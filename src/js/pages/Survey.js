@@ -9,11 +9,20 @@ import Questionnaire from "../components/Questionnaire";
 export default class Survey extends React.Component {
 	constructor() {
 		super();
+		dispatcher.register(this.handleAction.bind(this));
 
 		this.state = {
 			surveys: [],
 			surveyId: ""
 		};
+	}
+
+	handleAction(action) {
+		switch(action.type) {
+			case "RESET_QUESTIONNAIRE": {
+				this.setState({surveyId: ""});
+			}
+		}
 	}
 
 	componentWillMount() {
