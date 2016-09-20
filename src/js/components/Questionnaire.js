@@ -97,7 +97,6 @@ export default class Questionnaire extends React.Component {
 	}
 
 	render() {
-		//this.updateQuestionnaire(); // This is what causes the warning in the console
 		var title = "";
 		var description = "";
 		var date = "";
@@ -113,8 +112,6 @@ export default class Questionnaire extends React.Component {
 		}
 		
 		return (
-			<div class="row">
-      		<div class="col-lg-6">
     		<div class="well bs-component">
 			<form onSubmit={this.confirmQuestionnaireSubmission.bind(this)} class="form-horizontal">
 				<fieldset>
@@ -124,12 +121,10 @@ export default class Questionnaire extends React.Component {
 						<h6>({date})</h6>
 					</legend>
 					{ListOfQuestions}
+					<button type="reset" class="btn btn-default">Cancel</button>
+					<button type="submit" class="pull-right btn btn-primary">Submit</button>
 				</fieldset>
-				<button type="reset" class="btn btn-default">Cancel</button>
-				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>
-			</div>
-			</div>
 			</div>
 		)
 	}

@@ -48,6 +48,8 @@ export default class CreateQuestion extends React.Component {
 	createQuestionSuccess() {
 		this.setState({questionText: ""});
 		this.setState({questionType: ""});
+
+		dispatcher.dispatch({type: "QUESTIONS_UPDATED"});
 	}
 
 	render() {
@@ -59,8 +61,6 @@ export default class CreateQuestion extends React.Component {
 		}
 
 		return (
-			<div class="row">
-      		<div class="col-lg-6">
     		<div class="well bs-component">
 			<form onSubmit={this.createQuestion.bind(this)} class="form-horizontal">
 				<fieldset>
@@ -69,7 +69,7 @@ export default class CreateQuestion extends React.Component {
 					<div class="form-group">
 						<label for="questionText" class="col-lg-2 control-label">Question text</label>
 						<div class="col-lg-10">
-							<input id="questionText" value={this.state.questionText} onChange={this.handleChange.bind(this, 'questionText')} required />
+							<input id="questionText" value={this.state.questionText} onChange={this.handleChange.bind(this, 'questionText')} class="form-control" required />
 						</div>
 					</div>
 
@@ -84,11 +84,9 @@ export default class CreateQuestion extends React.Component {
 					</div>
 					
 					<button type="reset" class="btn btn-default">Cancel</button>
-    				<button type="submit" class="btn btn-primary">Create</button>
+    				<button type="submit" class="pull-right btn btn-primary">Create</button>
 				</fieldset>
 			</form>
-			</div>
-			</div>
 			</div>
 		)
 	}

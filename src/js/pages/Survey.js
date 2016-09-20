@@ -52,12 +52,16 @@ export default class Survey extends React.Component {
 
 		return (
 			<div>
-				<label for="surveyId">Choose a survey</label>
-				<select id="surveyId" value={this.state.surveyId} onChange={this.changeSurvey.bind(this)}>
-					<option value="">==SELECT==</option>
-					{ListOfSurveys}
-				</select>
-				
+				<div class="well bs-component">
+				<div class="form-group">
+					<label for="surveyId">Choose a survey</label>
+					<select id="surveyId" value={this.state.surveyId} onChange={this.changeSurvey.bind(this)} class="form-control" >
+						<option value="">==SELECT==</option>
+						{ListOfSurveys}
+					</select>
+				</div>
+				</div>
+
 				{this.getQuestionnaire()}
 			</div>
 		)

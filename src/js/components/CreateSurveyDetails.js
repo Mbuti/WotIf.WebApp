@@ -10,6 +10,7 @@ import CustomOption from "./CustomOption";
 export default class CreateSurveyDetails extends React.Component {
 	constructor() {
 		super();
+		dispatcher.register(this.handleAction.bind(this));
 
 		this.state = {
 			questions: [],
@@ -17,6 +18,14 @@ export default class CreateSurveyDetails extends React.Component {
 			surveyName: "",
 			surveyDescription: ""
 		};
+	}
+
+	handleAction(action) {
+		switch(action.type) {
+			case "QUESTIONS_UPDATED": {
+				questionProxy.getQuestions(this.getQuestionsSuccess.bind(this), this.toast.bind(this));
+			}
+		}
 	}
 
 	componentWillMount() {
@@ -95,8 +104,6 @@ export default class CreateSurveyDetails extends React.Component {
 		}
 		
 		return (
-			<div class="row">
-      		<div class="col-lg-6">
     		<div class="well bs-component">
 			<form onSubmit={this.createSurvey.bind(this)} class="form-horizontal">
 				<fieldset>
@@ -105,14 +112,14 @@ export default class CreateSurveyDetails extends React.Component {
 					<div class="form-group">
 						<label for="surveyName" class="col-lg-2 control-label">Survey name</label>
 						<div class="col-lg-10">
-							<input id="surveyName" value={this.state.surveyName} onChange={this.handleChange.bind(this, 'surveyName')} required />
+							<input id="surveyName" value={this.state.surveyName} onChange={this.handleChange.bind(this, 'surveyName')} class="form-control" required />
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="surveyDescription" class="col-lg-2 control-label">Survey description</label>
 						<div class="col-lg-10">
-							<input id="surveyDescription" value={this.state.surveyDescription} onChange={this.handleChange.bind(this, 'surveyDescription')} required />
+							<input id="surveyDescription" value={this.state.surveyDescription} onChange={this.handleChange.bind(this, 'surveyDescription')} class="form-control" required />
 						</div>
 					</div>
 
@@ -130,11 +137,9 @@ export default class CreateSurveyDetails extends React.Component {
 					</div>
 
 					<button type="reset" class="btn btn-default">Cancel</button>
-    				<button type="submit" class="btn btn-primary">Create</button>
+    				<button type="submit" class="pull-right btn btn-primary">Create</button>
 				</fieldset>
 			</form>
-			</div>
-			</div>
 			</div>
 		)
 	}
