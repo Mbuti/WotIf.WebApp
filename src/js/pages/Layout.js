@@ -3,6 +3,7 @@ import React from "react";
 import dispatcher from "../dispatcher";
 
 import Nav from "../components/Nav";
+import Footer from "../components/Footer"
 
 import {
 	ToastContainer,
@@ -65,6 +66,7 @@ export default class Layout extends React.Component {
 				<div class="container" id="main-wrapper">
 					{this.props.children}
 				</div>
+				<Footer/>
 			</div>
 		)
 	}
