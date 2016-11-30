@@ -1,4 +1,5 @@
 export class CreateQuestion {
+    id: number;
     questionText: string;
     questionType: string;
     sortOrder: number;

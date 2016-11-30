@@ -3,7 +3,7 @@
 <table>
     <tr *ngFor="let question of questions">
         <td>
-            <app-question-create-toggle [question]="question"></app-question-create-toggle>
+            <app-question-create-toggle [question]="question" (onChange)="questionChanged($event)"></app-question-create-toggle>
         </td>
         <td>
             <button class="btn btn-warning" (click)="moveQuestionUp(question)"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> Up</button>

@@ -1,6 +1,6 @@
 <div *ngIf="editMode">
-  <input type="text" name="questionText" placeholder="Question Text" />
-  <select>
+  <input type="text" name="questionText" placeholder="Question Text" [(ngModel)]="questionText" />
+  <select [(ngModel)]="questionType">
     <option value="" selected>SELECT</option>
     <option value="Text">Text</option>
   </select>

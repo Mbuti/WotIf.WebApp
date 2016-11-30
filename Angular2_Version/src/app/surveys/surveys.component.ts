@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+// Events
+import { QuestionChangedEvent } from '../events/QuestionChangedEvent';
+
 // Models
 import { CreateQuestion } from '../models/CreateQuestion';
 
@@ -48,6 +51,10 @@ export class SurveysComponent implements OnInit {
 
   addQuestion() {
     this.questions.push(new CreateQuestion("", "", this.questions.length));
+  }
+
+  questionChanged(questionChangedEvent: QuestionChangedEvent) {
+    
   }
 
 }
