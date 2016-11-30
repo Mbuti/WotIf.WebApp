@@ -6,14 +6,20 @@ import { LoginModel } from '../models/LoginModel';
 
 @Injectable()
 export class AuthService {
+  isLoggedIn: boolean = true;
+
   constructor() { }
 
-  loggedIn() {
-    return true;
+  loggedIn(): boolean {
+    return this.isLoggedIn;
   }
 
   login(loginData: LoginModel) {
-    return new Observable();
+    this.isLoggedIn = true;
+  }
+
+  logout() {
+    this.isLoggedIn = false;
   }
 
 }

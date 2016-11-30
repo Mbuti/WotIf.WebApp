@@ -1,0 +1,12 @@
+<div *ngIf="editMode">
+  <input type="text" name="questionText" placeholder="Question Text" />
+  <select>
+    <option value="" selected>SELECT</option>
+    <option value="Text">Text</option>
+  </select>
+  <button class="btn btn-primary" (click)="toggleEditMode()"><span class="glyphicon glyphicon-ok" aria-hidden="true"> Preview</span></button>
+</div>
+
+<div *ngIf="!editMode">
+  Coming soon<button class="btn btn-primary" (click)="toggleEditMode()"><span class="glyphicon glyphicon-ok" aria-hidden="true"> Edit</span></button>
+</div>
