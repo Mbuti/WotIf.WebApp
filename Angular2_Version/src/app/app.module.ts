@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpModule } from '@angular/http';
+import { provideAuth, AUTH_PROVIDERS } from "angular2-jwt";
 
 // Components
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { SurveysComponent } from './surveys/surveys.component';
 import { AdminComponent } from './admin/admin.component';
 import { QuestionCreateToggleComponent } from './surveys/question-create-toggle.component';
 import { DynamicQuestionComponent } from './surveys/dynamic-question.component';
+import { CreateSurveyComponent } from './surveys/create-survey.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { DynamicQuestionComponent } from './surveys/dynamic-question.component';
     SurveysComponent,
     AdminComponent,
     QuestionCreateToggleComponent,
-    DynamicQuestionComponent
+    DynamicQuestionComponent,
+    CreateSurveyComponent
   ],
   imports: [
     AppRoutingModule,
@@ -51,7 +54,18 @@ import { DynamicQuestionComponent } from './surveys/dynamic-question.component';
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService, AuthGuardService, AuthProxyService],
+  providers: [
+    provideAuth({
+      headerName: "Authorization",
+      headerPrefix: "Bearer",
+      tokenName: "id_token",
+      tokenGetter: (() => localStorage.getItem("id_token")),
+      globalHeaders: [{ 'Content-Type': "application/json" }],
+      noJwtError: false,
+      noTokenScheme: false
+    }),
+    AuthService, AuthGuardService, AuthProxyService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

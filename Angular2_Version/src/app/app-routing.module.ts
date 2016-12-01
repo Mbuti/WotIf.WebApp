@@ -11,6 +11,7 @@ import { GeneralComponent } from './general/general.component';
 import { ParticipantsComponent } from './participants/participants.component';
 import { TalentsComponent } from './talents/talents.component';
 import { SurveysComponent } from './surveys/surveys.component';
+import { CreateSurveyComponent } from './surveys/create-survey.component';
 import { AdminComponent } from './admin/admin.component';
 
 // Services
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
     { path: 'participants', component: ParticipantsComponent, canActivate: [AuthGuardService] },
     { path: 'talents', component: TalentsComponent, canActivate: [AuthGuardService] },
     { path: 'surveys', component: SurveysComponent, canActivate: [AuthGuardService] },
+    { path: 'survey-create', component: CreateSurveyComponent, canActivate: [AuthGuardService] },
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuardService] }
 ];
 

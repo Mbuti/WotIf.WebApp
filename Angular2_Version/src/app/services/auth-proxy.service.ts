@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs/Observable';
 import "rxjs/Rx";
 
 // Models
@@ -18,7 +18,7 @@ export class AuthProxyService {
 
   getToken(loginModel: LoginApiModel): Observable<any> {
     return this.http.post("/api/Auth/SignIn", JSON.stringify(loginModel), { headers: this.headers })
-      .map((result) => result.json())
+      .map((response) => response.json())
       .catch(error => this.handleError(error));
   }
 
