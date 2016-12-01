@@ -1,12 +1,26 @@
 <div *ngIf="editMode">
-  <input type="text" name="questionText" placeholder="Question Text" [(ngModel)]="questionText" />
-  <select [(ngModel)]="questionType">
-    <option value="" selected>SELECT</option>
-    <option value="Text">Text</option>
-  </select>
-  <button class="btn btn-primary" (click)="toggleEditMode()"><span class="glyphicon glyphicon-ok" aria-hidden="true"> Preview</span></button>
+  <div class="form-group">
+    <label for="questionText" class="col-lg-2 control-label">Text</label>
+    <div class="col-lg-10">
+      <input id="questionText" name="questionText" [(ngModel)]="questionText" (ngModelChange)="notifyChange()" class="form-control"
+        required />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="questionType" class="col-lg-2 control-label">Type</label>
+    <div class="col-lg-10">
+      <select id="questionType" name="questionType" [(ngModel)]="questionType" (ngModelChange)="notifyChange()" class="form-control"
+        required>
+        <option value="">==SELECT==</option>
+        <option value="Text">Text</option>
+      </select>
+    </div>
+  </div>
+
+  <button *ngIf="isValid" class="btn btn-primary" (click)="toggleEditMode()"><span class="glyphicon glyphicon-ok" aria-hidden="true"> Preview</span></button>
 </div>
 
 <div *ngIf="!editMode">
-  Coming soon<button class="btn btn-primary" (click)="toggleEditMode()"><span class="glyphicon glyphicon-ok" aria-hidden="true"> Edit</span></button>
+  <app-dynamic-question [question]="questionModel"></app-dynamic-question><button class="btn btn-primary" (click)="toggleEditMode()"><span class="glyphicon glyphicon-ok" aria-hidden="true"> Edit</span></button>
 </div>

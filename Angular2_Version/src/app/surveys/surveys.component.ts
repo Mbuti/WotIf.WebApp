@@ -12,7 +12,8 @@ import { CreateQuestion } from '../models/CreateQuestion';
   styleUrls: []
 })
 export class SurveysComponent implements OnInit {
-  questions: CreateQuestion[] = [new CreateQuestion("", "", 0)]
+  questions: CreateQuestion[] = [new CreateQuestion(0, "", "", 0)]
+  nextQuestionId: number = 1;
 
   constructor() { }
 
@@ -50,11 +51,19 @@ export class SurveysComponent implements OnInit {
   }
 
   addQuestion() {
-    this.questions.push(new CreateQuestion("", "", this.questions.length));
+    this.questions.push(new CreateQuestion(this.nextQuestionId, "", "", this.questions.length));
+    this.nextQuestionId++;
   }
 
   questionChanged(questionChangedEvent: QuestionChangedEvent) {
-    
+    for (let question of this.questions) {
+      console.log("here?");
+      if (question.id === questionChangedEvent.id) {
+        question.questionText = questionChangedEvent.questionText;
+        question.questionType = questionChangedEvent.questionType;
+        break;
+      }
+    }
   }
 
 }

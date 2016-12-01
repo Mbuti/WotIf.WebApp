@@ -24,6 +24,7 @@ import { TalentsComponent } from './talents/talents.component';
 import { SurveysComponent } from './surveys/surveys.component';
 import { AdminComponent } from './admin/admin.component';
 import { QuestionCreateToggleComponent } from './surveys/question-create-toggle.component';
+import { DynamicQuestionComponent } from './surveys/dynamic-question.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { QuestionCreateToggleComponent } from './surveys/question-create-toggle.
     TalentsComponent,
     SurveysComponent,
     AdminComponent,
-    QuestionCreateToggleComponent
+    QuestionCreateToggleComponent,
+    DynamicQuestionComponent
   ],
   imports: [
     AppRoutingModule,
