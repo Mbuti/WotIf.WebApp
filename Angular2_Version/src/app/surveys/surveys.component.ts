@@ -57,7 +57,6 @@ export class SurveysComponent implements OnInit {
 
   questionChanged(questionChangedEvent: QuestionChangedEvent) {
     for (let question of this.questions) {
-      console.log("here?");
       if (question.id === questionChangedEvent.id) {
         question.questionText = questionChangedEvent.questionText;
         question.questionType = questionChangedEvent.questionType;

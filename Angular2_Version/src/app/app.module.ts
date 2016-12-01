@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 // Services
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import { AuthProxyService } from './services/auth-proxy.service';
 
 // Components
 import { NavComponent } from './nav/nav.component';
@@ -50,7 +51,7 @@ import { DynamicQuestionComponent } from './surveys/dynamic-question.component';
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService, AuthGuardService],
+  providers: [AuthService, AuthGuardService, AuthProxyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

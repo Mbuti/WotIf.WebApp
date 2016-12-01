@@ -6,7 +6,7 @@ import { Router } from "@angular/router";
 import { AuthService } from '../services/auth.service';
 
 //Models
-import { LoginModel } from '../models/LoginModel';
+import { LoginApiModel } from '../models/LoginApiModel';
 
 @Component({
   selector: 'app-login',
@@ -30,13 +30,15 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  submitForm(loginData: LoginModel) {
-    this.auth.login(loginData);
-    if (this.redirectUrl !== "") {
-      this.router.navigate([decodeURI(this.redirectUrl)]);
-    } else {
-      this.router.navigate(['']);
-    }
+  submitForm(loginModel: LoginApiModel) {
+    this.auth.login(loginModel)
+      .subscribe(() => {
+        if (this.redirectUrl !== "") {
+          this.router.navigate([decodeURI(this.redirectUrl)]);
+        } else {
+          this.router.navigate(['']);
+        }
+      });
   }
 
 }
