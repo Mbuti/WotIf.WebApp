@@ -4,10 +4,10 @@ import { Observable } from 'rxjs/Observable';
 import "rxjs/Rx";
 
 // Models
-import { QuestionTypeApiModel } from '../models/QuestionTypeApiModel';
+import { CreateSurveyApiModel } from '../models/CreateSurveyApiModel';
 
 @Injectable()
-export class QuestionProxyService {
+export class SurveyProxyService {
   private headers: Headers;
 
   constructor(private http: Http) {
@@ -16,13 +16,13 @@ export class QuestionProxyService {
     this.headers.append("Accept", "application/json");
   }
 
-  getQuestionTypes(): Observable<any> {
-    return this.http.get("/api/Question/GetQuestionTypes", { headers: this.headers })
-      .map((response) => <QuestionTypeApiModel[]>response.json())
-      .catch(error => this.handleError(error));
+  createSurvey(survey: CreateSurveyApiModel) {
+    return this.http.post("http://localhost:8090/api/Survey/Create", JSON.stringify(survey), { headers: this.headers })
+    .map((response) => response.json())
+    .catch(error => this.handleError(error));
   }
 
-  handleError(error: Response): Observable<any> {
+  handleError(error: Response) {
     console.error(error);
     return Observable.throw(error.json().error || "Server error");
   }

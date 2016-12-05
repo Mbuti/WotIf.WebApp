@@ -1,13 +1,13 @@
 export class CreateQuestion {
     id: number;
-    questionText: string;
-    questionType: string;
+    text: string;
+    type: string;
     sortOrder: number;
 
     constructor(id: number, questionText: string, questionType: string, sortOrder: number) {
         this.id = id;
-        this.questionText = questionText;
-        this.questionType = questionType;
+        this.text = questionText;
+        this.type = questionType;
         this.sortOrder = sortOrder;
     }
 
