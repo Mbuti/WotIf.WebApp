@@ -1,0 +1,29 @@
+<h1>Create a Survey</h1>
+
+<form [formGroup]="form" (ngSubmit)="submitForm(form.value)" class="form-vertical">
+  <h3>Survey Details</h3>
+  <div class="form-group">
+    <label for="surveyName">Survey Title</label>
+    <input type="text" id=surveyName class="form-control" formControlName="title" required />
+  </div>
+
+  <div class="form-group">
+    <label for="surveyDescription">Survey Description</label>
+    <textarea id="surveyDescription" class="form-control" formControlName="description" required></textarea>
+  </div>
+
+  <h3>Questions</h3>
+  <div *ngFor="let question of questions">
+    <div>
+      <app-question-create-toggle [id]="question.id" [questionTypes]="questionTypes" (onChange)="questionChanged($event)"></app-question-create-toggle>
+    </div>
+    <div>
+      <button *ngIf="questions.indexOf(question) !== 0" class="btn btn-warning" (click)="moveQuestionUp(question)"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> Up</button>
+      <button *ngIf="questions.indexOf(question) !== questions.length-1" class="btn btn-warning" (click)="moveQuestionDown(question)"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span> Down</button>
+      <button class="btn btn-danger" (click)="removeQuestion(question)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove</button>
+    </div>
+  </div>
+
+  <button class="btn btn-success" (click)="addQuestion()">Add Question</button>
+  <button class="btn btn-primary" type="submit" [disabled]="!form.valid || questions.length === 0 || !validateQuestions()">Create Survey</button>
+</form>

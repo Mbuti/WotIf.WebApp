@@ -1,0 +1,27 @@
+<div *ngIf="editMode">
+  <div class="form-group">
+    <label for="questionText" class="col-lg-2 control-label">Text</label>
+    <div class="col-lg-10">
+      <input id="questionText" name="questionText" [(ngModel)]="questionText" (ngModelChange)="notifyChange()" class="form-control"
+        required />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="questionType" class="col-lg-2 control-label">Type</label>
+    <div class="col-lg-10">
+      <select id="questionType" name="questionType" [(ngModel)]="questionType" (ngModelChange)="notifyChange()" class="form-control"
+        required>
+        <option value="">==SELECT==</option>
+        <option *ngFor="let questionType of questionTypes" [attr.value]="questionType">{{questionType}}</option>
+      </select>
+    </div>
+  </div>
+
+  <button *ngIf="isValid" class="btn btn-primary" (click)="toggleEditMode()"><span class="glyphicon glyphicon-ok" aria-hidden="true"> Preview</span></button>
+</div>
+
+<div *ngIf="!editMode">
+  <app-dynamic-question [question]="questionModel"></app-dynamic-question>
+  <button class="btn btn-primary" (click)="toggleEditMode()"><span class="glyphicon glyphicon-ok" aria-hidden="true"> Edit</span></button>
+</div>

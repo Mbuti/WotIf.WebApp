@@ -1,0 +1,14 @@
+<h1>Surveys</h1>
+
+<a class="btn btn-primary" routerLink="/survey-create">Create a Survey</a>
+
+<select id="questionType" name="questionType" class="form-control" [(ngModel)]="selectedSurvey" (ngModelChange)="selectedSurveyChanged($event)" required>
+    <option value="">==SELECT==</option>
+    <option *ngFor="let survey of surveys" [attr.value]="survey.SurveyId">{{survey.Title}}</option>
+</select>
+
+<div *ngIf="questions.length > 0">
+    <div *ngFor="let question of questions">
+        <app-dynamic-question [question]="question"></app-dynamic-question>
+    </div>
+</div>
