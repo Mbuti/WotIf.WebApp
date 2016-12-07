@@ -18,6 +18,7 @@ export class AuthService {
   }
 
   login(loginModel: LoginApiModel): Observable<any> {
+    this.isLoggedIn = true;
     return this.authProxy.getToken(loginModel);
   }
 

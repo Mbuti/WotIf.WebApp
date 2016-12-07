@@ -11,7 +11,7 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <ul *ngIf="auth.loggedIn()" class="nav navbar-nav">
         <li [routerLinkActive]="['active']"><a routerLink="individual-dashboard">Individuals</a></li>
         <li [routerLinkActive]="['active']"><a routerLink="general">General</a></li>
         <li [routerLinkActive]="['active']"><a routerLink="participants">Participants</a></li>
@@ -19,7 +19,7 @@
         <li [routerLinkActive]="['active']"><a routerLink="surveys">Surveys</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li [routerLinkActive]="['active']"><a routerLink="admin">Admin</a></li>
+        <li [routerLinkActive]="['active']" *ngIf="auth.loggedIn()"><a routerLink="admin">Admin</a></li>
         <li [routerLinkActive]="['active']" *ngIf="!auth.loggedIn()">
           <a routerLink="login">Login</a>
         </li>
