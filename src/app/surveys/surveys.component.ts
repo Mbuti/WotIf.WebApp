@@ -17,7 +17,8 @@ import { SurveyProxyService } from '../services/survey-proxy.service';
 export class SurveysComponent implements OnInit {
   surveys: SurveyApiModel[] = [];
   questions: Question[] = [];
-  selectedSurvey: number;
+  selectedSurvey: string;
+  survey: SurveyApiModel;
 
   constructor(private surveyProxy: SurveyProxyService) { }
 
@@ -29,25 +30,18 @@ export class SurveysComponent implements OnInit {
       });
   }
 
-  selectedSurveyChanged(selectedSurvey: number) {
-    // this.selectedSurvey = selectedSurvey;
-    // var surveyThing: SurveyApiModel;
-    // for (let survey of this.surveys) {
-    //   console.log(survey);
-    //   console.log(survey.surveyId);
-    //   if (survey.surveyId === this.selectedSurvey) {
-    //     surveyThing = survey;
-    //     console.log("found");
-    //     break;
-    //   }
-    // }
+  selectedSurveyChanged(selectedSurvey: string) {
+    this.selectedSurvey = selectedSurvey;
+    for (let survey of this.surveys) {
+      if (survey.id === +this.selectedSurvey) {
+        this.survey = survey;
+        break;
+      }
+    }
 
-    // for (let question of surveyThing.questions) {
-    //   this.questions.push(new Question(question.questionId, question.text, question.type));
-    // }
-
-    this.questions.push(new Question(1, "Question 1", "YesNo"));
-    this.questions.push(new Question(1, "Question 2", "Text"));
+    for (let question of this.survey.questions) {
+      this.questions.push(new Question(question.id, question.text, question.type));
+    }
   }
 
 }

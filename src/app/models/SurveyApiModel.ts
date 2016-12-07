@@ -2,7 +2,7 @@
 import { QuestionApiModel } from './QuestionApiModel';
 
 export class SurveyApiModel {
-    public surveyId: number;
+    public id: number;
     public title: string;
     public description: string;
     public date: Date;

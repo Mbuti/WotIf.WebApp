@@ -4,7 +4,7 @@
 
 <select id="questionType" name="questionType" class="form-control" [(ngModel)]="selectedSurvey" (ngModelChange)="selectedSurveyChanged($event)" required>
     <option value="">==SELECT==</option>
-    <option *ngFor="let survey of surveys" [attr.value]="survey.SurveyId">{{survey.Title}}</option>
+    <option *ngFor="let survey of surveys" [attr.value]="survey.id">{{survey.title}}</option>
 </select>
 
 <div *ngIf="questions.length > 0">
