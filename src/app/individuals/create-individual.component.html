@@ -1,83 +1,104 @@
 <h1>Create Individual</h1>
 
 
+
+
 <form>
   <input type="radio" name="ChosenFunction" value="Add" checked> Add Individual 
   <input type="radio" name="ChosenFunction" value="Edit"> Edit Individual 
   <input type="radio" name="ChosenFunction" value="Search"> Search by Name  
 </form> 
 
+<div class="form-group">
+	<input [(ngModel)]="inputtedValues.SearchByName" />
+</div>
+
+
 <br>
 
 <div >
-    <label>Name</label>
+	<label>Name</label>
 </div>
 <div class="form-group">
-    <input id="input" />
+	<input [(ngModel)]="inputtedValues.Name" />
 </div>
 
 <div >
-    <label>Surname</label>
+	<label>Surname</label>
 </div>
 <div class="form-group">
-    <input id="input" />
+	<input [(ngModel)]="inputtedValues.Surname" />
 </div>
 
 <div >
-    <label>Age</label>
+	<label>Age</label>
 </div>
 <div class="form-group">
-    <input id="input" />
+	<input [(ngModel)]="inputtedValues.Age" />
 </div>
 
 <div >
-    <label>ID</label>
+	<label>ID</label>
 </div>
 <div class="form-group">
-    <input id="input" />
+	<input [(ngModel)]="inputtedValues.ID" />
 </div>
 
 <div >
-    <label>Nationality</label>
+	<label>Nationality</label>
 </div>
 <div class="form-group">
-    <input id="input" />
+	<input [(ngModel)]="inputtedValues.Nationality" />
+</div>
+
+<label>
+	<input #angularcb type="checkbox" (change)="hasTalent = angularcb.checked" />
+	Talent
+</label>
+
+<div *ngIf!="hasTalent">
+<br>
+	</div>
+
+<div *ngIf="hasTalent">
+	<div >
+		<label>Name of talent</label>
+	</div> 
+	<div class="form-group">
+		<input [(ngModel)]="inputtedValues.NameOfTalent" />
+	</div>
+
+	<div>
+		<label>Years of experience</label>
+	</div>
+	<div class="form-group">
+		<input [(ngModel)]="inputtedValues.YearsExperience" />
+	</div>
 </div>
 
 
 
-<div >
-    <input type="checkbox" name="vehicle" value="Bike"> Talent<br>
-</div>
-<div class="form-group">
-    <input id="input" />
+
+<label>
+	<input #angularcb2 type="checkbox" (change)="hasParticipant = angularcb2.checked" />
+	Participant
+</label>
+
+<div *ngIf!="hasParticipant">
+	<br>
 </div>
 
-<div >
-    <label>Name of talent</label>
-</div> 
-<div class="form-group">
-    <input id="input" />
+<div *ngIf="hasParticipant" >
+	<div>
+		<label>Entity name</label>
+	</div>
+	<div class="form-group">
+		<input [(ngModel)]="inputtedValues.EntityName" />
+	</div>
 </div>
 
-<div>
-    <label>Years of experience</label>
-</div>
-<div class="form-group">
-    <input id="input" />
-</div>
 
-<div >
-    <label>Participant</label>
-</div>
-<div class="form-group">
-    <input id="input" />
-</div>
 
-<div >
-    <label>Entity name</label>
-</div>
-<div class="form-group">
-    <input id="input" />
-</div>
+<button (click)="SubmitData()">Submit</button>
+<button (click)="SubmitFieldData('CHEESE GOMBO. CHEEESE!')">Submit2</button>
 
