@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+
 // Components
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -13,9 +14,11 @@ import { TalentsComponent } from './talents/talents.component';
 import { SurveysComponent } from './surveys/surveys.component';
 import { CreateSurveyComponent } from './surveys/create-survey.component';
 import { AdminComponent } from './admin/admin.component';
+import {DeleteindividualComponent} from './deleteindividual/deleteindividual.component';
 
 // Services
 import { AuthGuardService } from './services/auth-guard.service';
+
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuardService] },
@@ -23,13 +26,14 @@ const appRoutes: Routes = [
     { path: 'login/:redirectUrl', component: LoginComponent },
     { path: 'individual-dashboard', component: IndividualDashboardComponent, canActivate: [AuthGuardService] },
     { path: 'individual-create', component: CreateIndividualComponent, canActivate: [AuthGuardService] },
-    { path: 'individual-edit/:id', component: CreateIndividualComponent, canActivate: [AuthGuardService] },
+    { path: 'individual-edit/:id', component: EditIndividualComponent, canActivate: [AuthGuardService],/* resolve: { member: 'member'}*/},
     { path: 'general', component: GeneralComponent, canActivate: [AuthGuardService] },
     { path: 'participants', component: ParticipantsComponent, canActivate: [AuthGuardService] },
     { path: 'talents', component: TalentsComponent, canActivate: [AuthGuardService] },
     { path: 'surveys', component: SurveysComponent, canActivate: [AuthGuardService] },
     { path: 'survey-create', component: CreateSurveyComponent, canActivate: [AuthGuardService] },
-    { path: 'admin', component: AdminComponent, canActivate: [AuthGuardService] }
+    { path: 'admin', component: AdminComponent, canActivate: [AuthGuardService] },
+    { path: 'deleteindividual/:id', component: DeleteindividualComponent, canActivate:[AuthGuardService]}
 ];
 
 @NgModule({

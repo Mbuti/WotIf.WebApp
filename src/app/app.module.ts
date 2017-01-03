@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpModule } from '@angular/http';
 import { provideAuth, AUTH_PROVIDERS } from "angular2-jwt";
+ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+
 
 // Components
 import { AppComponent } from './app.component';
@@ -14,12 +16,13 @@ import { HomeComponent } from './home/home.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthProxyService } from './services/auth-proxy.service';
+import {MemberProxyService} from './services/member-proxy.service';
 
 // Components
 import { NavComponent } from './nav/nav.component';
 import { IndividualDashboardComponent } from './individuals/individual-dashboard.component';
 import { CreateIndividualComponent } from './individuals/create-individual.component';
-import { EditIndividualComponent } from './individuals/edit-individual.component';
+import { EditIndividualComponent } from './individuals/edit-individual.component' ;
 import { GeneralComponent } from './general/general.component';
 import { ParticipantsComponent } from './participants/participants.component';
 import { TalentsComponent } from './talents/talents.component';
@@ -28,6 +31,9 @@ import { AdminComponent } from './admin/admin.component';
 import { QuestionCreateToggleComponent } from './surveys/question-create-toggle.component';
 import { DynamicQuestionComponent } from './surveys/dynamic-question.component';
 import { CreateSurveyComponent } from './surveys/create-survey.component';
+import { DeleteindividualComponent } from './deleteindividual/deleteindividual.component';
+import { Ng2CompleterModule } from "ng2-completer";
+import { ViewIndividualComponent } from './individuals/view-individual/view-individual.component';
 
 @NgModule({
   declarations: [
@@ -45,14 +51,18 @@ import { CreateSurveyComponent } from './surveys/create-survey.component';
     AdminComponent,
     QuestionCreateToggleComponent,
     DynamicQuestionComponent,
-    CreateSurveyComponent
+    CreateSurveyComponent,
+    DeleteindividualComponent,
+    ViewIndividualComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2CompleterModule,
+    Ng2AutoCompleteModule
   ],
   providers: [
     provideAuth({
@@ -64,7 +74,7 @@ import { CreateSurveyComponent } from './surveys/create-survey.component';
       noJwtError: false,
       noTokenScheme: false
     }),
-    AuthService, AuthGuardService, AuthProxyService
+    AuthService, AuthGuardService, AuthProxyService,MemberProxyService
   ],
   bootstrap: [AppComponent]
 })

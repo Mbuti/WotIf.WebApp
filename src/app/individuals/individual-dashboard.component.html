@@ -1,3 +1,52 @@
-<h1>Individual Dashboard</h1>
+
+Search Individual 
+    <input 
+      ng2-auto-complete
+      blank-option-text="Select Individuals"
+      [(ngModel)] = "SelectedUsername"
+      [source]="members"
+      value-property-name="Id"
+      display-property-name="Username" 
+      placeholder="Enter username"/> 
+     
+       <pre *ngIf = "SelectedUsername != null" >
+         Name : {{SelectedUsername.Name}}
+         Surname : {{SelectedUsername.Surname}}
+         Username : {{SelectedUsername.Username}}
+         IDNumber : {{SelectedUsername.Id}}
+         <a class="btn btn-primary" (click)= "BackToIndividuals()">Back</a>
+       </pre>
+
 
 <a class="btn btn-primary" routerLink="/individual-create">Create Individual</a>
+<br>
+<br>
+<br>
+
+<pre *ngIf = "SelectedUsername == null">
+<table id="t01">
+  <tr>
+    <th>Id</th>
+    <th>Firstname</th>
+    <th>Lastname</th> 
+    <th>Username</th>
+    <th>IDNumber</th>
+    <th>Edit Individual</th>
+    <th>Remove Individual</th>
+   <th></th>
+  </tr>
+  <tr *ngFor = 'let member of members' [class.selected]="IsSelected(member)">
+    <td>{{member.Id}}</td>
+    <td>{{member.Name}}</td>
+    <td>{{member.Surname}}</td>
+    <td>{{member.Username}}</td>
+    <td>{{member.IdNumber}}</td>
+    <td><tr><a class="btn btn-primary" (click) = "EditMember(member)" >Edit</a></tr></td>
+    <td><tr><a class="btn btn-primary" (click) = "DeleteMember(member)">Remove</a></tr></td>
+ 
+  
+  </tr>
+  
+</table>
+
+</pre>

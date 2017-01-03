@@ -1,1 +1,9 @@
-<h1>Create Individual</h1>
+<div>
+Username: <input id ="uname" type="text" [(ngModel)]="member.Username"/><br>
+Name:   <input id ="fname" type="text" [(ngModel)]="member.Name"/><br>
+Surname:  <input id ="lname" type="text" [(ngModel)]="member.Surname"/><br>
+IDNumber:  <input id ="Idnum" type="text" [(ngModel)]="member.IdNumber"/><br>
+
+ <a class="btn btn-primary" (click)= "CreateIndividual()" >Create New Individual</a>
+ <a class="btn btn-primary" routerLink="/individual-dashboard">Back</a>
+</div>
