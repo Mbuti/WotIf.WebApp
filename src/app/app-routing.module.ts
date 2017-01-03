@@ -14,7 +14,7 @@ import { TalentsComponent } from './talents/talents.component';
 import { SurveysComponent } from './surveys/surveys.component';
 import { CreateSurveyComponent } from './surveys/create-survey.component';
 import { AdminComponent } from './admin/admin.component';
-import {DeleteindividualComponent} from './deleteindividual/deleteindividual.component';
+import {DeleteindividualComponent} from './individuals/deleteindividual.component';
 
 // Services
 import { AuthGuardService } from './services/auth-guard.service';

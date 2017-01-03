@@ -16,7 +16,7 @@ export class MemberProxyService {
 
   createMember(member: MemberApiModel) {
     return this.http.post("/api/Individual/CreateIndividual", JSON.stringify(member), { headers: this.headers })
-    .map((response) => response.json())
+    // .map((response) => response.json())
     .catch(error => this.handleError(error));
   }
 

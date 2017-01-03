@@ -7,19 +7,32 @@ import {Router} from '@angular/router';
   selector: 'app-create-individual',
   templateUrl: './create-individual.component.html',
   styleUrls: [],
-  providers:[MemberProxyService]
+
 })
 export class CreateIndividualComponent implements OnInit {
+   show = "yes";
 
  member: MemberApiModel;
-  
+   inputtedValues ={
+     SearchByName:"",
+     Name:"",
+     Surname:"",
+     Age:"",
+     ID:"",
+     Nationality:"",
+     NameOfTalent:"",
+     YearsExperience:"",
+     EntityName:""
+   };
+
+angular = false;
+hasTalent = false;
+hasParticipant = false;
 
   constructor(private MemberProxy :MemberProxyService, private router :Router)  { 
     this.member = new MemberApiModel();
-
   }
-  
-
+ 
   ngOnInit() {
   }
   
@@ -30,4 +43,5 @@ export class CreateIndividualComponent implements OnInit {
       this.router.navigate(["individual-dashboard"]);
 }
 }
+
 

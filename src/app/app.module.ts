@@ -31,9 +31,9 @@ import { AdminComponent } from './admin/admin.component';
 import { QuestionCreateToggleComponent } from './surveys/question-create-toggle.component';
 import { DynamicQuestionComponent } from './surveys/dynamic-question.component';
 import { CreateSurveyComponent } from './surveys/create-survey.component';
-import { DeleteindividualComponent } from './deleteindividual/deleteindividual.component';
+import {DeleteindividualComponent} from './individuals/deleteindividual.component';
 import { Ng2CompleterModule } from "ng2-completer";
-import { ViewIndividualComponent } from './individuals/view-individual/view-individual.component';
+
 
 @NgModule({
   declarations: [
@@ -53,7 +53,7 @@ import { ViewIndividualComponent } from './individuals/view-individual/view-indi
     DynamicQuestionComponent,
     CreateSurveyComponent,
     DeleteindividualComponent,
-    ViewIndividualComponent
+   
   ],
   imports: [
     AppRoutingModule,

@@ -5,16 +5,16 @@ Search Individual
       blank-option-text="Select Individuals"
       [(ngModel)] = "SelectedUsername"
       [source]="members"
-      value-property-name="Id"
-      display-property-name="Username" 
+      value-property-name="id"
+      display-property-name="username" 
       placeholder="Enter username"/> 
      
        <pre *ngIf = "SelectedUsername != null" >
-         Name : {{SelectedUsername.Name}}
-         Surname : {{SelectedUsername.Surname}}
-         Username : {{SelectedUsername.Username}}
-         IDNumber : {{SelectedUsername.Id}}
-         <a class="btn btn-primary" (click)= "BackToIndividuals()">Back</a>
+         Name : {{SelectedUsername.name}}
+         Surname : {{SelectedUsername.surname}}
+         Username : {{SelectedUsername.username}}
+         IDNumber : {{SelectedUsername.id}}
+         
        </pre>
 
 
@@ -36,11 +36,11 @@ Search Individual
    <th></th>
   </tr>
   <tr *ngFor = 'let member of members' [class.selected]="IsSelected(member)">
-    <td>{{member.Id}}</td>
-    <td>{{member.Name}}</td>
-    <td>{{member.Surname}}</td>
-    <td>{{member.Username}}</td>
-    <td>{{member.IdNumber}}</td>
+    <td>{{member.id}}</td>
+    <td>{{member.name}}</td>
+    <td>{{member.surname}}</td>
+    <td>{{member.username}}</td>
+    <td>{{member.idNumber}}</td>
     <td><tr><a class="btn btn-primary" (click) = "EditMember(member)" >Edit</a></tr></td>
     <td><tr><a class="btn btn-primary" (click) = "DeleteMember(member)">Remove</a></tr></td>
  

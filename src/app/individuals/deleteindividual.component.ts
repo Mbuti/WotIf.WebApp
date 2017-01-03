@@ -1,7 +1,7 @@
 import { Component, OnInit,Input} from '@angular/core';
 import {MemberApiModel} from '../models/MemberApiModel';
 import {MemberProxyService} from '../services/member-proxy.service';
-import {IndividualDashboardComponent} from '../individuals/individual-dashboard.component';
+import {IndividualDashboardComponent} from './individual-dashboard.component';
 import {Router} from '@angular/router';
 import {ActivatedRoute, Params} from '@angular/router';
 

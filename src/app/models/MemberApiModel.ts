@@ -1,19 +1,19 @@
 export class MemberApiModel
     {
-        public Id :number;
-        public  IdNumber :string;
-        public  Username: string 
-        public Name :string ;
-        public Surname:string ;
+        public id :number;
+        public  idNumber :string;
+        public  username: string 
+        public name :string ;
+        public surname:string ;
  
 
     constuctor (id:number , IdNumber:string, Username:string ,Name :string ,Surname:string )
     {
-        this.Id=id;
-        this.IdNumber=IdNumber;
-        this.Name=Name;
-        this.Surname=Surname;
-        this.Username=Username;
+        this.id=id;
+        this.idNumber=IdNumber;
+        this.name=Name;
+        this.surname=Surname;
+        this.username=Username;
     }
 
     

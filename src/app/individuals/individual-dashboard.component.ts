@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MemberProxyService} from '../services/member-proxy.service';
 import {MemberApiModel} from '../models/MemberApiModel';
 import {Router} from '@angular/router';
-import{DeleteindividualComponent} from '../deleteindividual/deleteindividual.component';
+import {DeleteindividualComponent} from '../individuals/deleteindividual.component';
 import {ActivatedRoute, Params} from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 //import { CompleterService, CompleterData } from 'ng2-completer';
@@ -29,26 +29,22 @@ private SelectedUsername :MemberApiModel;
     this.MemberProxy.getMembers()
       .subscribe((members) => {
        this.members = members;
-       console.log(members);
       }
       );
   }
-  BackToIndividuals()
-{
-  this.SelectedUsername = new MemberApiModel();
-}        
+      
     IsSelected(member:MemberApiModel)
-     { return member.Id === this.SelectedId; }
+     { return member.id === this.SelectedId; }
 
 
 
    EditMember(member: MemberApiModel){
-      this.router.navigate(['individual-edit/' + member.Id]);
+      this.router.navigate(['individual-edit/' + member.id]);
      }
      
 
      DeleteMember(member:MemberApiModel){
-       this.router.navigate(['deleteindividual/' + member.Id]);
+       this.router.navigate(['deleteindividual/' + member.id]);
        
      }
       
