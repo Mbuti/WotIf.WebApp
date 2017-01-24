@@ -1,13 +1,13 @@
-
-<h1>Create Individual</h1>
- <a class="btn btn-primary" (click)= "CreateIndividual()" >Create New Individual</a>
- <a class="btn btn-primary" routerLink="/individual-dashboard">Back</a>
+<h1>
+	Create Individual</h1>
+<a class="btn btn-primary" (click)="CreateIndividual()">Create New Individual</a>
+<a class="btn btn-primary" routerLink="/individual-dashboard">Back</a>
 
 <form>
-  <input type="radio" name="ChosenFunction" value="Add" checked> Add Individual 
-  <input type="radio" name="ChosenFunction" value="Edit"> Edit Individual 
-  <input type="radio" name="ChosenFunction" value="Search"> Search by Name  
-</form> 
+	<input type="radio" name="ChosenFunction" value="Add" checked> Add Individual
+	<input type="radio" name="ChosenFunction" value="Edit"> Edit Individual
+	<input type="radio" name="ChosenFunction" value="Search"> Search by Name
+</form>
 
 <div class="form-group">
 	<input [(ngModel)]="inputtedValues.SearchByName" />
@@ -15,43 +15,43 @@
 
 
 <br>
-<div >
+<div>
 	<label>Username</label>
 </div>
 <div class="form-group">
-<input id ="uname" type="text" [(ngModel)]="member.username"/>
+	<input id="uname" type="text" [(ngModel)]="member.username" />
 </div>
 
-<div >
+<div>
 
 	<label>Name</label>
 </div>
 <div class="form-group">
- <input id ="fname" type="text" [(ngModel)]="member.name"/>
+	<input id="fname" type="text" [(ngModel)]="member.name" />
 </div>
 
-<div >
+<div>
 	<label>Surname</label>
 </div>
 <div class="form-group">
-	<input id ="lname" type="text" [(ngModel)]="member.surname"/>
+	<input id="lname" type="text" [(ngModel)]="member.surname" />
 </div>
 
-<div >
+<div>
 	<label>Age</label>
 </div>
 <div class="form-group">
 	<input [(ngModel)]="inputtedValues.Age" />
 </div>
 
-<div >
+<div>
 	<label>ID</label>
 </div>
 <div class="form-group">
-	<input id ="Idnum" type="text" [(ngModel)]="member.idNumber"/>
+	<input id="Idnum" type="text" [(ngModel)]="member.idNumber" />
 </div>
 
-<div >
+<div>
 	<label>Nationality</label>
 </div>
 <div class="form-group">
@@ -63,14 +63,14 @@
 	Talent
 </label>
 
-<div *ngIf!="hasTalent">
-<br>
-	</div>
+<div *ngIf="!hasTalent">
+	<br>
+</div>
 
 <div *ngIf="hasTalent">
-	<div >
+	<div>
 		<label>Name of talent</label>
-	</div> 
+	</div>
 	<div class="form-group">
 		<input [(ngModel)]="inputtedValues.NameOfTalent" />
 	</div>
@@ -91,11 +91,11 @@
 	Participant
 </label>
 
-<div *ngIf!="hasParticipant">
+<div *ngIf="!hasParticipant">
 	<br>
 </div>
 
-<div *ngIf="hasParticipant" >
+<div *ngIf="hasParticipant">
 	<div>
 		<label>Entity name</label>
 	</div>
@@ -103,4 +103,3 @@
 		<input [(ngModel)]="inputtedValues.EntityName" />
 	</div>
 </div>
-

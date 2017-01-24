@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MemberApiModel} from '../models/MemberApiModel';
-import {MemberProxyService} from '../services/member-proxy.service';
-import {Router} from '@angular/router';
+import { MemberApiModel } from '../models/MemberApiModel';
+import { MemberProxyService } from '../services/member-proxy.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-individual',
@@ -10,38 +10,38 @@ import {Router} from '@angular/router';
 
 })
 export class CreateIndividualComponent implements OnInit {
-   show = "yes";
+  show = "yes";
 
- member: MemberApiModel;
-   inputtedValues ={
-     SearchByName:"",
-     Name:"",
-     Surname:"",
-     Age:"",
-     ID:"",
-     Nationality:"",
-     NameOfTalent:"",
-     YearsExperience:"",
-     EntityName:""
-   };
+  member: MemberApiModel;
+  inputtedValues = {
+    SearchByName: "",
+    Name: "",
+    Surname: "",
+    Age: "",
+    ID: "",
+    Nationality: "",
+    NameOfTalent: "",
+    YearsExperience: "",
+    EntityName: ""
+  };
 
-angular = false;
-hasTalent = false;
-hasParticipant = false;
+  angular = false;
+  hasTalent = false;
+  hasParticipant = false;
 
-  constructor(private MemberProxy :MemberProxyService, private router :Router)  { 
+  constructor(private MemberProxy: MemberProxyService, private router: Router) {
     this.member = new MemberApiModel();
   }
- 
+
   ngOnInit() {
   }
-  
+
   CreateIndividual() {
-      this.MemberProxy.createMember(this.member)
-      .subscribe(() => {}
-    );
-      this.router.navigate(["individual-dashboard"]);
-}
+    this.MemberProxy.createMember(this.member)
+      .subscribe(() => { }
+      );
+    this.router.navigate(["individual-dashboard"]);
+  }
 }
 
 

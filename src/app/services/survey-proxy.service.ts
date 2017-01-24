@@ -17,6 +17,10 @@ export class SurveyProxyService {
     this.headers = new Headers();
     this.headers.append("Content-Type", "application/json");
     this.headers.append("Accept", "application/json");
+
+    if (!environment.production) {
+      this.endpointUrl = "http://localhost:9000";
+    }
   }
 
   createSurvey(survey: CreateSurveyApiModel) {
