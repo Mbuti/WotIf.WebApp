@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Response, Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
 import "rxjs/Rx";
 
 // Models
@@ -9,6 +10,7 @@ import { SurveyApiModel } from '../models/SurveyApiModel';
 
 @Injectable()
 export class SurveyProxyService {
+  private endpointUrl: string = "";
   private headers: Headers;
 
   constructor(private http: Http) {
@@ -18,13 +20,13 @@ export class SurveyProxyService {
   }
 
   createSurvey(survey: CreateSurveyApiModel) {
-    return this.http.post("/api/Survey/Create", JSON.stringify(survey), { headers: this.headers })
+    return this.http.post(this.endpointUrl + "/api/Survey/Create", JSON.stringify(survey), { headers: this.headers })
     .map((response) => response.json())
     .catch(error => this.handleError(error));
   }
 
   getSurveys(): Observable<SurveyApiModel[]> {
-    return this.http.get("/api/Survey/GetSurveys", { headers: this.headers })
+    return this.http.get(this.endpointUrl + "/api/Survey/GetSurveys", { headers: this.headers })
     .map((response) => <SurveyApiModel[]>response.json())
     .catch(error => this.handleError(error));
   }

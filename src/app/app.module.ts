@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpModule } from '@angular/http';
 import { provideAuth, AUTH_PROVIDERS } from "angular2-jwt";
- import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import { Http, RequestOptions } from '@angular/http';
+import { AuthHttp, AuthConfig } from 'angular2-jwt';
 
 
 // Components
@@ -16,13 +18,13 @@ import { HomeComponent } from './home/home.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthProxyService } from './services/auth-proxy.service';
-import {MemberProxyService} from './services/member-proxy.service';
+import { MemberProxyService } from './services/member-proxy.service';
 
 // Components
 import { NavComponent } from './nav/nav.component';
 import { IndividualDashboardComponent } from './individuals/individual-dashboard.component';
 import { CreateIndividualComponent } from './individuals/create-individual.component';
-import { EditIndividualComponent } from './individuals/edit-individual.component' ;
+import { EditIndividualComponent } from './individuals/edit-individual.component';
 import { GeneralComponent } from './general/general.component';
 import { ParticipantsComponent } from './participants/participants.component';
 import { TalentsComponent } from './talents/talents.component';
@@ -31,9 +33,20 @@ import { AdminComponent } from './admin/admin.component';
 import { QuestionCreateToggleComponent } from './surveys/question-create-toggle.component';
 import { DynamicQuestionComponent } from './surveys/dynamic-question.component';
 import { CreateSurveyComponent } from './surveys/create-survey.component';
-import {DeleteindividualComponent} from './individuals/deleteindividual.component';
+import { DeleteindividualComponent } from './individuals/deleteindividual.component';
 import { Ng2CompleterModule } from "ng2-completer";
 
+export function authHttpServiceFactory(http: Http, options: RequestOptions) {
+  return new AuthHttp(new AuthConfig({
+    headerName: "Authorization",
+    headerPrefix: "Bearer",
+    tokenName: "id_token",
+    tokenGetter: (() => localStorage.getItem("id_token")),
+    globalHeaders: [{ 'Content-Type': "application/json" }],
+    noJwtError: false,
+    noTokenScheme: false
+  }), http, options);
+}
 
 @NgModule({
   declarations: [
@@ -53,7 +66,7 @@ import { Ng2CompleterModule } from "ng2-completer";
     DynamicQuestionComponent,
     CreateSurveyComponent,
     DeleteindividualComponent,
-   
+
   ],
   imports: [
     AppRoutingModule,
@@ -65,16 +78,12 @@ import { Ng2CompleterModule } from "ng2-completer";
     Ng2AutoCompleteModule
   ],
   providers: [
-    provideAuth({
-      headerName: "Authorization",
-      headerPrefix: "Bearer",
-      tokenName: "id_token",
-      tokenGetter: (() => localStorage.getItem("id_token")),
-      globalHeaders: [{ 'Content-Type': "application/json" }],
-      noJwtError: false,
-      noTokenScheme: false
-    }),
-    AuthService, AuthGuardService, AuthProxyService,MemberProxyService
+    {
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [Http, RequestOptions]
+    },
+    AuthService, AuthGuardService, AuthProxyService, MemberProxyService
   ],
   bootstrap: [AppComponent]
 })
