@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { tokenNotExpired } from "angular2-jwt";
 import { Observable } from "rxjs/Observable";
 
 // Models
@@ -9,21 +10,24 @@ import { AuthProxyService } from '../services/auth-proxy.service';
 
 @Injectable()
 export class AuthService {
-  isLoggedIn: boolean = true;
 
   constructor(private authProxy: AuthProxyService) { }
 
   loggedIn(): boolean {
-    return this.isLoggedIn;
+    if (tokenNotExpired()) {
+            return true;
+        } else {
+            localStorage.clear();
+            return false;
+        }
   }
 
   login(loginModel: LoginApiModel): Observable<any> {
-    this.isLoggedIn = true;
     return this.authProxy.getToken(loginModel);
   }
 
   logout() {
-    this.isLoggedIn = false;
+    localStorage.clear();
   }
 
 }

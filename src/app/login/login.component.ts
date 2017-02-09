@@ -32,7 +32,8 @@ export class LoginComponent implements OnInit {
 
   submitForm(loginModel: LoginApiModel) {
     this.auth.login(loginModel)
-      .subscribe(() => {
+      .subscribe((data) => {
+        localStorage.setItem("id_token", data.access_token);
         if (this.redirectUrl !== "") {
           this.router.navigate([decodeURI(this.redirectUrl)]);
         } else {
