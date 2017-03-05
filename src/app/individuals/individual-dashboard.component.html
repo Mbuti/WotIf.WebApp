@@ -5,16 +5,22 @@ Search Individual
       blank-option-text="Select Individuals"
       [(ngModel)] = "SelectedUsername"
       [source]="members"
-      value-property-name="id"
       display-property-name="username" 
       placeholder="Enter username"/> 
      
        <pre *ngIf = "SelectedUsername != null" >
          Name : {{SelectedUsername.name}}
          Surname : {{SelectedUsername.surname}}
-         Username : {{SelectedUsername.username}}
-         IDNumber : {{SelectedUsername.id}}
-         
+        <!-- Username : {{SelectedUsername.username}}
+         IDNumber : {{SelectedUsername.id}} -->
+         Age :{{SelectedUsername.age}}
+         Nationality :{{SelectedUsername.nationality | nationalityEnumFilter}}
+         Race : {{SelectedUsername.race |raceEnumFilter}}
+         Gender : {{SelectedUsername.gender |genderEnumFilter}}
+         <p *ngIf = "this.participant != null">
+         Participant Name: {{this.participant.name}}
+         Participant Services Rendered : {{this.participant.participantDescription}}
+         </p>
        </pre>
 
 
@@ -26,21 +32,27 @@ Search Individual
 <pre *ngIf = "SelectedUsername == null">
 <table id="t01">
   <tr>
-    <th>Id</th>
     <th>Firstname</th>
     <th>Lastname</th> 
-    <th>Username</th>
-    <th>IDNumber</th>
+    <!--<th>Username</th>
+    <th>IDNumber</th>-->
+    <th>Age</th>
+    <th>Nationality</th>
+    <th>Race</th>
+    <th>Gender</th>
     <th>Edit Individual</th>
     <th>Remove Individual</th>
    <th></th>
   </tr>
-  <tr *ngFor = 'let member of members' [class.selected]="IsSelected(member)">
-    <td>{{member.id}}</td>
+  <tr *ngFor = 'let member of members ' [class.selected]="IsSelected(member)">
     <td>{{member.name}}</td>
     <td>{{member.surname}}</td>
-    <td>{{member.username}}</td>
-    <td>{{member.idNumber}}</td>
+    <!--<td>{{member.username}}</td>
+    <td>{{member.idNumber}}</td>-->
+    <td>{{member.age}}</td>
+    <td>{{member.nationality| nationalityEnumFilter}}</td>
+    <td>{{member.race |raceEnumFilter}}</td>
+    <td>{{member.gender |genderEnumFilter}}
     <td><tr><a class="btn btn-primary" (click) = "EditMember(member)" >Edit</a></tr></td>
     <td><tr><a class="btn btn-primary" (click) = "DeleteMember(member)">Remove</a></tr></td>
  

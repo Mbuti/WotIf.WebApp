@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Response, Headers } from '@angular/http';
-import { AuthHttp } from "angular2-jwt";
+import { Response, Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
 import "rxjs/Rx";
@@ -11,37 +10,48 @@ import { MemberApiModel } from '../models/MemberApiModel';
 @Injectable()
 export class MemberProxyService {
   private endpointUrl: string = "";
+  private headers: Headers;
 
-  constructor(private http: AuthHttp) {
+  constructor(private http: Http) {
+    this.headers = new Headers();
+    this.headers.append("Content-Type", "application/json");
+    this.headers.append("Accept", "application/json");
+
     if (!environment.production) {
-      this.endpointUrl = "http://localhost:9000";
+      this.endpointUrl = "http://localhost:9010";
     }
   }
 
   createMember(member: MemberApiModel) {
-    return this.http.post(this.endpointUrl + "/api/Individual/CreateIndividual", JSON.stringify(member))
-      // .map((response) => response.json())
+    return this.http.post(this.endpointUrl + "/api/Individual/Create", JSON.stringify(member), { headers: this.headers })
+     // .map((response) => response.json())
       .catch(error => this.handleError(error));
   }
 
   getMembers(): Observable<MemberApiModel[]> {
-    return this.http.get(this.endpointUrl + "/api/Individual/GetAllIndividuals")
+    return this.http.get(this.endpointUrl + "/api/Individual/GetAllIndividuals", { headers: this.headers })
       .map((response) => <MemberApiModel[]>response.json())
       .catch(error => this.handleError(error));
   }
+
+
   getMemberById(id: number): Observable<MemberApiModel> {
-    return this.http.get(this.endpointUrl + "/api/Individual/FindIndividualsById?memberId=" + id)
+    return this.http.get(this.endpointUrl + "/api/Individual/GetById/" + id, { headers: this.headers })
       .map((response) => <MemberApiModel>response.json())
       .catch(error => this.handleError(error));
   }
 
+
   removeMember(id: number) {
-    return this.http.delete("api/Individual/DeleteIndividual?id=" + id)
+    return this.http.delete(this.endpointUrl + "/api/Individual/Delete/" + id, { headers: this.headers })
       .catch(error => this.handleError(error))
+      .subscribe((response) => null)
 
   }
+
+
   editMember(id: number, member: MemberApiModel): Observable<MemberApiModel> {
-    return this.http.put(this.endpointUrl + "/api/Individual/EditIndividual?memberId=" + id, JSON.stringify(member))
+    return this.http.put(this.endpointUrl + "/api/Individual/Edit/" + id, JSON.stringify(member), { headers: this.headers })
       .map((response) => <MemberApiModel>response.json())
       .catch(error => this.handleError(error));
 

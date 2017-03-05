@@ -6,6 +6,8 @@ import { provideAuth, AUTH_PROVIDERS } from "angular2-jwt";
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
+import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { Ng2CompleterModule } from "ng2-completer";
 
 
 // Components
@@ -34,7 +36,14 @@ import { QuestionCreateToggleComponent } from './surveys/question-create-toggle.
 import { DynamicQuestionComponent } from './surveys/dynamic-question.component';
 import { CreateSurveyComponent } from './surveys/create-survey.component';
 import { DeleteindividualComponent } from './individuals/deleteindividual.component';
-import { Ng2CompleterModule } from "ng2-completer";
+
+
+// Pipes
+import {NationalityEnumFilterPipe} from './pipes/nationality-enum-filter.pipe';
+import {RaceEnumFilterPipe} from './pipes/race-enum-filter.pipe';
+import {GenderEnumFilterPipe} from './pipes/gender-enum-filter.pipe';
+
+  
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -66,9 +75,15 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     DynamicQuestionComponent,
     CreateSurveyComponent,
     DeleteindividualComponent,
+    RaceEnumFilterPipe,
+    NationalityEnumFilterPipe,
+    GenderEnumFilterPipe
+
+
 
   ],
   imports: [
+    AlertModule.forRoot(),
     AppRoutingModule,
     BrowserModule,
     FormsModule,

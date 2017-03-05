@@ -3,20 +3,24 @@ import { MemberProxyService } from '../services/member-proxy.service';
 import { MemberApiModel } from '../models/MemberApiModel';
 import { Router } from '@angular/router';
 import { DeleteindividualComponent } from '../individuals/deleteindividual.component';
+import { CreateIndividualComponent } from '../individuals/create-individual.component';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-//import { CompleterService, CompleterData } from 'ng2-completer';
+import { Race } from '../models/MemberApiModel';
+import { Nationality } from '../models/MemberApiModel';
+
 
 
 @Component({
   selector: 'app-individual-dashboard',
   templateUrl: './individual-dashboard.component.html',
-  styleUrls: ['./individual-dashboard.component.css'],
+  styleUrls: ['./individual-dashboard.component.css']
+
 
 })
 export class IndividualDashboardComponent implements OnInit {
-  private members: MemberApiModel[] = [];
 
+  private members: MemberApiModel[] = [];
   private SelectedId: number;
   private SelectedUsername: MemberApiModel;
 
@@ -28,25 +32,25 @@ export class IndividualDashboardComponent implements OnInit {
     this.MemberProxy.getMembers()
       .subscribe((members) => {
         this.members = members;
-      });
+      }
+      );
   }
 
-  IsSelected(member: MemberApiModel)
-  { return member.id === this.SelectedId; }
-
-
-
+  IsSelected(member: MemberApiModel) {
+    return member.id === this.SelectedId;
+  }
+  
   EditMember(member: MemberApiModel) {
     this.router.navigate(['individual-edit/' + member.id]);
   }
 
-
   DeleteMember(member: MemberApiModel) {
     this.router.navigate(['deleteindividual/' + member.id]);
-
   }
 
-
 }
+
+
+
 
 

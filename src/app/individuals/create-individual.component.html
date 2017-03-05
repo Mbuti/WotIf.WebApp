@@ -1,105 +1,63 @@
-<h1>
-	Create Individual</h1>
-<a class="btn btn-primary" (click)="CreateIndividual()">Create New Individual</a>
-<a class="btn btn-primary" routerLink="/individual-dashboard">Back</a>
 
-<form>
-	<input type="radio" name="ChosenFunction" value="Add" checked> Add Individual
-	<input type="radio" name="ChosenFunction" value="Edit"> Edit Individual
-	<input type="radio" name="ChosenFunction" value="Search"> Search by Name
-</form>
-
-<div class="form-group">
-	<input [(ngModel)]="inputtedValues.SearchByName" />
-</div>
-
-
-<br>
-<div>
-	<label>Username</label>
-</div>
-<div class="form-group">
-	<input id="uname" type="text" [(ngModel)]="member.username" />
-</div>
-
-<div>
-
-	<label>Name</label>
-</div>
-<div class="form-group">
-	<input id="fname" type="text" [(ngModel)]="member.name" />
-</div>
-
-<div>
-	<label>Surname</label>
-</div>
-<div class="form-group">
-	<input id="lname" type="text" [(ngModel)]="member.surname" />
-</div>
-
-<div>
-	<label>Age</label>
-</div>
-<div class="form-group">
-	<input [(ngModel)]="inputtedValues.Age" />
-</div>
-
-<div>
-	<label>ID</label>
-</div>
-<div class="form-group">
-	<input id="Idnum" type="text" [(ngModel)]="member.idNumber" />
-</div>
-
-<div>
-	<label>Nationality</label>
-</div>
-<div class="form-group">
-	<input [(ngModel)]="inputtedValues.Nationality" />
-</div>
-
-<label>
-	<input #angularcb type="checkbox" (change)="hasTalent = angularcb.checked" />
-	Talent
-</label>
-
-<div *ngIf="!hasTalent">
-	<br>
-</div>
-
-<div *ngIf="hasTalent">
+<a class="btn btn-primary" routerLink="/individual-dashboard">Back</a><br> <br>
+<div class="form-group row">
 	<div>
-		<label>Name of talent</label>
-	</div>
-	<div class="form-group">
-		<input [(ngModel)]="inputtedValues.NameOfTalent" />
-	</div>
-
-	<div>
-		<label>Years of experience</label>
-	</div>
-	<div class="form-group">
-		<input [(ngModel)]="inputtedValues.YearsExperience" />
-	</div>
-</div>
-
-
-
-
-<label>
-	<input #angularcb2 type="checkbox" (change)="hasParticipant = angularcb2.checked" />
-	Participant
-</label>
-
-<div *ngIf="!hasParticipant">
-	<br>
-</div>
-
-<div *ngIf="hasParticipant">
-	<div>
-		<label>Entity name</label>
-	</div>
-	<div class="form-group">
-		<input [(ngModel)]="inputtedValues.EntityName" />
-	</div>
-</div>
+		<label>Name: </label> <br> <input  type="text" [(ngModel)]="member.name"  placeholder ="Enter Name" /><br><br>
+		<label>Surname: </label><br><input type="text" [(ngModel)]="member.surname"  placeholder ="Enter Surname"/><br><br>
+		<label>Username :</label> <br><input type="text" [(ngModel)]="member.username"  placeholder ="Enter Username"/><br><br>
+		<label>Age: </label><br><input [(ngModel)]="member.age"  placeholder ="Age"/><br><br>
+		<label>ID Number :</label><br><input id="Idnum" type="text" [(ngModel)]="member.idNumber"  placeholder ="Enter Id Number" /><br><br>
+		<label>Nationality</label><br>
+ 		<select (change)="assignNationality($event.target.value)">
+    		<option>--select--</option>
+    		<option *ngFor="let name of nationalityOptions"
+        		[value]="name">{{name}}</option>
+  		</select><br>
+		<label>Race</label><br>
+  		<select (change)="assignRace($event.target.value)">
+    		<option>--select--</option>
+			<option *ngFor="let name of raceOptions"
+				[value]="name">{{name}}</option>
+		</select><br>
+		<label>
+		<label>Gender</label><br>
+  		<select (change)="assignGender($event.target.value)">
+    		<option>--select--</option>
+    		<option *ngFor="let name of genderOptions"
+        	[value]="name">{{name}}</option>
+ 		 </select><br>
+		<label>
+			<input #angularcb type="checkbox" (change)="hasTalent = angularcb.checked" />Talent</label>
+				<div *ngIf="!hasTalent"><br>
+				</div>
+				<div *ngIf="hasTalent">
+					<div>
+					<label>Name of talent</label>
+					</div>
+					<div class="form-group">
+					<input [(ngModel)]="inputtedValues.NameOfTalent" />
+					</div>
+					<div>
+						<label>Years of experience</label>
+					</div>
+					<div class="form-group">
+						<input [(ngModel)]="inputtedValues.YearsExperience" />
+					</div>
+				</div>
+				
+			<label><input #angularcb2 type="checkbox" (change)="hasParticipant = angularcb2.checked" />Participant</label>
+				<div *ngIf="!hasParticipant"><br>
+				</div>
+				<div *ngIf="hasParticipant">
+					<div>
+						<label>Entity name</label>
+					</div>
+					<div class="form-group">
+						<input [(ngModel)]="member.participant.participantDescription"  placeholder ="Name of Company" />
+					</div>
+					<label>Services Provided by Entity</label>
+					<div class="form-group">
+					<input [(ngModel)]="member.participant.participantName"  placeholder ="What does the company do" />
+					</div>
+				</div>
+<a class="btn btn-primary" (click)="CreateIndividual()">Save</a>
