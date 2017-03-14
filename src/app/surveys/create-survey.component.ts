@@ -107,7 +107,4 @@ export class CreateSurveyComponent implements OnInit {
     .subscribe(() => {});
   }
 
-  testQuestion() {
-    console.log(this.questions);
-  }
 }

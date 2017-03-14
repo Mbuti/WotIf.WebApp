@@ -24,8 +24,6 @@
     </div>
   </div>
 
-  <button class="btn btn-danger" (click)="testQuestion()">Test</button>
-
   <button class="btn btn-success" (click)="addQuestion()">Add Question</button>
   <button class="btn btn-primary" type="submit" [disabled]="!form.valid || questions.length === 0 || !validateQuestions()">Create Survey</button>
 </form>
