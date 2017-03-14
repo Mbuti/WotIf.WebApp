@@ -6,7 +6,6 @@ import { provideAuth, AUTH_PROVIDERS } from "angular2-jwt";
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
-import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { Ng2CompleterModule } from "ng2-completer";
 
 
@@ -78,12 +77,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     RaceEnumFilterPipe,
     NationalityEnumFilterPipe,
     GenderEnumFilterPipe
-
-
-
   ],
   imports: [
-    AlertModule.forRoot(),
     AppRoutingModule,
     BrowserModule,
     FormsModule,

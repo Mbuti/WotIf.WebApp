@@ -45,7 +45,7 @@ http {
     sendfile        on;
     keepalive_timeout  65;
     upstream dev-wotif  {
-        server localhost:9000;
+        server localhost:33333;
     }
     server {
         listen   8090;

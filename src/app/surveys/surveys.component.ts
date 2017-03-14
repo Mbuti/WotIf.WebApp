@@ -17,7 +17,7 @@ import { SurveyProxyService } from '../services/survey-proxy.service';
 export class SurveysComponent implements OnInit {
   surveys: SurveyApiModel[] = [];
   questions: Question[] = [];
-  selectedSurvey: string;
+  selectedSurvey: string = "";
   survey: SurveyApiModel;
 
   constructor(private surveyProxy: SurveyProxyService) { }

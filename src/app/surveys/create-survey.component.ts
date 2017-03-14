@@ -106,4 +106,8 @@ export class CreateSurveyComponent implements OnInit {
     this.surveyProxy.createSurvey(survey)
     .subscribe(() => {});
   }
+
+  testQuestion() {
+    console.log(this.questions);
+  }
 }
