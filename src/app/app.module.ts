@@ -41,6 +41,7 @@ import { DeleteindividualComponent } from './individuals/deleteindividual.compon
 import {NationalityEnumFilterPipe} from './pipes/nationality-enum-filter.pipe';
 import {RaceEnumFilterPipe} from './pipes/race-enum-filter.pipe';
 import {GenderEnumFilterPipe} from './pipes/gender-enum-filter.pipe';
+import { FooterComponent } from './footer/footer.component';
 
   
 
@@ -76,7 +77,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     DeleteindividualComponent,
     RaceEnumFilterPipe,
     NationalityEnumFilterPipe,
-    GenderEnumFilterPipe
+    GenderEnumFilterPipe,
+    FooterComponent
   ],
   imports: [
     AppRoutingModule,
