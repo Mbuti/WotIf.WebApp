@@ -4,11 +4,11 @@
 
 <select id="questionType" name="questionType" class="form-control" [(ngModel)]="selectedSurvey" (ngModelChange)="selectedSurveyChanged($event)" required>
     <option value="">==SELECT==</option>
-    <option *ngFor="let survey of surveys" [attr.value]="survey.id">{{survey.title}}</option>
+    <option *ngFor="let survey of bindSurveys" [attr.value]="survey.id">{{survey.title}}</option>
 </select>
 
 <div *ngIf="questions.length > 0">
-    <div *ngFor="let question of questions">
+    <div *ngFor="let question of bindQuestions">
         <app-dynamic-question [question]="question"></app-dynamic-question>
     </div>
 </div>

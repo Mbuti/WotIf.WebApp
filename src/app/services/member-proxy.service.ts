@@ -34,13 +34,11 @@ export class MemberProxyService {
       .catch(error => this.handleError(error));
   }
 
-
   getMemberById(id: number): Observable<MemberApiModel> {
     return this.http.get(this.endpointUrl + "/api/Individual/GetById/" + id, { headers: this.headers })
       .map((response) => <MemberApiModel>response.json())
       .catch(error => this.handleError(error));
   }
-
 
   removeMember(id: number) {
     return this.http.delete(this.endpointUrl + "/api/Individual/Delete/" + id, { headers: this.headers })
@@ -48,7 +46,6 @@ export class MemberProxyService {
       .subscribe((response) => null)
 
   }
-
 
   editMember(id: number, member: MemberApiModel): Observable<MemberApiModel> {
     return this.http.put(this.endpointUrl + "/api/Individual/Edit/" + id, JSON.stringify(member), { headers: this.headers })

@@ -1,3 +1,4 @@
+import { List } from 'linqts';
 import { Component, OnInit } from '@angular/core';
 import { MemberProxyService } from '../services/member-proxy.service';
 import { MemberApiModel } from '../models/MemberApiModel';
@@ -16,7 +17,7 @@ import { Nationality } from '../models/MemberApiModel';
 })
 export class IndividualDashboardComponent implements OnInit {
 
-  private members: MemberApiModel[] = [];
+  private members: List<MemberApiModel> = new List<MemberApiModel>();
   private SelectedId: number;
 
 
@@ -26,7 +27,7 @@ export class IndividualDashboardComponent implements OnInit {
   ngOnInit() {
     this.MemberProxy.getMembers()
       .subscribe((members) => {
-        this.members = members;
+        this.members.AddRange(members);
       });
   }
 

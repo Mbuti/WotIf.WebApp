@@ -3,10 +3,10 @@ import { List } from 'linqts';
 // Models
 import { QuestionApiModel } from './QuestionApiModel';
 
-export class SurveyApiModel {
+export class Survey {
     public id: number;
     public title: string;
     public description: string;
     public date: Date;
-    public questions: QuestionApiModel[];
+    public questions: List<QuestionApiModel>;
 }

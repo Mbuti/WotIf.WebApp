@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { List } from 'linqts';
 
 //Models
 import { SurveyApiModel } from '../models/SurveyApiModel';
+import { Survey } from '../models/Survey';
 import { QuestionApiModel } from '../models/QuestionApiModel';
-import { Question } from '../models/Question';
 
 // Services
 import { SurveyProxyService } from '../services/survey-proxy.service';
@@ -14,8 +15,9 @@ import { SurveyProxyService } from '../services/survey-proxy.service';
   providers: [SurveyProxyService]
 })
 export class SurveysComponent implements OnInit {
-  surveys: Array<SurveyApiModel> = new Array<SurveyApiModel>();
-  questions: Array<Question> = new Array<Question>();
+  surveys: List<Survey> = new List<Survey>();
+
+  questions: List<QuestionApiModel> = new List<QuestionApiModel>();
   selectedSurvey: string = "";
   survey: SurveyApiModel;
 
@@ -24,25 +26,21 @@ export class SurveysComponent implements OnInit {
   ngOnInit() {
     this.surveyProxy.getSurveys()
       .subscribe((surveys) => {
-        this.surveys = surveys;
+        this.surveys = new List<SurveyApiModel>(surveys).Select(s => s.questions = new List<QuestionApiModel>(s.questions))
       });
   }
 
   selectedSurveyChanged(selectedSurvey: string) {
-    this.questions = new Array<Question>();
+    this.questions = new List<Question>();
     this.survey = null;
     this.selectedSurvey = selectedSurvey;
-    for (let survey of this.surveys) {
-      if (survey.id === +this.selectedSurvey) {
-        this.survey = survey;
-        break;
-      }
-    }
+
+    this.survey = this.surveys.FirstOrDefault(s => s.id === +this.selectedSurvey);
 
     if (this.survey !== null) {
-      for (let question of this.survey.questions) {
-        this.questions.push(new Question(question.id, question.text, question.type));
-      }
+      console.log(this.surveys);
+      let questions = this.survey.questions.Select(q => new Question(q.id, q.text, q.type)).ToArray();
+      this.bindQuestions = questions;
     }
   }
 
