@@ -16,7 +16,7 @@
 
 <div *ngIf="question.type === 'Decimal'" class="form-group">
   <label for={{question.id}}>{{question.text}}</label>
-  <input id={{question.id}} class="form-control" required />
+  <input type="number" id={{question.id}} step="0.05" class="form-control" required />
 </div>
 
 <div *ngIf="question.type === 'Integer'" class="form-group">

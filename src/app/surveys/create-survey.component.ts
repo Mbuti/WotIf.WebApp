@@ -40,7 +40,6 @@ export class CreateSurveyComponent implements OnInit {
     this.questionProxy.getQuestionTypes()
       .subscribe((questionTypes) => {
         this.questionTypes = questionTypes;
-        console.log(this.questionTypes);
       });
   }
 
