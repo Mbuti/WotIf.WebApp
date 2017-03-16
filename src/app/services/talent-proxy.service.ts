@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { Response, Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
 import "rxjs/Rx";
 
 // Models
-import { LoginApiModel } from '../models/LoginApiModel';
+//import { TalentTypeApiModel } from '../models/TalentTypeApiModel';
 
 @Injectable()
-export class AuthProxyService {
+export class TalentProxyService {
   private endpointUrl: string = "";
   private headers: Headers;
 
@@ -18,15 +18,15 @@ export class AuthProxyService {
     this.headers.append("Accept", "application/json");
 
     if (!environment.production) {
-      this.endpointUrl = "http://localhost:9010";
+      this.endpointUrl = "http://localhost:9000";
     }
   }
 
-  getToken(loginModel: LoginApiModel): Observable<any> {
-    return this.http.post(this.endpointUrl + "/api/Auth/SignIn", JSON.stringify(loginModel), { headers: this.headers })
-      .map((response) => response.json())
-      .catch(error => this.handleError(error));
-  }
+ // getTalentTypes(): Observable<any> {
+ //   return this.http.get(this.endpointUrl + "/api/Talent/GetTalentTypes", { headers: this.headers })
+ //     .map((response) => <TalentTypeApiModel[]>response.json())
+ //     .catch(error => this.handleError(error));
+ // }
 
   handleError(error: Response): Observable<any> {
     console.error(error);

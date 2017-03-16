@@ -1,4 +1,5 @@
 import {ParticipantApiModel} from './ParticipantApiModel';
+import {TalentApiModel} from './TalentApiModel';
 
 export class MemberApiModel
     {
@@ -12,6 +13,7 @@ export class MemberApiModel
         public nationality : Nationality;
         public participant : ParticipantApiModel;
         public gender : Gender;
+        public talents:  TalentApiModel[];
  
 
     constuctor (id:number , IdNumber:string, Username:string ,Name :string ,Surname:string, age:number, nationality:Nationality , race:Race, participant:ParticipantApiModel, gender: Gender)

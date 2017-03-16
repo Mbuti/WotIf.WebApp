@@ -22,6 +22,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { AuthProxyService } from './services/auth-proxy.service';
 import { MemberProxyService } from './services/member-proxy.service';
 
+
 // Components
 import { NavComponent } from './nav/nav.component';
 import { IndividualDashboardComponent } from './individuals/individual-dashboard.component';
@@ -33,6 +34,8 @@ import { TalentsComponent } from './talents/talents.component';
 import { SurveysComponent } from './surveys/surveys.component';
 import { AdminComponent } from './admin/admin.component';
 import { QuestionCreateToggleComponent } from './surveys/question-create-toggle.component';
+import { TalentCreateToggleComponent } from './individuals/talent-create-toggle.component';
+import { DynamicTalentComponent } from './individuals/dynamic-talent.component';
 import { DynamicQuestionComponent } from './surveys/dynamic-question.component';
 import { CreateSurveyComponent } from './surveys/create-survey.component';
 import { DeleteindividualComponent } from './individuals/deleteindividual.component';
@@ -72,6 +75,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     SurveysComponent,
     AdminComponent,
     QuestionCreateToggleComponent,
+    TalentCreateToggleComponent,
     DynamicQuestionComponent,
     CreateSurveyComponent,
     DeleteindividualComponent,
