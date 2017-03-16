@@ -15,9 +15,9 @@ import { SurveyProxyService } from '../services/survey-proxy.service';
   providers: [SurveyProxyService]
 })
 export class SurveysComponent implements OnInit {
-  surveys: SurveyApiModel[] = [];
-  questions: Question[] = [];
-  selectedSurvey: string;
+  surveys: Array<SurveyApiModel> = new Array<SurveyApiModel>();
+  questions: Array<Question> = new Array<Question>();
+  selectedSurvey: string = "";
   survey: SurveyApiModel;
 
   constructor(private surveyProxy: SurveyProxyService) { }
@@ -26,11 +26,12 @@ export class SurveysComponent implements OnInit {
     this.surveyProxy.getSurveys()
       .subscribe((surveys) => {
         this.surveys = surveys;
-        console.log(this.surveys);
       });
   }
 
   selectedSurveyChanged(selectedSurvey: string) {
+    this.questions = new Array<Question>();
+    this.survey = null;
     this.selectedSurvey = selectedSurvey;
     for (let survey of this.surveys) {
       if (survey.id === +this.selectedSurvey) {
@@ -39,8 +40,10 @@ export class SurveysComponent implements OnInit {
       }
     }
 
-    for (let question of this.survey.questions) {
-      this.questions.push(new Question(question.id, question.text, question.type));
+    if (this.survey !== null) {
+      for (let question of this.survey.questions) {
+        this.questions.push(new Question(question.id, question.text, question.type));
+      }
     }
   }
 

@@ -15,7 +15,7 @@
   <h3>Questions</h3>
   <div *ngFor="let question of questions">
     <div>
-      <app-question-create-toggle [id]="question.id" [questionTypes]="questionTypes" (onChange)="questionChanged($event)"></app-question-create-toggle>
+      <app-question-create-toggle [questionTypes]="questionTypes" [(questionText)]="question.text" [(questionType)]="question.type"></app-question-create-toggle>
     </div>
     <div>
       <button *ngIf="questions.indexOf(question) !== 0" class="btn btn-warning" (click)="moveQuestionUp(question)"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> Up</button>

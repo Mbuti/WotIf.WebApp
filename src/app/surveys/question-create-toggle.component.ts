@@ -1,9 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-// Events
-import { QuestionChangedEvent } from '../events/QuestionChangedEvent';
-
-// Models
 import { CreateQuestion } from '../models/CreateQuestion';
 import { Question } from '../models/Question';
 import { QuestionTypeApiModel } from '../models/QuestionTypeApiModel';
@@ -14,14 +10,36 @@ import { QuestionTypeApiModel } from '../models/QuestionTypeApiModel';
   styleUrls: []
 })
 export class QuestionCreateToggleComponent implements OnInit {
-  @Input() id: number;
+
+  questionTextValue: string = "";
+  questionTypeValue: string = "";
+
   @Input() questionTypes: QuestionTypeApiModel[];
-  @Output() onChange = new EventEmitter<QuestionChangedEvent>();
+
+  @Input()
+  get questionText() {
+    return this.questionTextValue;
+  }
+
+  @Input()
+  get questionType() {
+    return this.questionTypeValue;
+  }
+
+  @Output() questionTextChange = new EventEmitter();
+  set questionText(value: string) {
+    this.questionTextValue = value;
+    this.questionTextChange.emit(this.questionTextValue);
+  }
+
+  @Output() questionTypeChange = new EventEmitter();
+  set questionType(value: string) {
+    this.questionTypeValue = value;
+    this.questionTypeChange.emit(this.questionTypeValue);
+  }
 
   isValid: boolean = false;
   editMode: boolean = true;
-  questionText: string = "";
-  questionType: string = "";
   questionModel: Question;
 
   constructor() { }
@@ -31,12 +49,6 @@ export class QuestionCreateToggleComponent implements OnInit {
 
   toggleEditMode() {
     this.editMode = !this.editMode;
-  }
-
-  notifyChange() {
-    this.onChange.emit(new QuestionChangedEvent(this.id, this.questionText, this.questionType));
-    this.isValid = this.questionText !== "" && this.questionType !== "";
-    this.questionModel = new Question(this.id, this.questionText, this.questionType)
   }
 
 }

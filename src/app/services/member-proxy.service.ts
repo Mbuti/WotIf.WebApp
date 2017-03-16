@@ -18,7 +18,7 @@ export class MemberProxyService {
     this.headers.append("Accept", "application/json");
 
     if (!environment.production) {
-      this.endpointUrl = "http://localhost:9010";
+      this.endpointUrl = "http://localhost:33333";
     }
   }
 

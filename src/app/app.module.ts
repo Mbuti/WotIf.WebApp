@@ -6,7 +6,6 @@ import { provideAuth, AUTH_PROVIDERS } from "angular2-jwt";
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
-import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { Ng2CompleterModule } from "ng2-completer";
 
 
@@ -45,6 +44,7 @@ import { DeleteindividualComponent } from './individuals/deleteindividual.compon
 import {NationalityEnumFilterPipe} from './pipes/nationality-enum-filter.pipe';
 import {RaceEnumFilterPipe} from './pipes/race-enum-filter.pipe';
 import {GenderEnumFilterPipe} from './pipes/gender-enum-filter.pipe';
+import { FooterComponent } from './footer/footer.component';
 
   
 
@@ -81,13 +81,10 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     DeleteindividualComponent,
     RaceEnumFilterPipe,
     NationalityEnumFilterPipe,
-    GenderEnumFilterPipe
-
-
-
+    GenderEnumFilterPipe,
+    FooterComponent
   ],
   imports: [
-    AlertModule.forRoot(),
     AppRoutingModule,
     BrowserModule,
     FormsModule,
