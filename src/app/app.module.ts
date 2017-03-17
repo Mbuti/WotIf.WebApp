@@ -76,6 +76,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     AdminComponent,
     QuestionCreateToggleComponent,
     TalentCreateToggleComponent,
+    DynamicTalentComponent,
     DynamicQuestionComponent,
     CreateSurveyComponent,
     DeleteindividualComponent,

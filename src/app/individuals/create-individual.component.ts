@@ -100,7 +100,7 @@ export class CreateIndividualComponent implements OnInit {
        let talents = <TalentApiModel[]>this.talents;
        this.member.talents = talents;
 
-    console.log(talents);
+    //console.log(talents);
     this.MemberProxy.createMember(this.member)
       .subscribe((member) => {
         this.member = member;
