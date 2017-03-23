@@ -1,0 +1,36 @@
+<div>
+  <a class="btn btn-primary" routerLink="/individual-dashboard">Back</a>
+</div>
+<div>
+Name:  <br> <input  type="text"[(ngModel)] = "this.member.name"/><br><br>
+Surname: <br> <input  type="text"[(ngModel)] = "this.member.surname" /><br><br>
+Username: <br> <input  type="text"[(ngModel)] = "this.member.username" /><br><br>
+IDNumber:<br> <input  type="text" [(ngModel)] = "this.member.idNumber"/><br><br>
+Age: <br><input  type="text" [(ngModel)] = "this.member.age"/><br><br>
+<label>Nationality</label><br>
+ <select (change)="assignNationality($event.target.value)">
+    <option>{{this.member.nationality| nationalityEnumFilter}}</option>
+    <option *ngFor="let name of nationalityOptions"
+        [value]="name">{{name}}</option>
+  </select><br>
+  <br>
+<label>Race</label><br>
+  <select (change)="assignRace($event.target.value)">
+    <option>{{this.member.race|raceEnumFilter}}</option>
+    <option *ngFor="let name of raceOptions"
+        [value]="name">{{name}}</option>
+  </select><br>
+  <br>
+  <label>Gender</label><br>
+  <select (change)="assignGender($event.target.value)">
+    <option>{{this.member.gender|genderEnumFilter}}</option>
+    <option *ngFor="let name of genderOptions"
+        [value]="name">{{name}}</option>
+  </select><br>
+  <br>
+  <br>
+   <a class="btn btn-primary" (click) = "addParticipant(th)" >Add Participant</a>
+ </div>
+<div>
+ <a class="btn btn-warning" (click) = "SaveChanges(this.id,member)" >Save Changes</a>
+</div>

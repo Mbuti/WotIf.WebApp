@@ -1,0 +1,23 @@
+<a class="btn btn-primary" routerLink="/individual-dashboard">Back</a><br> <br>
+
+ <h3>Search Individual </h3>
+    <input 
+      ng2-auto-complete
+      blank-option-text="Select One"
+      [ngModel]="SelectedUsername"
+      [source]="members" 
+      placeholder="enter text"/> 
+  
+      
+       <div *ngIf = "SelectedUsername != null" >
+         Name : {{SelectedUsername.name}}
+         Surname : {{SelectedUsername.surname}}
+         Age :{{SelectedUsername.age}}
+         Nationality :{{SelectedUsername.nationality | nationalityEnumFilter}}
+         Race : {{SelectedUsername.race |raceEnumFilter}}
+         Gender : {{SelectedUsername.gender |genderEnumFilter}}
+         <p *ngIf = "this.participant != null">
+         Participant Name: {{this.participant.name}}
+         Participant Services Rendered : {{this.participant.participantDescription}}
+         </p>
+       </div>

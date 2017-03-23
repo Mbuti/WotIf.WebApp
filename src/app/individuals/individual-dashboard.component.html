@@ -1,41 +1,16 @@
 
-Search Individual 
-    <input 
-      ng2-auto-complete
-      blank-option-text="Select Individuals"
-      [(ngModel)] = "SelectedUsername"
-      [source]="members"
-      display-property-name="username" 
-      placeholder="Enter username"/> 
-     
-       <pre *ngIf = "SelectedUsername != null" >
-         Name : {{SelectedUsername.name}}
-         Surname : {{SelectedUsername.surname}}
-        <!-- Username : {{SelectedUsername.username}}
-         IDNumber : {{SelectedUsername.id}} -->
-         Age :{{SelectedUsername.age}}
-         Nationality :{{SelectedUsername.nationality | nationalityEnumFilter}}
-         Race : {{SelectedUsername.race |raceEnumFilter}}
-         Gender : {{SelectedUsername.gender |genderEnumFilter}}
-         <p *ngIf = "this.participant != null">
-         Participant Name: {{this.participant.name}}
-         Participant Services Rendered : {{this.participant.participantDescription}}
-         </p>
-       </pre>
-
-
 <a class="btn btn-primary" routerLink="/individual-create">Create Individual</a>
 <br>
 <br>
 <br>
+<a class="btn btn-primary" routerLink="/search-individual">Search Individual</a>
 
-<pre *ngIf = "SelectedUsername == null">
-<table id="t01">
+<div *ngIf = "SelectedUsername == null">
+<table class="table table-striped">
+    <thead class="thead-inverse">
   <tr>
     <th>Firstname</th>
     <th>Lastname</th> 
-    <!--<th>Username</th>
-    <th>IDNumber</th>-->
     <th>Age</th>
     <th>Nationality</th>
     <th>Race</th>
@@ -44,6 +19,8 @@ Search Individual
     <th>Remove Individual</th>
    <th></th>
   </tr>
+    </thead>
+    <tbody>
   <tr *ngFor = 'let member of members ' [class.selected]="IsSelected(member)">
     <td>{{member.name}}</td>
     <td>{{member.surname}}</td>
@@ -53,12 +30,13 @@ Search Individual
     <td>{{member.nationality| nationalityEnumFilter}}</td>
     <td>{{member.race |raceEnumFilter}}</td>
     <td>{{member.gender |genderEnumFilter}}
-    <td><tr><a class="btn btn-primary" (click) = "EditMember(member)" >Edit</a></tr></td>
-    <td><tr><a class="btn btn-primary" (click) = "DeleteMember(member)">Remove</a></tr></td>
+    <td><tr><a class="btn btn-warning" (click) = "EditMember(member)" >Edit</a></tr></td>
+    <td><tr><a class="btn btn-danger" (click) = "DeleteMember(member)">Remove</a></tr></td>
  
   
   </tr>
+   </tbody>
   
 </table>
 
-</pre>
+</div>
