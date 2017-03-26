@@ -28,6 +28,23 @@ export class AuthProxyService {
       .catch(error => this.handleError(error));
   }
 
+  refreshToken() {
+    return this.http.post(this.endpointUrl + "/api/Auth/Refresh", JSON.stringify({ refreshToken: localStorage.getItem("refreshToken") }), { headers: this.headers })
+      .map((response) => response.json())
+      .catch(error => this.handleError(error));
+  }
+
+  startRefreshTimer(refreshIntervalInSeconds: number) {
+    let adjustedRefreshInterval = refreshIntervalInSeconds / 100 * 80 * 1000;
+    let timer = Observable.timer(adjustedRefreshInterval, adjustedRefreshInterval);
+    timer.subscribe(t => {
+      this.refreshToken().subscribe((result) => {
+        localStorage.setItem("refreshToken", result.refresh_token);
+        console.log("Token has been refreshed");
+      })
+    });
+  }
+
   handleError(error: Response): Observable<any> {
     console.error(error);
     return Observable.throw(error.json().error || "Server error");

@@ -7,6 +7,7 @@ import { AuthService } from '../services/auth.service';
 
 //Models
 import { LoginApiModel } from '../models/LoginApiModel';
+import { LoginResponseModel } from '../models/LoginResponseModel';
 
 @Component({
   selector: 'app-login',
@@ -33,10 +34,17 @@ export class LoginComponent implements OnInit {
   submitForm(loginModel: LoginApiModel) {
     this.auth.login(loginModel)
       .subscribe((data) => {
-        localStorage.setItem("id_token", data.access_token);
-        if (this.redirectUrl !== "") {
-          this.router.navigate([decodeURI(this.redirectUrl)]);
-        } else {
+        try {
+          let loginResponse = new LoginResponseModel(data);
+          localStorage.setItem("id_token", loginResponse.accessToken);
+          localStorage.setItem("refreshToken", loginResponse.refreshToken);
+          if (this.redirectUrl !== "") {
+            this.router.navigate([decodeURI(this.redirectUrl)]);
+          } else {
+            this.router.navigate(['']);
+          }
+        } catch (error) {
+          console.error(error);
           this.router.navigate(['']);
         }
       });
