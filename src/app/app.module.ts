@@ -8,7 +8,6 @@ import { Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { Ng2CompleterModule } from "ng2-completer";
 
-
 // Components
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,7 +19,6 @@ import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthProxyService } from './services/auth-proxy.service';
 import { MemberProxyService } from './services/member-proxy.service';
-
 
 // Components
 import { NavComponent } from './nav/nav.component';
@@ -41,13 +39,10 @@ import { DeleteindividualComponent } from './individuals/delete-individual/delet
 import { SearchIndividualComponent } from './individuals/search-individual/search-individual.component'
 
 // Pipes
-import {NationalityEnumFilterPipe} from './pipes/nationality-enum-filter.pipe';
-import {RaceEnumFilterPipe} from './pipes/race-enum-filter.pipe';
-import {GenderEnumFilterPipe} from './pipes/gender-enum-filter.pipe';
+import { NationalityEnumFilterPipe } from './pipes/nationality-enum-filter.pipe';
+import { RaceEnumFilterPipe } from './pipes/race-enum-filter.pipe';
+import { GenderEnumFilterPipe } from './pipes/gender-enum-filter.pipe';
 import { FooterComponent } from './footer/footer.component';
-;
-
-  
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({

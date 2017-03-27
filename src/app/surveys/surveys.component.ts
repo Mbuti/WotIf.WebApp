@@ -11,7 +11,6 @@ import { SurveyProxyService } from '../services/survey-proxy.service';
 @Component({
   selector: 'app-surveys',
   templateUrl: './surveys.component.html',
-  styleUrls: [],
   providers: [SurveyProxyService]
 })
 export class SurveysComponent implements OnInit {

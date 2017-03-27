@@ -22,7 +22,6 @@ export class DeleteindividualComponent implements OnInit {
     this.MemberProxy.getMemberById(this.id)
       .subscribe((member) =>
         this.member = member);
-
   }
 
   DeleteMember(id: number) {
@@ -30,10 +29,8 @@ export class DeleteindividualComponent implements OnInit {
     this.router.navigate(["individual-dashboard"]);
   }
 
-
   ReturnToIndividuals() {
     this.router.navigate(["individual-dashboard"]);
-
   }
 
 }

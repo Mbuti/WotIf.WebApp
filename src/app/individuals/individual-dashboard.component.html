@@ -1,42 +1,42 @@
-
 <a class="btn btn-primary" routerLink="/individual-create">Create Individual</a>
 <br>
 <br>
 <br>
 <a class="btn btn-primary" routerLink="/search-individual">Search Individual</a>
 
-<div *ngIf = "SelectedUsername == null">
-<table class="table table-striped">
+<div *ngIf="SelectedUsername == null">
+  <table class="table table-striped">
     <thead class="thead-inverse">
-  <tr>
-    <th>Firstname</th>
-    <th>Lastname</th> 
-    <th>Age</th>
-    <th>Nationality</th>
-    <th>Race</th>
-    <th>Gender</th>
-    <th>Edit Individual</th>
-    <th>Remove Individual</th>
-   <th></th>
-  </tr>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Age</th>
+        <th>Nationality</th>
+        <th>Race</th>
+        <th>Gender</th>
+        <th>Edit Individual</th>
+        <th>Remove Individual</th>
+        <th></th>
+      </tr>
     </thead>
     <tbody>
-  <tr *ngFor = 'let member of members ' [class.selected]="IsSelected(member)">
-    <td>{{member.name}}</td>
-    <td>{{member.surname}}</td>
-    <!--<td>{{member.username}}</td>
+      <tr *ngFor='let member of members ' [class.selected]="IsSelected(member)">
+        <td>{{member.name}}</td>
+        <td>{{member.surname}}</td>
+        <!--<td>{{member.username}}</td>
     <td>{{member.idNumber}}</td>-->
-    <td>{{member.age}}</td>
-    <td>{{member.nationality| nationalityEnumFilter}}</td>
-    <td>{{member.race |raceEnumFilter}}</td>
-    <td>{{member.gender |genderEnumFilter}}
-    <td><tr><a class="btn btn-warning" (click) = "EditMember(member)" >Edit</a></tr></td>
-    <td><tr><a class="btn btn-danger" (click) = "DeleteMember(member)">Remove</a></tr></td>
- 
-  
-  </tr>
-   </tbody>
-  
-</table>
+        <td>{{member.age}}</td>
+        <td>{{member.nationality| nationalityEnumFilter}}</td>
+        <td>{{member.race |raceEnumFilter}}</td>
+        <td>{{member.gender |genderEnumFilter}}
+          <td>
+            <tr><a class="btn btn-warning" (click)="EditMember(member)">Edit</a></tr>
+          </td>
+          <td>
+            <tr><a class="btn btn-danger" (click)="DeleteMember(member)">Remove</a></tr>
+          </td>
+      </tr>
+    </tbody>
+  </table>
 
 </div>

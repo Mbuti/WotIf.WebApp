@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-
-
 // Events
 import { TalentChangedEvent } from './../../events/TalentChangedEvent';
 
@@ -20,14 +18,10 @@ import { MemberApiModel } from './../../models/MemberApiModel';
 import { CreateTalent } from './../../models/CreateTalent';
 import { TalentApiModel } from './../../models/TalentApiModel';
 
-
-
 @Component({
   selector: 'app-create-individual',
   templateUrl: './create-individual.component.html',
-  styleUrls: [],
   providers: [RaceService, NationalityService, GenderService, TalentProxyService]
-
 })
 export class CreateIndividualComponent implements OnInit {
 
@@ -53,13 +47,11 @@ export class CreateIndividualComponent implements OnInit {
   ngOnInit() {
   }
 
-
   removeTalent(question: CreateTalent): void {
     this.talents.splice(this.talents.indexOf(question), 1);
     this.nextTalentId--;
     if (this.nextTalentId === 0)
       this.hasTalent = false;
-
   }
 
   addTalent(): void {

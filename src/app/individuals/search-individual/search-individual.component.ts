@@ -9,21 +9,17 @@ import { MemberProxyService } from '../../services/member-proxy.service';
 })
 export class SearchIndividualComponent implements OnInit {
 
-private members: MemberApiModel[] = [];
-private SelectedUsername: MemberApiModel;
+  public members: MemberApiModel[] = [];
+  public SelectedUsername: MemberApiModel;
 
-  constructor(private MemberProxy: MemberProxyService) { 
+  constructor(private MemberProxy: MemberProxyService) {
   }
-
 
   ngOnInit() {
     this.MemberProxy.getMembers()
       .subscribe((members) => {
-        this.members = members;   
+        this.members = members;
       })
   }
-  
-
-
 
 }

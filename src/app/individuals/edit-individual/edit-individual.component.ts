@@ -12,11 +12,9 @@ import { GenderService } from './../../services/gender.service';
 import { MemberApiModel } from './../../models/MemberApiModel';
 import { ParticipantApiModel } from './.././../models/ParticipantApiModel';
 
-
 @Component({
   selector: 'app-edit-individual',
   templateUrl: './edit-individual.component.html',
-  styleUrls: [],
   providers: [RaceService, NationalityService, GenderService]
 })
 export class EditIndividualComponent implements OnInit {
@@ -31,7 +29,6 @@ export class EditIndividualComponent implements OnInit {
   constructor(private route: ActivatedRoute, private MemberProxy: MemberProxyService, private router: Router, private RaceService: RaceService, private NationalityService: NationalityService, private GenderService: GenderService) {
     this.participant = new ParticipantApiModel();
 
-
     this.id = route.snapshot.params['id'];
     console.log(this.id)
     this.MemberProxy.getMemberById(this.id)
@@ -41,6 +38,7 @@ export class EditIndividualComponent implements OnInit {
 
   ngOnInit() {
   }
+
   assignNationality(value: string) {
     this.member.nationality = this.NationalityService.assignNationality(value);
   }
@@ -63,6 +61,5 @@ export class EditIndividualComponent implements OnInit {
     console.log(this.member);
     this.router.navigate(["individual-dashboard"]);
   }
-
 
 }

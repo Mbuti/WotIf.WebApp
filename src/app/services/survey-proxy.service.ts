@@ -25,14 +25,14 @@ export class SurveyProxyService {
 
   createSurvey(survey: CreateSurveyApiModel) {
     return this.http.post(this.endpointUrl + "/api/Survey/Create", JSON.stringify(survey), { headers: this.headers })
-    .map((response) => response.json())
-    .catch(error => this.handleError(error));
+      .map((response) => response.json())
+      .catch(error => this.handleError(error));
   }
 
   getSurveys(): Observable<SurveyApiModel[]> {
     return this.http.get(this.endpointUrl + "/api/Survey/GetSurveys", { headers: this.headers })
-    .map((response) => <SurveyApiModel[]>response.json())
-    .catch(error => this.handleError(error));
+      .map((response) => <SurveyApiModel[]>response.json())
+      .catch(error => this.handleError(error));
   }
 
   handleError(error: Response) {

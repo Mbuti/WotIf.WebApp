@@ -10,12 +10,11 @@ import { Talent } from './../../models/Talent';
 
 @Component({
   selector: 'app-talent-create-toggle',
-  templateUrl: './talent-create-toggle.component.html',
-  styleUrls: []
+  templateUrl: './talent-create-toggle.component.html'
 })
 export class TalentCreateToggleComponent implements OnInit {
   @Input() id: number;
- // @Input() talentTypes: TalentTypeApiModel[];
+  // @Input() talentTypes: TalentTypeApiModel[];
   @Output() onChange = new EventEmitter<TalentChangedEvent>();
 
   isValid: boolean = false;
