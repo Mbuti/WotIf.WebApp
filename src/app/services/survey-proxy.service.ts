@@ -7,6 +7,7 @@ import "rxjs/Rx";
 // Models
 import { CreateSurveyApiModel } from '../models/CreateSurveyApiModel';
 import { SurveyApiModel } from '../models/SurveyApiModel';
+import { SubmitSurveyApiModel } from '../models/SubmitSurveyApiModel';
 
 @Injectable()
 export class SurveyProxyService {
@@ -25,13 +26,18 @@ export class SurveyProxyService {
 
   createSurvey(survey: CreateSurveyApiModel) {
     return this.http.post(this.endpointUrl + "/api/Survey/Create", JSON.stringify(survey), { headers: this.headers })
-      .map((response) => response.json())
       .catch(error => this.handleError(error));
   }
 
   getSurveys(): Observable<SurveyApiModel[]> {
     return this.http.get(this.endpointUrl + "/api/Survey/GetSurveys", { headers: this.headers })
       .map((response) => <SurveyApiModel[]>response.json())
+      .catch(error => this.handleError(error));
+  }
+
+  submitSurvey(submitSurveyModel: SubmitSurveyApiModel) {
+    return this.http.post(this.endpointUrl + "/api/Survey/Submit", JSON.stringify(submitSurveyModel), { headers: this.headers })
+      .map((response) => response.json())
       .catch(error => this.handleError(error));
   }
 

@@ -2,13 +2,13 @@
   <label for={{question.id}}>{{question.text}}</label>
   <div class="radio">
     <label>
-      <input type="radio" name={{question.id}} value="true" required />
+      <input type="radio" name={{question.id}} value="true" [(ngModel)]="answer" required />
       Yes
     </label>
   </div>
   <div class="radio">
     <label>
-      <input type="radio" name={{question.id}} value="false" required />
+      <input type="radio" name={{question.id}} value="false"  [(ngModel)]="answer" required />
       No
     </label>
   </div>
@@ -16,28 +16,28 @@
 
 <div *ngIf="question.type === 'Decimal'" class="form-group">
   <label for={{question.id}}>{{question.text}}</label>
-  <input type="number" id={{question.id}} step="0.05" class="form-control" required />
+  <input type="number" id={{question.id}} step="0.05" class="form-control" [(ngModel)]="answer" required />
 </div>
 
 <div *ngIf="question.type === 'Integer'" class="form-group">
   <label for={{question.id}}>{{question.text}}</label>
-  <input type="number" id={{question.id}} class="form-control" required />
+  <input type="number" id={{question.id}} class="form-control" [(ngModel)]="answer" required />
 </div>
 
 <div *ngIf="question.type === 'Money'" class="form-group">
   <label for={{question.id}}>{{question.text}}</label>
   <div class="input-group">
     <span class="input-group-addon">R</span>
-    <input type="number" id={{question.id}} step="0.05" class="form-control" required />
+    <input type="number" id={{question.id}} step="0.05" class="form-control" [(ngModel)]="answer" required />
   </div>
 </div>
 
 <div *ngIf="question.type === 'Text'" class="form-group">
   <label for={{question.id}}>{{question.text}}</label>
-  <input type="text" id={{question.id}} class="form-control" required />
+  <input type="text" id={{question.id}} class="form-control" [(ngModel)]="answer" required />
 </div>
 
 <div *ngIf="question.type === 'LongText'" class="form-group">
   <label for={{question.id}}>{{question.text}}</label>
-  <textarea id={{question.id}} class="form-control" required></textarea>
+  <textarea id={{question.id}} class="form-control" [(ngModel)]="answer" required></textarea>
 </div>

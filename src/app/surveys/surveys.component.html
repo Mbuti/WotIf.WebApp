@@ -8,7 +8,9 @@
 </select>
 
 <div *ngIf="questions.length > 0">
-    <div *ngFor="let question of questions">
-        <app-dynamic-question [question]="question"></app-dynamic-question>
+    <div *ngFor="let question of questions; let i = index">
+        <app-dynamic-question [question]="question" [(answer)]="answers[i].answer"></app-dynamic-question>
     </div>
+
+    <button class="btn btn-primary" (click)="submitSurvey()">Submit</button>
 </div>
