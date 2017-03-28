@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 
 //Models
 import { SurveyApiModel } from '../models/SurveyApiModel';
@@ -27,6 +27,7 @@ export class SurveysComponent implements OnInit {
       .subscribe((surveys) => {
         this.surveys = surveys;
       });
+ 
   }
 
   selectedSurveyChanged(selectedSurvey: string) {

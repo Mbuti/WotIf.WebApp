@@ -41,10 +41,16 @@
     	</div>
     <div>
     	<button class="btn btn-danger" (click)="removeTalent(Talent)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove</button>
-    	<button class="btn btn-success" (click)="addTalent()">Add Talent</button>
+    
     </div>
 	</div>
+
 </div>
+	<div *ngIf="hasTalent == true">
+		<br>
+		<button class="btn btn-success" (click)="addTalent()">Add a Talent</button>
+		<br>
+	</div>
 
 
 		<!--<label>

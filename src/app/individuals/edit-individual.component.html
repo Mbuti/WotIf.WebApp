@@ -28,6 +28,29 @@ Age: <br><input  type="text" [(ngModel)] = "this.member.age"/><br><br>
         [value]="name">{{name}}</option>
   </select><br>
   <br>
+
+<h3>Talents</h3>
+<!--<div *ngIf="hasTalent == false">
+   <div>
+       <button class="btn btn-success"  (click)="addFirstTalent()"> Add Talent(s)</button>   
+   </div>
+</div> -->
+<div *ngFor="let talent of talents">
+<!--	<div *ngIf="hasTalent == true"> -->
+    	<div>
+			<app-talent-create-toggle [years]="talent.yearsExperience" [id]="talent.id" [description]="talent.talentDescription" (onChange)="talentChanged($event)" ></app-talent-create-toggle>
+    	</div>
+    <div>
+    	<button class="btn btn-danger" (click)="removeTalent(Talent)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove</button>
+   <!-- 	<button class="btn btn-success" (click)="addTalent()">Add Talent</button>   -->
+    </div>
+<!--	</div>  -->
+</div>
+<br>
+<button class="btn btn-success" (click)="addTalent()">Add a Talent</button>  
+<br>
+
+
   <br>
    <a class="btn btn-primary" (click) = "addParticipant(th)" >Add Participant</a>
  </div>

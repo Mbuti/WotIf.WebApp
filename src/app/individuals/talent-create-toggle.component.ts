@@ -14,19 +14,27 @@ import { Talent } from '../models/Talent';
   styleUrls: []
 })
 export class TalentCreateToggleComponent implements OnInit {
+   @Input() years: number;
   @Input() id: number;
- // @Input() talentTypes: TalentTypeApiModel[];
+  @Input() description:  string;
+ 
+
   @Output() onChange = new EventEmitter<TalentChangedEvent>();
 
   isValid: boolean = false;
   editMode: boolean = true;
-  talentText: string = "";
+  talentText: string = "";  
   talentYears: number = 0;
   talentModel: Talent;
-
+  
   constructor() { }
 
   ngOnInit() {
+    this.talentYears = this.years;
+    this.talentText = this.description;
+   // if (this.id!=null)
+    //  this.id =
+   // console.log(this.id);
   }
 
   toggleEditMode() {
@@ -34,9 +42,9 @@ export class TalentCreateToggleComponent implements OnInit {
   }
 
   notifyChange() {
-    this.onChange.emit(new TalentChangedEvent(this.id, this.talentText, this.talentYears));
-    this.isValid = this.talentText !== "" && this.talentYears !== null;
-    this.talentModel = new Talent(this.id, this.talentText, this.talentYears)
+   this.onChange.emit(new TalentChangedEvent(this.id, this.talentText, this.talentYears));
+   this.isValid = this.talentText !== "" && this.talentYears !== null;
+   this.talentModel = new Talent(this.id, this.talentText, this.talentYears)
   }
 
 }

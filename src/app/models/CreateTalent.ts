@@ -1,8 +1,8 @@
 export class CreateTalent {
-    id: number;
-    TalentDescription: string;
-    YearsExperience: number;
-    sortOrder: number;
+    public id: number;
+    public TalentDescription: string;
+    public YearsExperience: number;
+    public sortOrder: number;
 
     constructor(id: number, talentText: string, talentYears:number, sortOrder: number) {
         this.id = id;

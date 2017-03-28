@@ -1,33 +1,19 @@
 <div *ngIf="editMode">
+
   <div class="form-group">
-    <label for="talentText" class="col-lg-2 control-label">Name of Talent</label>
+    <label for="talentText" class="col-lg-9 control-label">Name of Talent</label>
     <div class="col-lg-10">
-      <input id="talentText" name="talentText" [(ngModel)]="talentText" (ngModelChange)="notifyChange()" class="form-control"
+      <input id="talentText" name="talentText"  [(ngModel)]="talentText" (ngModelChange)="notifyChange()" class="form-control"
         required />
     </div>
   </div>
-
     <div class="form-group">
-    <label for="talentYears" class="col-lg-2 control-label">Years Experience</label>
+    <label for="talentYears" class="col-lg-29 control-label">Years Experience</label>
     <div class="col-lg-10">
       <input id="talentYears" name="talentYears" [(ngModel)]="talentYears" (ngModelChange)="notifyChange()" class="form-control"
         required />
     </div>
   </div>
-
-
- <!-- <div class="form-group">
-    <label for="talentType" class="col-lg-2 control-label">Years Experience</label>
-    <div class="col-lg-10">
-      <select id="talentType" name="talentType" [(ngModel)]="talentType" (ngModelChange)="notifyChange()" class="form-control"
-        required>
-        <option value="">==SELECT==</option>
-        <option *ngFor="let talentType of talentTypes" [attr.value]="talentType">{{talentType}}</option>
-      </select>
-    </div>
-  </div>
-  
-  <button *ngIf="isValid" class="btn btn-primary" (click)="toggleEditMode()"><span class="glyphicon glyphicon-ok" aria-hidden="true"> Preview</span></button> -->
 </div>
 
 <!--

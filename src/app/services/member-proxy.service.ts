@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { Response, Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
@@ -6,6 +6,7 @@ import "rxjs/Rx";
 
 // Api Models
 import { MemberApiModel } from '../models/MemberApiModel';
+import { CreateTalent } from '../models/CreateTalent';
 
 @Injectable()
 export class MemberProxyService {
@@ -32,6 +33,15 @@ export class MemberProxyService {
     return this.http.get(this.endpointUrl + "/api/Individual/GetAllIndividuals", { headers: this.headers })
       .map((response) => <MemberApiModel[]>response.json())
       .catch(error => this.handleError(error));
+  }
+
+
+
+  getTalentsByID(id: number):Observable<CreateTalent[]> {
+  return this.http.get(this.endpointUrl + "/api/Individual/GetIndividualsTalents/" + id, {headers: this.headers})
+    .map((response) => <CreateTalent[]>response.json())
+    .catch(error => this.handleError(error));
+
   }
 
 

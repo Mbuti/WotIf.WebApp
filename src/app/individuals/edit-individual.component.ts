@@ -3,14 +3,20 @@ import { MemberProxyService } from '../services/member-proxy.service';
 import { CreateIndividualComponent } from '../individuals/create-individual.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
+// Events
+import { TalentChangedEvent } from '../events/TalentChangedEvent';
+
 //Services 
 import { RaceService } from './../services/race.service';
 import { NationalityService } from '../services/nationality.service';
 import { GenderService } from '../services/gender.service';
+import { TalentProxyService } from '../services/talent-proxy.service';
 
 // Models
 import { MemberApiModel } from '../models/MemberApiModel';
 import { ParticipantApiModel } from './../models/ParticipantApiModel';
+import { CreateTalent } from '../models/CreateTalent';
+import { TalentApiModel } from '../models/TalentApiModel';
 
 
 @Component({
@@ -20,9 +26,18 @@ import { ParticipantApiModel } from './../models/ParticipantApiModel';
   providers: [RaceService, NationalityService, GenderService]
 })
 export class EditIndividualComponent implements OnInit {
-
+ 
   id: number;
   member: MemberApiModel = new MemberApiModel();
+  talents: Array<CreateTalent> = new Array<CreateTalent>() ;
+  
+  //alteredTalents: Array<CreateTalent> = new Array<CreateTalent>() ;
+  //alteredTalents: CreateTalent[] ;
+ // hasTalent = true;
+  nextTalentId: number = 0;
+
+
+
   raceOptions = this.RaceService.raceOptions;
   nationalityOptions = this.NationalityService.nationalityOptions;
   genderOptions = this.GenderService.genderOptions;
@@ -33,16 +48,26 @@ export class EditIndividualComponent implements OnInit {
 
 
     this.id = route.snapshot.params['id'];
+  
     console.log(this.id)
-    this.MemberProxy.getMemberById(this.id)
-      .subscribe((member) =>
-        this.member = member);
+    this.MemberProxy.getMemberById(this.id).subscribe((member) => this.member = member);
+
+    
+    
+    this.MemberProxy.getTalentsByID(this.id).subscribe((talents) => this.talents = talents);
+    console.log(Object.keys(this.talents).length);
+
+       this.nextTalentId=this.talents.length;
+console.log(this.nextTalentId);
+
   }
 
   ngOnInit() {
+     this.nextTalentId=this.talents.length;
   }
   assignNationality(value: string) {
     this.member.nationality = this.NationalityService.assignNationality(value);
+  
   }
 
   assignRace(value: string) {
@@ -56,13 +81,59 @@ export class EditIndividualComponent implements OnInit {
     this.member.participant = this.participant;
   }
 
+
+removeTalent(question: CreateTalent): void {
+    this.talents.splice(this.talents.indexOf(question), 1);
+    this.nextTalentId--;
+   // if (this.nextTalentId===0)
+   //   this.hasTalent = false;
+
+  }
+
+  addTalent(): void {
+    this.talents.push(new CreateTalent(this.nextTalentId, "",0,  this.talents.length));
+    this.nextTalentId++;
+  }
+
+ 
+  //  addFirstTalent(): void {
+ //   this.hasTalent = true;
+////    this.talents = [new CreateTalent(0, "", 0, 0)];
+ //  this.nextTalentId++;
+//  }
+
+    talentChanged(talentChangedEvent: TalentChangedEvent): void {
+    for (let talent of this.talents) {
+      if (talent.id === talentChangedEvent.id) {
+        talent.TalentDescription = talentChangedEvent.TalentDescription;
+        talent.YearsExperience = talentChangedEvent.YearsExperience;
+        break;
+      }
+    }
+  }
+
+
+
+
   SaveChanges(id: number, member: MemberApiModel) {
+    console.log(this.member);
+     let talents = <TalentApiModel[]>this.talents;
+     this.member.talents = talents;
+
     this.MemberProxy.editMember(this.id, this.member)
-      .subscribe((member) =>
-        this.member = member);
+      .subscribe((member) => this.member = member);
+        
     console.log(this.member);
     this.router.navigate(["individual-dashboard"]);
   }
+
+
+
+
+
+
+
+
 
 
 }
