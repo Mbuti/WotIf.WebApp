@@ -6,8 +6,7 @@ import { QuestionTypeApiModel } from '../models/QuestionTypeApiModel';
 
 @Component({
   selector: 'app-question-create-toggle',
-  templateUrl: './question-create-toggle.component.html',
-  styleUrls: []
+  templateUrl: './question-create-toggle.component.html'
 })
 export class QuestionCreateToggleComponent implements OnInit {
 

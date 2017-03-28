@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
-import "rxjs/Rx";
 
 // Models
 import { LoginApiModel } from '../models/LoginApiModel';
+import { Subscription } from "rxjs/Subscription";
 
 @Injectable()
 export class AuthProxyService {
   private endpointUrl: string = "";
   private headers: Headers;
+
 
   constructor(private http: Http) {
     this.headers = new Headers();
@@ -28,9 +29,15 @@ export class AuthProxyService {
       .catch(error => this.handleError(error));
   }
 
+  refreshToken() {
+    return this.http.post(this.endpointUrl + "/api/Auth/Refresh", JSON.stringify({ refreshToken: localStorage.getItem("refreshToken") }), { headers: this.headers })
+      .map((response) => response.json())
+      .catch(error => this.handleError(error));
+  }
+
   handleError(error: Response): Observable<any> {
     console.error(error);
-    return Observable.throw(error.json().error || "Server error");
+    return Observable.throw(error || "Server error");
   }
 
 }

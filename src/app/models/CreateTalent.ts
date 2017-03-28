@@ -4,7 +4,7 @@ export class CreateTalent {
     public YearsExperience: number;
     public sortOrder: number;
 
-    constructor(id: number, talentText: string, talentYears:number, sortOrder: number) {
+    constructor(id: number, talentText: string, talentYears: number, sortOrder: number) {
         this.id = id;
         this.TalentDescription = talentText;
         this.YearsExperience = talentYears;

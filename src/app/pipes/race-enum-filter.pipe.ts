@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Race} from './../models/MemberApiModel';
+import { Race } from './../models/MemberApiModel';
 
 @Pipe({
   name: 'raceEnumFilter'

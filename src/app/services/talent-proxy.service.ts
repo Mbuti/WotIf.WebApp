@@ -22,11 +22,11 @@ export class TalentProxyService {
     }
   }
 
- // getTalentTypes(): Observable<any> {
- //   return this.http.get(this.endpointUrl + "/api/Talent/GetTalentTypes", { headers: this.headers })
- //     .map((response) => <TalentTypeApiModel[]>response.json())
- //     .catch(error => this.handleError(error));
- // }
+  // getTalentTypes(): Observable<any> {
+  //   return this.http.get(this.endpointUrl + "/api/Talent/GetTalentTypes", { headers: this.headers })
+  //     .map((response) => <TalentTypeApiModel[]>response.json())
+  //     .catch(error => this.handleError(error));
+  // }
 
   handleError(error: Response): Observable<any> {
     console.error(error);

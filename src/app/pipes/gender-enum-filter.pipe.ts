@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Gender} from '../models/MemberApiModel';
+import { Gender } from '../models/MemberApiModel';
 
 @Pipe({
   name: 'genderEnumFilter'

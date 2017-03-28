@@ -1,0 +1,113 @@
+<a class="btn btn-primary" routerLink="/individual-dashboard">Back</a>
+<br> <br>
+<div class="form-group row">
+	<div>
+		<label>Username</label>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+			<input type="text" class="form-control" [(ngModel)]="member.name" placeholder="First Name">
+		</div>
+		<label>Surname</label>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+			<input type="text" class="form-control" [(ngModel)]="member.surname" placeholder="Surname">
+		</div>
+
+		<label>Username</label>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+			<input type="text" class="form-control" [(ngModel)]="member.username" placeholder="Username">
+		</div>
+
+		<label>Age</label>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+			<input type="text" class="form-control" [(ngModel)]="member.age" placeholder="Age">
+		</div>
+
+		<label>ID Number</label>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+			<input id="email" type="text" class="form-control" [(ngModel)]="member.idNumber" name="email" placeholder="Username">
+		</div>
+		<label>Nationality</label><br>
+		<select (change)="assignNationality($event.target.value)" class="selectpicker" data-width="75%">
+    		<option>--select--</option>
+    		<option *ngFor="let name of nationalityOptions"
+        		[value]="name">{{name}}</option>
+  		</select><br>
+		<label>Race</label><br>
+		<select (change)="assignRace($event.target.value)">
+    		<option>--select--</option>
+			<option *ngFor="let name of raceOptions"
+				[value]="name">{{name}}</option>
+		</select><br>
+		<label>
+		<label>Gender</label><br>
+		<select (change)="assignGender($event.target.value)">
+    		<option>--select--</option>
+    		<option *ngFor="let name of genderOptions"
+        	[value]="name">{{name}}</option>
+ 		 </select><br>
+
+
+<h3>Talents</h3>
+<div *ngIf="hasTalent == false">
+   <div>
+       <button class="btn btn-success"  (click)="addFirstTalent()"> Add Talent(s)</button>   
+   </div>
+</div>
+<div *ngFor="let talent of talents">
+	<div *ngIf="hasTalent == true">
+    	<div>
+			<app-talent-create-toggle [id]="talent.id" (onChange)="talentChanged($event)" ></app-talent-create-toggle>
+    	</div>
+    <div>
+    	<button class="btn btn-danger" (click)="removeTalent(Talent)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove</button>
+    
+    </div>
+	</div>
+
+</div>
+	<div *ngIf="hasTalent == true">
+		<br>
+		<button class="btn btn-success" (click)="addTalent()">Add a Talent</button>
+		<br>
+	</div>
+
+
+		<!--<label>
+			<input #angularcb type="checkbox" (change)="hasTalent = angularcb.checked" />Talent</label>
+				<div *ngIf="!hasTalent"><br>
+				</div>
+				<div *ngIf="hasTalent">
+					<div>
+					<label>Name of talent</label>
+					</div>
+					<div class="form-group">
+					<input [(ngModel)]="inputtedValues.NameOfTalent" />
+					</div>
+					<div>
+						<label>Years of experience</label>
+					</div>
+					<div class="form-group">
+						<input [(ngModel)]="inputtedValues.YearsExperience" />
+					</div>
+				</div>
+				-->
+		<label><input #angularcb2 type="checkbox" (change)="hasParticipant = angularcb2.checked" />Participant</label>
+		<div *ngIf="!hasParticipant"><br>
+		</div>
+		<div *ngIf="hasParticipant">
+			<div>
+				<label>Entity name</label>
+			</div>
+			<div class="form-group">
+				<input [(ngModel)]="member.participant.participantDescription" placeholder="Name of Company" />
+			</div>
+			<label>Services Provided by Entity</label>
+			<div class="form-group">
+				<input [(ngModel)]="member.participant.participantName" placeholder="What does the company do" />
+			</div>
+		</div>
+		<a class="btn btn-primary" (click)="CreateIndividual()">Save</a>

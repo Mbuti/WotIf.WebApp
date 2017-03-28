@@ -8,7 +8,6 @@ import { Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { Ng2CompleterModule } from "ng2-completer";
 
-
 // Components
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,32 +20,29 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { AuthProxyService } from './services/auth-proxy.service';
 import { MemberProxyService } from './services/member-proxy.service';
 
-
 // Components
 import { NavComponent } from './nav/nav.component';
 import { IndividualDashboardComponent } from './individuals/individual-dashboard.component';
-import { CreateIndividualComponent } from './individuals/create-individual.component';
-import { EditIndividualComponent } from './individuals/edit-individual.component';
+import { CreateIndividualComponent } from './individuals/create-individual/create-individual.component';
+import { EditIndividualComponent } from './individuals/edit-individual/edit-individual.component';
 import { GeneralComponent } from './general/general.component';
 import { ParticipantsComponent } from './participants/participants.component';
 import { TalentsComponent } from './talents/talents.component';
 import { SurveysComponent } from './surveys/surveys.component';
 import { AdminComponent } from './admin/admin.component';
 import { QuestionCreateToggleComponent } from './surveys/question-create-toggle.component';
-import { TalentCreateToggleComponent } from './individuals/talent-create-toggle.component';
-import { DynamicTalentComponent } from './individuals/dynamic-talent.component';
+import { TalentCreateToggleComponent } from './individuals/individual talent/talent-create-toggle.component';
+import { DynamicTalentComponent } from './individuals/individual talent/dynamic-talent.component';
 import { DynamicQuestionComponent } from './surveys/dynamic-question.component';
 import { CreateSurveyComponent } from './surveys/create-survey.component';
-import { DeleteindividualComponent } from './individuals/deleteindividual.component';
-
+import { DeleteindividualComponent } from './individuals/delete-individual/deleteindividual.component';
+import { SearchIndividualComponent } from './individuals/search-individual/search-individual.component'
 
 // Pipes
-import {NationalityEnumFilterPipe} from './pipes/nationality-enum-filter.pipe';
-import {RaceEnumFilterPipe} from './pipes/race-enum-filter.pipe';
-import {GenderEnumFilterPipe} from './pipes/gender-enum-filter.pipe';
+import { NationalityEnumFilterPipe } from './pipes/nationality-enum-filter.pipe';
+import { RaceEnumFilterPipe } from './pipes/race-enum-filter.pipe';
+import { GenderEnumFilterPipe } from './pipes/gender-enum-filter.pipe';
 import { FooterComponent } from './footer/footer.component';
-
-  
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -83,7 +79,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     RaceEnumFilterPipe,
     NationalityEnumFilterPipe,
     GenderEnumFilterPipe,
-    FooterComponent
+    FooterComponent,
+    SearchIndividualComponent
   ],
   imports: [
     AppRoutingModule,

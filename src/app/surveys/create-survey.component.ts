@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
-// Events
-import { QuestionChangedEvent } from '../events/QuestionChangedEvent';
-
 // Models
 import { CreateQuestion } from '../models/CreateQuestion';
 import { QuestionTypeApiModel } from '../models/QuestionTypeApiModel';
@@ -17,7 +14,6 @@ import { SurveyProxyService } from '../services/survey-proxy.service';
 @Component({
   selector: 'app-create-survey',
   templateUrl: './create-survey.component.html',
-  styleUrls: [],
   providers: [QuestionProxyService, SurveyProxyService]
 })
 export class CreateSurveyComponent implements OnInit {
@@ -78,16 +74,6 @@ export class CreateSurveyComponent implements OnInit {
     this.nextQuestionId++;
   }
 
-  questionChanged(questionChangedEvent: QuestionChangedEvent): void {
-    for (let question of this.questions) {
-      if (question.id === questionChangedEvent.id) {
-        question.text = questionChangedEvent.questionText;
-        question.type = questionChangedEvent.questionType;
-        break;
-      }
-    }
-  }
-
   validateQuestions(): boolean {
     for (let question of this.questions) {
       if (question.text === "" || question.type === "") {
@@ -103,7 +89,7 @@ export class CreateSurveyComponent implements OnInit {
     survey.questions = questions;
 
     this.surveyProxy.createSurvey(survey)
-    .subscribe(() => {});
+      .subscribe(() => { });
   }
 
 }

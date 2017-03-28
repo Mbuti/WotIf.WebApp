@@ -6,13 +6,12 @@ import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrls: []
+  templateUrl: './nav.component.html'
 })
 export class NavComponent implements OnInit {
 
   constructor(
-    private auth: AuthService,
+    public auth: AuthService,
     private router: Router) { }
 
   ngOnInit() {

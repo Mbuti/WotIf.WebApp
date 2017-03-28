@@ -25,7 +25,7 @@ export class MemberProxyService {
 
   createMember(member: MemberApiModel) {
     return this.http.post(this.endpointUrl + "/api/Individual/Create", JSON.stringify(member), { headers: this.headers })
-     // .map((response) => response.json())  //why is this commented out?
+      // .map((response) => response.json())  //why is this commented out?
       .catch(error => this.handleError(error));
   }
 

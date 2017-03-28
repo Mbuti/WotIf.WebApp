@@ -4,11 +4,11 @@ export class ParticipantApiModel {
     public participantName: string;
     public participantDescription: string;
 
- constuctor(participantId:number, ParticipantName:string,ParticpantDescription:string){
-     this.participantId=participantId;
-     this.participantName =ParticipantName;
-     this.participantDescription = ParticpantDescription;
+    constuctor(participantId: number, ParticipantName: string, ParticpantDescription: string) {
+        this.participantId = participantId;
+        this.participantName = ParticipantName;
+        this.participantDescription = ParticpantDescription;
 
- }
+    }
 
 }

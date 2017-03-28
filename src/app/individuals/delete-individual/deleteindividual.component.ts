@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MemberApiModel } from '../models/MemberApiModel';
-import { MemberProxyService } from '../services/member-proxy.service';
-import { IndividualDashboardComponent } from './individual-dashboard.component';
+import { MemberApiModel } from './../../models/MemberApiModel';
+import { MemberProxyService } from './../../services/member-proxy.service';
+import { IndividualDashboardComponent } from '../individual-dashboard.component';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
 
@@ -22,7 +22,6 @@ export class DeleteindividualComponent implements OnInit {
     this.MemberProxy.getMemberById(this.id)
       .subscribe((member) =>
         this.member = member);
-
   }
 
   DeleteMember(id: number) {
@@ -30,10 +29,8 @@ export class DeleteindividualComponent implements OnInit {
     this.router.navigate(["individual-dashboard"]);
   }
 
-
   ReturnToIndividuals() {
     this.router.navigate(["individual-dashboard"]);
-
   }
 
 }
