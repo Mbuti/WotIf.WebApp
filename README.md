@@ -1,5 +1,5 @@
 # WotIf.WebApp
-The frontend for the WotIf? project
+The frontend for the Wot-If? project
 
 > Wot-If? was born out of a company called Da Vinci SEED in 2013 to:
 > 
@@ -9,8 +9,8 @@ The frontend for the WotIf? project
 
 # Developers
 ## Set Up
-### The web application solution
-First clone this repository to anywhere are you computer. Once you have done this, move on to the instructions for NodeJS.
+### The web application
+First clone this repository to anywhere on your computer. Once you have done this, move on to the instructions for NodeJS.
 
 ### NodeJS and AngularCLI
 >Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world. - https://nodejs.org/en/
@@ -18,18 +18,18 @@ First clone this repository to anywhere are you computer. Once you have done thi
 + Go to https://nodejs.org/en/ and download the current version of Node (not the one that is recommended for most users).
 + Once you have installed Node, make sure that it has been added to your path by opening a new terminal and typing "node -v". This will tell you your version of Node.
 + Also make sure that npm is now added to the path by typing "npm -v" to see your version of npm.
-+ Now open a terminal in the root of your copy of the WotIf? web applcation (not in the src folder) and type "npm install". This will use the node package manager to resolve all the dependencies for the web application.
-+ Now type "npm install -g angular-cli" to allow you to use Angular commands in your terminal.
++ Now open a terminal in the root of your copy of the Wot-If? web applcation (not in the src folder) and type "npm install". This will use the node package manager to resolve all the dependencies for the web application.
++ Now type "npm install -g @angular/cli" to allow you to use Angular commands in your terminal.
 
-### Building a districution folder with the Angular CLI
+### Building a distribution folder with the Angular CLI (NOT NECESSARY FOR DEV)
 Now that we have our web application and the Angualr CLI installed, we can move on to bundling our web application into something that Nginx (next step) can use.
 
 + Navigate to the folder which contains your web applicantion. Example: .../documents/WotIf.WebApp/
 + Open a terminal in this folder (shift + right click => open terminal here).
-+ Type ng build prod
++ Type ng build --prod
 + This will build your web application and create a folder called dist located at .../documents/WotIf.WebApp/dist. (This is where Nginx must be set to point to).
 
-### Nginx
+### Nginx (NOT NECESSARY FOR DEV)
 > NGINX is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. NGINX is known for its high performance, stability, rich feature set, simple configuration, and low resource consumption. - https://www.nginx.com/resources/wiki/
 
 + First go to http://nginx.org/en/download.html and download the latest stable version of Nginx.
@@ -69,4 +69,20 @@ http {
 Once you have Nginx working, move on to the instructions for NodeJS and Webpack.
 
 ### Running the website
-If you have followed the above steps, you should now be able to run the website by going to "localhost:8090" (unless I have forgotten a step somewhere). Make sure that you have your WebAPI solution running in Visual Studio so that your website has something to communicate with.
+From the root of your web application folder, open up a command window and type "ng serve". This will use Angular's built-in settings for Webpack to host the web application locally.
+
+You can navigate to the website by opening your browsing and going to http://localhost:4200 (unless you have changed the default port).
+
+"ng serve" supports hot reloading, which means that as you make changes to the frontend code and save them, Angular will rebuild your application and automatically refresh the page in the browser.
+
+
+## Logging in
+Once you have your application up and running, you'll notice that navigating to http://localhost:4200 takes you to a login page. These steps explain how to create a user so that you are able to log in to the website:
++ Make sure that you have followed the instructions for the Wot-If? backend solution.
++ Run the Wot-If? backend solution.
++ In your browser, navigate to Swagger (http://localhost:33333/swagger).
++ Under the "Register" controller, click on the "Register" endpoint.
++ Click the example template on the righthand side to insert the template for you. Change the values to be what you'd like.
++ Click "Try it out" to send the request to the backend and create a user.
++ You can verify that the user was created by looking in the User table in the WotIf database and checking that the entry is there.
++ You can now log in to the website using the credentials that you just used to create the user.
