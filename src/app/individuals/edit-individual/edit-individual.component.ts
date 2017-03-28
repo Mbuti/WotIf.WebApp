@@ -1,28 +1,27 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MemberProxyService } from '../services/member-proxy.service';
-import { CreateIndividualComponent } from '../individuals/create-individual.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 // Events
-import { TalentChangedEvent } from '../events/TalentChangedEvent';
+import { TalentChangedEvent } from '../../events/TalentChangedEvent';
 
 //Services 
-import { RaceService } from './../services/race.service';
-import { NationalityService } from '../services/nationality.service';
-import { GenderService } from '../services/gender.service';
-import { TalentProxyService } from '../services/talent-proxy.service';
+import { RaceService } from '../../services/race.service';
+import { NationalityService } from '../../services/nationality.service';
+import { GenderService } from '../../services/gender.service';
+import { TalentProxyService } from '../../services/talent-proxy.service';
+import { MemberProxyService } from '../../services/member-proxy.service';
+import { CreateIndividualComponent } from '../create-individual/create-individual.component';
 
 // Models
-import { MemberApiModel } from '../models/MemberApiModel';
-import { ParticipantApiModel } from './../models/ParticipantApiModel';
-import { CreateTalent } from '../models/CreateTalent';
-import { TalentApiModel } from '../models/TalentApiModel';
+import { MemberApiModel } from '../../models/MemberApiModel';
+import { ParticipantApiModel } from '../../models/ParticipantApiModel';
+import { CreateTalent } from '../../models/CreateTalent';
+import { TalentApiModel } from '../../models/TalentApiModel';
 
 
 @Component({
   selector: 'app-edit-individual',
   templateUrl: './edit-individual.component.html',
-  styleUrls: [],
   providers: [RaceService, NationalityService, GenderService]
 })
 export class EditIndividualComponent implements OnInit {

@@ -1,17 +1,16 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 // Events
-import { TalentChangedEvent } from '../events/TalentChangedEvent';
+import { TalentChangedEvent } from '../../events/TalentChangedEvent';
 
 // Models
-import { CreateTalent } from '../models/CreateTalent';
-import { Talent } from '../models/Talent';
+import { CreateTalent } from '../../models/CreateTalent';
+import { Talent } from '../../models/Talent';
 //import { TalentTypeApiModel } from '../models/TalentTypeApiModel';
 
 @Component({
   selector: 'app-talent-create-toggle',
-  templateUrl: './talent-create-toggle.component.html',
-  styleUrls: []
+  templateUrl: './talent-create-toggle.component.html'
 })
 export class TalentCreateToggleComponent implements OnInit {
    @Input() years: number;
