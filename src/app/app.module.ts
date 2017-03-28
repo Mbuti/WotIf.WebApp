@@ -44,6 +44,11 @@ import { RaceEnumFilterPipe } from './pipes/race-enum-filter.pipe';
 import { GenderEnumFilterPipe } from './pipes/gender-enum-filter.pipe';
 import { FooterComponent } from './footer/footer.component';
 
+
+// AuthHttp should be used instead of Http when endpoints have authorization added to them.
+// This will greatly reduce code repetition and will make your life a lot easier when sending
+// tokens to endpoints.
+// https://github.com/auth0/angular2-jwt
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
     headerName: "Authorization",
