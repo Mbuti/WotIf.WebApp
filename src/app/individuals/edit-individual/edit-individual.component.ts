@@ -48,16 +48,11 @@ export class EditIndividualComponent implements OnInit {
 
     this.id = route.snapshot.params['id'];
   
-    console.log(this.id)
+ 
     this.MemberProxy.getMemberById(this.id).subscribe((member) => this.member = member);
-
-    
-    
     this.MemberProxy.getTalentsByID(this.id).subscribe((talents) => this.talents = talents);
-    console.log(Object.keys(this.talents).length);
+    this.nextTalentId=this.talents.length;
 
-       this.nextTalentId=this.talents.length;
-console.log(this.nextTalentId);
 
   }
 
@@ -71,7 +66,6 @@ console.log(this.nextTalentId);
 
   assignRace(value: string) {
     this.member.race = this.RaceService.assignRace(value);
-
   }
   assignGender(value: string) {
     this.member.gender = this.GenderService.assignGender(value);
@@ -81,25 +75,26 @@ console.log(this.nextTalentId);
   }
 
 
-removeTalent(question: CreateTalent): void {
+
+
+removeTalent(question: CreateTalent, talentId:number): void {
+  console.log(talentId);
+    this.MemberProxy.removeTalent(talentId);
     this.talents.splice(this.talents.indexOf(question), 1);
     this.nextTalentId--;
-   // if (this.nextTalentId===0)
-   //   this.hasTalent = false;
-
+    
   }
+
+
+
+
 
   addTalent(): void {
     this.talents.push(new CreateTalent(this.nextTalentId, "",0,  this.talents.length));
     this.nextTalentId++;
   }
 
- 
-  //  addFirstTalent(): void {
- //   this.hasTalent = true;
-////    this.talents = [new CreateTalent(0, "", 0, 0)];
- //  this.nextTalentId++;
-//  }
+
 
     talentChanged(talentChangedEvent: TalentChangedEvent): void {
     for (let talent of this.talents) {
@@ -113,16 +108,15 @@ removeTalent(question: CreateTalent): void {
 
 
 
-
   SaveChanges(id: number, member: MemberApiModel) {
     console.log(this.member);
      let talents = <TalentApiModel[]>this.talents;
      this.member.talents = talents;
-
+     
     this.MemberProxy.editMember(this.id, this.member)
       .subscribe((member) => this.member = member);
         
-    console.log(this.member);
+   // console.log(this.member);
     this.router.navigate(["individual-dashboard"]);
   }
 

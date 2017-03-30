@@ -59,6 +59,13 @@ export class MemberProxyService {
 
   }
 
+removeTalent(talentId: number) {
+    return this.http.delete(this.endpointUrl + "/api/Individual/DeleteTalent/" + talentId, { headers: this.headers })
+      .catch(error => this.handleError(error))
+      .subscribe((response) => null)
+
+  }
+
 
   editMember(id: number, member: MemberApiModel): Observable<MemberApiModel> {
     return this.http.put(this.endpointUrl + "/api/Individual/Edit/" + id, JSON.stringify(member), { headers: this.headers })

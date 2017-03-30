@@ -29,22 +29,29 @@ Age: <br><input  type="text" [(ngModel)] = "this.member.age"/><br><br>
   </select><br>
   <br>
 
+
+
+
+
+
+
+
 <h3>Talents</h3>
-<!--<div *ngIf="hasTalent == false">
-   <div>
-       <button class="btn btn-success"  (click)="addFirstTalent()"> Add Talent(s)</button>   
-   </div>
-</div> -->
+
 <div *ngFor="let talent of talents">
-<!--	<div *ngIf="hasTalent == true"> -->
     	<div>
-			<app-talent-create-toggle [years]="talent.yearsExperience" [id]="talent.id" [description]="talent.talentDescription" (onChange)="talentChanged($event)" ></app-talent-create-toggle>
+			      <app-talent-create-toggle [years]="talent.yearsExperience" [id]="talent.id" [description]="talent.talentDescription" (onChange)="talentChanged($event)" ></app-talent-create-toggle>
+            <delete-talent-modal [years]="talent.yearsExperience" [id]="talent.id" [description]="talent.talentDescription" ></delete-talent-modal>
+
     	</div>
-    <div>
-    	<button class="btn btn-danger" (click)="removeTalent(Talent)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove</button>
-   <!-- 	<button class="btn btn-success" (click)="addTalent()">Add Talent</button>   -->
-    </div>
-<!--	</div>  -->
+      <div>
+    	        <button class="btn btn-danger" (click)="removeTalent(Talent,talent.id)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove</button>
+      </div>
+
+   
+
+
+
 </div>
 <br>
 <button class="btn btn-success" (click)="addTalent()">Add a Talent</button>  
@@ -57,3 +64,6 @@ Age: <br><input  type="text" [(ngModel)] = "this.member.age"/><br><br>
 <div>
  <a class="btn btn-warning" (click) = "SaveChanges(this.id,member)" >Save Changes</a>
 </div>
+
+
+

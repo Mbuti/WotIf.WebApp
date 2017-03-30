@@ -38,6 +38,7 @@ import { CreateSurveyComponent } from './surveys/create-survey.component';
 import { DeleteindividualComponent } from './individuals/delete-individual/deleteindividual.component';
 import { SearchIndividualComponent } from './individuals/search-individual/search-individual.component'
 
+import { deleteTalentModal } from './individuals/edit-individual/delete-talent-modal';
 // Pipes
 import { NationalityEnumFilterPipe } from './pipes/nationality-enum-filter.pipe';
 import { RaceEnumFilterPipe } from './pipes/race-enum-filter.pipe';
@@ -85,7 +86,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     NationalityEnumFilterPipe,
     GenderEnumFilterPipe,
     FooterComponent,
-    SearchIndividualComponent
+    SearchIndividualComponent,
+    deleteTalentModal
   ],
   imports: [
     AppRoutingModule,

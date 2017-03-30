@@ -31,9 +31,6 @@ export class TalentCreateToggleComponent implements OnInit {
   ngOnInit() {
     this.talentYears = this.years;
     this.talentText = this.description;
-   // if (this.id!=null)
-    //  this.id =
-   // console.log(this.id);
   }
 
   toggleEditMode() {
