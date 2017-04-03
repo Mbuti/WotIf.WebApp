@@ -30,11 +30,12 @@ export class EditIndividualComponent implements OnInit {
   member: MemberApiModel = new MemberApiModel();
   talents: Array<CreateTalent> = new Array<CreateTalent>() ;
   
-  //alteredTalents: Array<CreateTalent> = new Array<CreateTalent>() ;
-  //alteredTalents: CreateTalent[] ;
- // hasTalent = true;
+
   nextTalentId: number = 0;
 
+  talaentRemovalID: number;
+  talentRemovalDescription: string;
+  talentRemovalYears: number;
 
 
   raceOptions = this.RaceService.raceOptions;
@@ -52,8 +53,6 @@ export class EditIndividualComponent implements OnInit {
     this.MemberProxy.getMemberById(this.id).subscribe((member) => this.member = member);
     this.MemberProxy.getTalentsByID(this.id).subscribe((talents) => this.talents = talents);
     this.nextTalentId=this.talents.length;
-
-
   }
 
   ngOnInit() {
@@ -61,15 +60,16 @@ export class EditIndividualComponent implements OnInit {
   }
   assignNationality(value: string) {
     this.member.nationality = this.NationalityService.assignNationality(value);
-  
   }
 
   assignRace(value: string) {
     this.member.race = this.RaceService.assignRace(value);
   }
+
   assignGender(value: string) {
     this.member.gender = this.GenderService.assignGender(value);
   }
+
   addParticipant(participant: ParticipantApiModel) {
     this.member.participant = this.participant;
   }
@@ -77,22 +77,25 @@ export class EditIndividualComponent implements OnInit {
 
 
 
-removeTalent(question: CreateTalent, talentId:number): void {
+removeTalent(talentId:number): void {
   console.log(talentId);
     this.MemberProxy.removeTalent(talentId);
-    this.talents.splice(this.talents.indexOf(question), 1);
-    this.nextTalentId--;
     
-  }
+}
 
 
 
-
+activateRemovalModal(talentId:number,talentYears:number,talentDescription:string)
+{
+  this.talaentRemovalID=talentId;
+  this.talentRemovalDescription=talentDescription;
+  this.talentRemovalYears=talentYears;
+}
 
   addTalent(): void {
     this.talents.push(new CreateTalent(this.nextTalentId, "",0,  this.talents.length));
     this.nextTalentId++;
-  }
+}
 
 
 
@@ -109,7 +112,7 @@ removeTalent(question: CreateTalent, talentId:number): void {
 
 
   SaveChanges(id: number, member: MemberApiModel) {
-    console.log(this.member);
+   // console.log(this.member);
      let talents = <TalentApiModel[]>this.talents;
      this.member.talents = talents;
      

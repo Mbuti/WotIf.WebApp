@@ -7,6 +7,8 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { Ng2CompleterModule } from "ng2-completer";
+import { ModalModule } from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 
 // Components
 import { AppComponent } from './app.component';
@@ -25,6 +27,7 @@ import { NavComponent } from './nav/nav.component';
 import { IndividualDashboardComponent } from './individuals/individual-dashboard.component';
 import { CreateIndividualComponent } from './individuals/create-individual/create-individual.component';
 import { EditIndividualComponent } from './individuals/edit-individual/edit-individual.component';
+
 import { GeneralComponent } from './general/general.component';
 import { ParticipantsComponent } from './participants/participants.component';
 import { TalentsComponent } from './talents/talents.component';
@@ -38,7 +41,6 @@ import { CreateSurveyComponent } from './surveys/create-survey.component';
 import { DeleteindividualComponent } from './individuals/delete-individual/deleteindividual.component';
 import { SearchIndividualComponent } from './individuals/search-individual/search-individual.component'
 
-import { deleteTalentModal } from './individuals/edit-individual/delete-talent-modal';
 // Pipes
 import { NationalityEnumFilterPipe } from './pipes/nationality-enum-filter.pipe';
 import { RaceEnumFilterPipe } from './pipes/race-enum-filter.pipe';
@@ -87,7 +89,6 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     GenderEnumFilterPipe,
     FooterComponent,
     SearchIndividualComponent,
-    deleteTalentModal
   ],
   imports: [
     AppRoutingModule,
@@ -96,7 +97,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     HttpModule,
     ReactiveFormsModule,
     Ng2CompleterModule,
-    Ng2AutoCompleteModule
+    Ng2AutoCompleteModule,
+    BrowserModule, 
   ],
   providers: [
     {

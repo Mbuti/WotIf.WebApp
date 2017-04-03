@@ -2,19 +2,18 @@
   <a class="btn btn-primary" routerLink="/individual-dashboard">Back</a>
 </div>
 <div>
-Name:  <br> <input  type="text"[(ngModel)] = "this.member.name"/><br><br>
-Surname: <br> <input  type="text"[(ngModel)] = "this.member.surname" /><br><br>
-Username: <br> <input  type="text"[(ngModel)] = "this.member.username" /><br><br>
-IDNumber:<br> <input  type="text" [(ngModel)] = "this.member.idNumber"/><br><br>
-Age: <br><input  type="text" [(ngModel)] = "this.member.age"/><br><br>
-<label>Nationality</label><br>
- <select (change)="assignNationality($event.target.value)">
+  Name: <br> <input type="text" [(ngModel)]="this.member.name" /><br><br> Surname: <br> <input type="text" [(ngModel)]="this.member.surname"
+  /><br><br> Username: <br> <input type="text" [(ngModel)]="this.member.username" /><br><br> IDNumber:
+  <br> <input type="text" [(ngModel)]="this.member.idNumber" /><br><br> Age: <br><input type="text" [(ngModel)]="this.member.age"
+  /><br><br>
+  <label>Nationality</label><br>
+  <select (change)="assignNationality($event.target.value)">
     <option>{{this.member.nationality| nationalityEnumFilter}}</option>
     <option *ngFor="let name of nationalityOptions"
         [value]="name">{{name}}</option>
   </select><br>
   <br>
-<label>Race</label><br>
+  <label>Race</label><br>
   <select (change)="assignRace($event.target.value)">
     <option>{{this.member.race|raceEnumFilter}}</option>
     <option *ngFor="let name of raceOptions"
@@ -33,37 +32,58 @@ Age: <br><input  type="text" [(ngModel)] = "this.member.age"/><br><br>
 
 
 
+  <h3>Talents</h3>
 
-
-
-<h3>Talents</h3>
-
-<div *ngFor="let talent of talents">
-    	<div>
-			      <app-talent-create-toggle [years]="talent.yearsExperience" [id]="talent.id" [description]="talent.talentDescription" (onChange)="talentChanged($event)" ></app-talent-create-toggle>
-            <delete-talent-modal [years]="talent.yearsExperience" [id]="talent.id" [description]="talent.talentDescription" ></delete-talent-modal>
-
-    	</div>
+  <div *ngFor="let talent of talents">
+    <div>
       <div>
-    	        <button class="btn btn-danger" (click)="removeTalent(Talent,talent.id)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove</button>
+      <app-talent-create-toggle [years]="talent.yearsExperience" [id]="talent.id" [description]="talent.talentDescription" (onChange)="talentChanged($event)"></app-talent-create-toggle>
       </div>
 
-   
 
 
+       <div>
+      <button class="btn btn-danger" (click)="activateRemovalModal(talent.id,talent.yearsExperience,talent.talentDescription)"
+        data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Remove Talent</button>
 
-</div>
-<br>
-<button class="btn btn-success" (click)="addTalent()">Add a Talent</button>  
-<br>
+      <!-- Modal -->
+      <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"></button>
+              <h4 class="modal-title">Confirm Talent Removal</h4>
+            </div>
+            <div class="modal-body">
+              <p>Talent Description: {{talentRemovalDescription}}</p>
+              <p>Years Experience: {{talentRemovalYears}}</p>
+            </div>
+            <div class="modal-footer">
+
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-danger" (click)="removeTalent(talaentRemovalID)" data-dismiss="modal" routerLink="/individual-dashboard">Delete this talent</button>
+            </div>
+          </div>
+        </div>
+         </div>
+
+      </div>
+        <br>
+     
+    </div>
+  </div>
+  <br>
+  <button class="btn btn-success" (click)="addTalent()">Add a Talent</button>
+  <br>
 
 
   <br>
-   <a class="btn btn-primary" (click) = "addParticipant(th)" >Add Participant</a>
- </div>
-<div>
- <a class="btn btn-warning" (click) = "SaveChanges(this.id,member)" >Save Changes</a>
+  <a class="btn btn-primary" (click)="addParticipant(th)">Add Participant</a>
+  <br>
+  <br>
 </div>
-
-
-
+<div>
+  <a class="btn btn-warning" (click)="SaveChanges(this.id,member)">Save Changes</a>
+</div>
