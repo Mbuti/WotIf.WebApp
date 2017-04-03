@@ -1,15 +1,15 @@
 <div *ngIf="editMode">
 
   <div class="form-group">
-    <label for="talentText" class="col-lg-15 control-label">Name of Talent</label>
-    <div class="col-lg-10">
+    <label for="talentText" class="col-lg-9 control-label">Name of Talent</label>
+    <div class="col-lg-15">
       <input id="talentText" name="talentText"  [(ngModel)]="talentText" (ngModelChange)="notifyChange()" class="form-control"
         required />
     </div>
   </div>
     <div class="form-group">
-    <label for="talentYears" class="col-lg-15 control-label">Years Experience</label>
-    <div class="col-lg-10">
+    <label for="talentYears" class="col-lg-9 control-label">Years Experience</label>
+    <div class="col-lg-15">
       <input id="talentYears" name="talentYears" [(ngModel)]="talentYears" (ngModelChange)="notifyChange()" class="form-control"
         required />
     </div>
