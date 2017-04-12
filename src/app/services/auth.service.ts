@@ -17,7 +17,7 @@ export class AuthService {
   constructor(private authProxy: AuthProxyService) { }
 
   loggedIn(): boolean {
-    if (tokenNotExpired()) {
+    if (tokenNotExpired("id_token")) {
       return true;
     } else {
       localStorage.clear();
@@ -37,8 +37,6 @@ export class AuthService {
         this.authProxy.refreshToken().subscribe((result) => {
           localStorage.setItem("id_token", result.access_token);
           localStorage.setItem("refreshToken", result.refresh_token);
-
-          console.log("Token has been refreshed. The new token is: ", result.refresh_token);
         })
       } catch (error) {
         this.stopRefreshTimer();

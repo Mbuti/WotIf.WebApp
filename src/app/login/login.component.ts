@@ -36,8 +36,10 @@ export class LoginComponent implements OnInit {
       .subscribe((data) => {
         try {
           let loginResponse = new LoginResponseModel(data);
+          
           localStorage.setItem("id_token", loginResponse.accessToken);
           localStorage.setItem("refreshToken", loginResponse.refreshToken);
+
           this.auth.startTokenRefreshTimer(loginResponse.expiresIn);
           if (this.redirectUrl !== "") {
             this.router.navigate([decodeURI(this.redirectUrl)]);

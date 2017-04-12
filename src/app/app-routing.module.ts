@@ -22,7 +22,6 @@ import { AuthGuardService } from './services/auth-guard.service';
 
 
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthGuardService] },
     { path: 'login', component: LoginComponent },
     { path: 'login/:redirectUrl', component: LoginComponent },
     { path: 'individual-dashboard', component: IndividualDashboardComponent, canActivate: [AuthGuardService] },
@@ -35,7 +34,8 @@ const appRoutes: Routes = [
     { path: 'surveys', component: SurveysComponent, canActivate: [AuthGuardService] },
     { path: 'survey-create', component: CreateSurveyComponent, canActivate: [AuthGuardService] },
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuardService] },
-    { path: 'deleteindividual/:id', component: DeleteindividualComponent, canActivate: [AuthGuardService] }
+    { path: 'deleteindividual/:id', component: DeleteindividualComponent, canActivate: [AuthGuardService] },
+    { path: '**', component: HomeComponent, canActivate: [AuthGuardService] }    
 ];
 
 @NgModule({

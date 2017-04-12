@@ -1,14 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpModule } from '@angular/http';
-import { provideAuth, AUTH_PROVIDERS } from "angular2-jwt";
+import { HttpModule, Http, RequestOptions } from '@angular/http';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
-import { Http, RequestOptions } from '@angular/http';
-import { AuthHttp, AuthConfig } from 'angular2-jwt';
-import { Ng2CompleterModule } from "ng2-completer";
-import { ModalModule } from 'angular2-modal';
-import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+import { provideAuth, AUTH_PROVIDERS, AuthHttp, AuthConfig } from 'angular2-jwt';
+import * as jQuery from 'jquery';
+import * as bootstrap from 'bootstrap';
 
 // Components
 import { AppComponent } from './app.component';
@@ -96,9 +93,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    Ng2CompleterModule,
     Ng2AutoCompleteModule,
-    BrowserModule, 
+    BrowserModule,
   ],
   providers: [
     {

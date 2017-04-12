@@ -1,10 +1,10 @@
-import { WotIfWebAppPage } from './app.po';
+import { WotIf.WebAppPage } from './app.po';
 
-describe('wot-if-web-app App', function() {
-  let page: WotIfWebAppPage;
+describe('wot-if.web-app App', () => {
+  let page: WotIf.WebAppPage;
 
   beforeEach(() => {
-    page = new WotIfWebAppPage();
+    page = new WotIf.WebAppPage();
   });
 
   it('should display message saying app works', () => {
