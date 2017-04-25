@@ -29,7 +29,7 @@ export class CreateIndividualComponent implements OnInit {
   participant: ParticipantApiModel
 
   hasTalent = false;
-
+  hasParticipant=false;
   talents: CreateTalent[];
   nextTalentId: number = 0;
 
@@ -41,6 +41,7 @@ export class CreateIndividualComponent implements OnInit {
     this.member = new MemberApiModel();
     this.participant = new ParticipantApiModel();
     this.member.participant = this.participant;
+    this.member.participant.participantId=-1;
 
   }
 
@@ -91,8 +92,13 @@ export class CreateIndividualComponent implements OnInit {
   CreateIndividual() {
     let talents = <TalentApiModel[]>this.talents;
     this.member.talents = talents;
+    
+    if(this.hasParticipant==false)
+      this.member.participant=null;
 
-    //console.log(talents);
+
+
+    console.log( this.member);
     this.MemberProxy.createMember(this.member)
       .subscribe((member) => {
         this.member = member;
