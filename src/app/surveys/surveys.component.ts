@@ -1,4 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 //Models
 import { SurveyApiModel } from '../models/SurveyApiModel';
@@ -22,14 +23,14 @@ export class SurveysComponent implements OnInit {
   selectedSurvey: string = "";
   survey: SurveyApiModel;
 
-  constructor(private surveyProxy: SurveyProxyService) { }
+  constructor(private surveyProxy: SurveyProxyService, private router: Router) { }
 
   ngOnInit() {
     this.surveyProxy.getSurveys()
       .subscribe((surveys) => {
         this.surveys = surveys;
       });
- 
+
   }
 
   selectedSurveyChanged(selectedSurvey: string) {
@@ -60,7 +61,12 @@ export class SurveysComponent implements OnInit {
     let completedSurvey = new SubmitSurveyApiModel(this.survey.id, answers);
 
     this.surveyProxy.submitSurvey(completedSurvey)
-      .subscribe();
+      .subscribe(
+      result => {
+        this.router.navigate(["surveys"])
+      },
+      error => { }
+      );
   }
 
 }

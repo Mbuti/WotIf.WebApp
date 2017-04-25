@@ -28,12 +28,14 @@ export class QuestionCreateToggleComponent implements OnInit {
   @Output() questionTextChange = new EventEmitter();
   set questionText(value: string) {
     this.questionTextValue = value;
+    this.updateValidity();
     this.questionTextChange.emit(this.questionTextValue);
   }
 
   @Output() questionTypeChange = new EventEmitter();
   set questionType(value: string) {
     this.questionTypeValue = value;
+    this.updateValidity();
     this.questionTypeChange.emit(this.questionTypeValue);
   }
 
@@ -44,6 +46,15 @@ export class QuestionCreateToggleComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  updateValidity() {
+    if (this.questionText !== undefined && this.questionText !== "" && this.questionType !== undefined && this.questionType !== "") {
+      this.isValid = true;
+      this.questionModel = new Question(undefined, this.questionText, this.questionType);
+      return;
+    }
+    this.questionModel = undefined;
   }
 
   toggleEditMode() {

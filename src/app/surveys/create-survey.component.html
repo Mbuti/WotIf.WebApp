@@ -1,15 +1,15 @@
 <h1>Create a Survey</h1>
 
-<form [formGroup]="form" (ngSubmit)="submitForm(form.value)" class="form-vertical">
+<form class="form-vertical">
   <h3>Survey Details</h3>
   <div class="form-group">
     <label for="surveyName">Survey Title</label>
-    <input type="text" id=surveyName class="form-control" formControlName="title" required />
+    <input type="text" id="surveyName" name="surveyName" class="form-control" [(ngModel)]="surveyApiModel.title" required />
   </div>
 
   <div class="form-group">
     <label for="surveyDescription">Survey Description</label>
-    <textarea id="surveyDescription" class="form-control" formControlName="description" required></textarea>
+    <textarea id="surveyDescription" name="surveyDescription" class="form-control" [(ngModel)]="surveyApiModel.description" required></textarea>
   </div>
 
   <h3>Questions</h3>
@@ -25,5 +25,11 @@
   </div>
 
   <button class="btn btn-success" (click)="addQuestion()">Add Question</button>
-  <button class="btn btn-primary" type="submit" [disabled]="!form.valid || questions.length === 0 || !validateQuestions()">Create Survey</button>
+  <button class="btn btn-primary" [disabled]="surveyApiModel.title === undefined ||
+    surveyApiModel.title === ''  ||
+    surveyApiModel.description === undefined ||
+    surveyApiModel.description === '' ||
+    questions.length === 0 ||
+    !validateQuestions()"
+    (click)="createSurvey()">Create Survey</button>
 </form>
