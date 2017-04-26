@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from '@angular/router';
 
 // Models
 import { CreateQuestion } from '../models/CreateQuestion';
@@ -17,19 +17,17 @@ import { SurveyProxyService } from '../services/survey-proxy.service';
   providers: [QuestionProxyService, SurveyProxyService]
 })
 export class CreateSurveyComponent implements OnInit {
-  form: FormGroup;
+
+  public surveyApiModel: CreateSurveyApiModel;
   questionTypes: QuestionTypeApiModel[] = [];
-  questions: CreateQuestion[] = [new CreateQuestion(0, "", "", 0)];
+  questions: CreateQuestion[] = [new CreateQuestion()];
   nextQuestionId: number = 1;
 
   constructor(
-    private formBuilder: FormBuilder,
     private questionProxy: QuestionProxyService,
-    private surveyProxy: SurveyProxyService) {
-    this.form = formBuilder.group({
-      title: [null, [Validators.required]],
-      description: [null, [Validators.required]]
-    });
+    private surveyProxy: SurveyProxyService,
+    private router: Router) {
+    this.surveyApiModel = new CreateSurveyApiModel();
   }
 
   ngOnInit() {
@@ -76,20 +74,24 @@ export class CreateSurveyComponent implements OnInit {
 
   validateQuestions(): boolean {
     for (let question of this.questions) {
-      if (question.text === "" || question.type === "") {
+      if (question.text === undefined || question.text === "" || question.type === undefined || question.type === "") {
         return false;
       }
     }
     return true;
   }
 
-  submitForm(formData: CreateSurveyApiModel) {
-    let survey = formData;
+  public createSurvey() {
     let questions = <AddQuestionApiModel[]>this.questions;
-    survey.questions = questions;
+    this.surveyApiModel.questions = questions;
 
-    this.surveyProxy.createSurvey(survey)
-      .subscribe(() => { });
+    this.surveyProxy.createSurvey(this.surveyApiModel)
+      .subscribe(
+      result => {
+        this.router.navigate(["surveys"]);
+      },
+      error => { }
+      );
   }
 
 }
