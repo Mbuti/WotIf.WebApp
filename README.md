@@ -80,7 +80,7 @@ You can navigate to the website by opening your browsing and going to http://loc
 Once you have your application up and running, you'll notice that navigating to http://localhost:4200 takes you to a login page. These steps explain how to create a user so that you are able to log in to the website:
 + Make sure that you have followed the instructions for the Wot-If? backend solution.
 + Run the Wot-If? backend solution.
-+ In your browser, navigate to Swagger (http://localhost:33333/swagger).
++ In your browser, navigate to Swagger (http://localhost:33333/swagger/ui).
 + Under the "Register" controller, click on the "Register" endpoint.
 + Click the example template on the righthand side to insert the template for you. Change the values to be what you'd like.
 + Click "Try it out" to send the request to the backend and create a user.
