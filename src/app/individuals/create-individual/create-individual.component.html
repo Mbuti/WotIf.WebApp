@@ -95,7 +95,7 @@
 					</div>
 				</div>
 				-->
-		<label><input #angularcb2 type="checkbox" [(ngModel)]="hapParticipant" (change)="hasParticipant = angularcb2.checked" />Participant</label>
+		<label><input #angularcb2 type="checkbox" (change)="hasParticipant = angularcb2.checked" />Participant</label>
 		<div *ngIf="!hasParticipant"><br>
 		</div>
 		<div *ngIf="hasParticipant">
