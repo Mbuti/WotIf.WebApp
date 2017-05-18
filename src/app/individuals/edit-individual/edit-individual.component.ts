@@ -45,6 +45,7 @@ export class EditIndividualComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private MemberProxy: MemberProxyService, private router: Router, private RaceService: RaceService, private NationalityService: NationalityService, private GenderService: GenderService) {
     this.participant = new ParticipantApiModel();
+    this.participant.participantId=4;
 
 
     this.id = route.snapshot.params['id'];
@@ -115,7 +116,7 @@ activateRemovalModal(talentId:number,talentYears:number,talentDescription:string
    // console.log(this.member);
      let talents = <TalentApiModel[]>this.talents;
      this.member.talents = talents;
-     
+     this.member.participant =this.participant;
     this.MemberProxy.editMember(this.id, this.member)
       .subscribe((member) => this.member = member);
         

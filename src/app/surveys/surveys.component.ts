@@ -59,14 +59,15 @@ export class SurveysComponent implements OnInit {
       answers.push(new AnsweredQuestionApiModel(answer.questionId, answer.answer.toString()));
     }
     let completedSurvey = new SubmitSurveyApiModel(this.survey.id, answers);
-
-    this.surveyProxy.submitSurvey(completedSurvey)
+    console.log (completedSurvey);
+    this.router.navigate(["surveys"]);
+  /*  this.surveyProxy.submitSurvey(completedSurvey)
       .subscribe(
       result => {
         this.router.navigate(["surveys"])
       },
-      error => { }
-      );
+      error => {this.router.navigate(["surveys"]) }
+      );*/
   }
 
 }

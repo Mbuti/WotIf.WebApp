@@ -50,6 +50,11 @@ export class MemberProxyService {
       .map((response) => <MemberApiModel>response.json())
       .catch(error => this.handleError(error));
   }
+   getMemberByUsername(username:string): Observable<MemberApiModel> {
+    return this.http.get(this.endpointUrl + "/api/Individual/Search/" + username, { headers: this.headers })
+      .map((response) => <MemberApiModel>response.json())
+      .catch(error => this.handleError(error));
+  }
 
 
   removeMember(id: number) {

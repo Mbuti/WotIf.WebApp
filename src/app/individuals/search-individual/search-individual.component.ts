@@ -11,6 +11,7 @@ export class SearchIndividualComponent implements OnInit {
 
   public members: MemberApiModel[] = [];
   public SelectedUsername: MemberApiModel;
+   member: MemberApiModel = new MemberApiModel();
 
   constructor(private MemberProxy: MemberProxyService) {
   }
@@ -21,5 +22,15 @@ export class SearchIndividualComponent implements OnInit {
         this.members = members;
       })
   }
+  Search(username : string)
+  {
+      
+    this.MemberProxy.getMemberByUsername(this.member.username)
+    .subscribe((member)=>
+{
+  this.member = member
+  console.log(this.member)
+}   ) ;
 
+}
 }
