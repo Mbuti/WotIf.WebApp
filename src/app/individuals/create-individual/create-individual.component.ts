@@ -48,8 +48,9 @@ export class CreateIndividualComponent implements OnInit {
   ngOnInit() {
   }
 
-  removeTalent(question: CreateTalent): void {
-    this.talents.splice(this.talents.indexOf(question), 1);
+  removeTalent(talent: CreateTalent): void {
+    console.log(this.talents.indexOf(talent));
+    this.talents.splice(this.talents.indexOf(talent), 1);
     this.nextTalentId--;
     if (this.nextTalentId === 0)
       this.hasTalent = false;

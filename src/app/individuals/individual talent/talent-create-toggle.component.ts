@@ -33,14 +33,17 @@ export class TalentCreateToggleComponent implements OnInit {
     this.talentText = this.description;
   }
 
-  toggleEditMode() {
-    this.editMode = !this.editMode;
-  }
+ 
 
   notifyChange() {
    this.onChange.emit(new TalentChangedEvent(this.id, this.talentText, this.talentYears));
    this.isValid = this.talentText !== "" && this.talentYears !== null;
    this.talentModel = new Talent(this.id, this.talentText, this.talentYears)
   }
+
+ /* toggleEditMode() {
+    this.editMode = !this.editMode;
+  }*/
+
 
 }
