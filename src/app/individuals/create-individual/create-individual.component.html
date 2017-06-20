@@ -51,29 +51,55 @@
  		 </select><br>
 
 
-<h3>Talents</h3>
-<div *ngIf="hasTalent == false">
-   <div>
-       <button class="btn btn-success"  (click)="addFirstTalent()"> Add Talent(s)</button>   
-   </div>
-</div>
-<div *ngFor="let talent of talents">
-	<div *ngIf="hasTalent == true">
-    	<div>
-			<app-talent-create-toggle [id]="talent.id" (onChange)="talentChanged($event)" ></app-talent-create-toggle>
-    	</div>
-    <div>
-    	<button class="btn btn-danger" (click)="removeTalent(talent)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove</button>
-    
-    </div>
-	</div>
+		<h3>Talents</h3>
+		<div *ngIf="hasTalent == false">
+			<div>
+				<button class="btn btn-success" (click)="addFirstTalent()"> Add Talent(s)</button>
+			</div>
+		</div>
+		<div *ngFor="let talent of talents">
+			<div *ngIf="hasTalent == true">
+				<div>
+					<app-talent-create-toggle [id]="talent.id" (onChange)="talentChanged($event)"></app-talent-create-toggle>
+				</div>
+				<div>
+					<button class="btn btn-danger" (click)="removeTalent(talent)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove</button>
 
-</div>
-	<div *ngIf="hasTalent == true">
-		<br>
-		<button class="btn btn-success" (click)="addTalent()">Add a Talent</button>
-		<br>
-	</div>
+				</div>
+			</div>
+
+		</div>
+		<div *ngIf="hasTalent == true">
+			<br>
+			<button class="btn btn-success" (click)="addTalent()">Add a Talent</button>
+			<br>
+		</div>
+
+
+		<h3>Participants</h3>
+		<div *ngIf="hasParticipant == false">
+			<div>
+				<button class="btn btn-success" (click)="addFirstParticipant()"> Add Participant(s)</button>
+			</div>
+		</div>
+		<div *ngFor="let participant of participants">
+			<div *ngIf="hasParticipant == true">
+				<div>
+					<app-participant-create-toggle [id]="participant.id" (onChange)="participantChanged($event)"></app-participant-create-toggle>
+				</div>
+				<div>
+					<button class="btn btn-danger" (click)="removeParticipant(participant)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove</button>
+
+				</div>
+			</div>
+
+		</div>
+		<div *ngIf="hasParticipant == true">
+			<br>
+			<button class="btn btn-success" (click)="addParticipant()">Add a Participant</button>
+			<br>
+		</div>
+
 
 
 		<!--<label>
@@ -95,7 +121,7 @@
 					</div>
 				</div>
 				-->
-		<label><input #angularcb2 type="checkbox" (change)="hasParticipant = angularcb2.checked" />Participant</label>
+	<!--	<label><input #angularcb2 type="checkbox" (change)="hasParticipant = angularcb2.checked" />Participant</label>
 		<div *ngIf="!hasParticipant"><br>
 		</div>
 		<div *ngIf="hasParticipant">
@@ -110,4 +136,7 @@
 				<input [(ngModel)]="member.participant.participantName" placeholder="What does the company do" />
 			</div>
 		</div>
+
+
+		-->
 		<a class="btn btn-primary" (click)="CreateIndividual()">Save</a>

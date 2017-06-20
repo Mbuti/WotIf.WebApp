@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 // Events
 import { TalentChangedEvent } from './../../events/TalentChangedEvent';
+import { ParticipantChangedEvent } from './../../events/ParticipantChangedEvent';
 
 // Services
 import { TalentProxyService } from './../../services/talent-proxy.service';
@@ -16,6 +17,7 @@ import { GenderService } from './../../services/gender.service';
 import { ParticipantApiModel } from './.././../models/ParticipantApiModel';
 import { MemberApiModel } from './../../models/MemberApiModel';
 import { CreateTalent } from './../../models/CreateTalent';
+import { CreateParticipant } from './../../models/CreateParticipant';
 import { TalentApiModel } from './../../models/TalentApiModel';
 
 @Component({
@@ -31,7 +33,9 @@ export class CreateIndividualComponent implements OnInit {
   hasTalent = false;
   hasParticipant=false;
   talents: CreateTalent[];
+  participants: CreateParticipant[];
   nextTalentId: number = 0;
+  nextParticipantId: number = 0;
 
   raceOptions = this.RaceService.raceOptions;
   nationalityOptions = this.NationalityService.nationalityOptions;
@@ -39,9 +43,9 @@ export class CreateIndividualComponent implements OnInit {
 
   constructor(private MemberProxy: MemberProxyService, private router: Router, private RaceService: RaceService, private NationalityService: NationalityService, private GenderService: GenderService, private talentProxy: TalentProxyService) {
     this.member = new MemberApiModel();
-    this.participant = new ParticipantApiModel();
-    this.member.participant = this.participant;
-    this.member.participant.participantId=-1;
+    //this.participant = new ParticipantApiModel();
+    //this.member.participant = this.participant;
+    //this.member.participant.participantId=-1;
 
   }
 
@@ -77,6 +81,35 @@ export class CreateIndividualComponent implements OnInit {
     }
   }
 
+   removeParticipant(participant: CreateParticipant): void {
+    console.log(this.participants.indexOf(participant));
+    this.participants.splice(this.participants.indexOf(participant), 1);
+    this.nextParticipantId--;
+    if (this.nextParticipantId === 0)
+      this.hasParticipant = false;
+  }
+
+  addParticipant(): void {
+    this.participants.push(new CreateParticipant(this.nextParticipantId, "", "", this.participants.length));
+    this.nextParticipantId++;
+  }
+
+  addFirstParticipant(): void {
+    this.hasParticipant = true;
+    this.participants = [new CreateParticipant(0, "", "", 0)];
+    this.nextTalentId++;
+  }
+
+  participantChanged(participantChangedEvent: ParticipantChangedEvent): void {
+    for (let participant of this.participants) {
+      if (participant.participantId === participantChangedEvent.participantId) {
+        participant.participantDescription = participantChangedEvent.participantDescription;
+        participant.participantName = participantChangedEvent.participantName;
+        break;
+      }
+    }
+  }
+
 
   assignNationality(value: string) {
     this.member.nationality = this.NationalityService.assignNationality(value);
@@ -90,7 +123,7 @@ export class CreateIndividualComponent implements OnInit {
     this.member.race = this.RaceService.assignRace(value);
   }
 
-  CreateIndividual() {
+ /* CreateIndividual() {
     let talents = <TalentApiModel[]>this.talents;
     this.member.talents = talents;
     
@@ -98,6 +131,23 @@ export class CreateIndividualComponent implements OnInit {
       this.member.participant=null;
 
 
+
+    console.log( this.member);
+    this.MemberProxy.createMember(this.member)
+      .subscribe((member) => {
+        this.member = member;
+      });
+    this.router.navigate(["individual-dashboard"]);
+  }*/
+
+
+
+    CreateIndividual() {
+    let talents = <TalentApiModel[]>this.talents;
+    this.member.talents = talents;
+
+    let participants = <ParticipantApiModel[]>this.participants;
+    this.member.participants = participants;
 
     console.log( this.member);
     this.MemberProxy.createMember(this.member)

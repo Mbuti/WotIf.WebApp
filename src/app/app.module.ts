@@ -32,6 +32,7 @@ import { SurveysComponent } from './surveys/surveys.component';
 import { AdminComponent } from './admin/admin.component';
 import { QuestionCreateToggleComponent } from './surveys/question-create-toggle.component';
 import { TalentCreateToggleComponent } from './individuals/individual talent/talent-create-toggle.component';
+import { ParticipantCreateToggleComponent } from './individuals/individual-participant/participant-create-toggle.component';
 import { DynamicTalentComponent } from './individuals/individual talent/dynamic-talent.component';
 import { DynamicQuestionComponent } from './surveys/dynamic-question.component';
 import { CreateSurveyComponent } from './surveys/create-survey.component';
@@ -77,6 +78,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     AdminComponent,
     QuestionCreateToggleComponent,
     TalentCreateToggleComponent,
+    ParticipantCreateToggleComponent,
     DynamicTalentComponent,
     DynamicQuestionComponent,
     CreateSurveyComponent,

@@ -13,8 +13,9 @@ export class MemberApiModel {
     public participant: ParticipantApiModel;
     public gender: Gender;
     public talents: TalentApiModel[];
+    public participants: ParticipantApiModel[];
 
-    constuctor(id: number, IdNumber: string, Username: string, Name: string, Surname: string, age: number, nationality: Nationality, race: Race, participant: ParticipantApiModel, gender: Gender) {
+    constuctor(id: number, IdNumber: string, Username: string, Name: string, Surname: string, age: number, nationality: Nationality, race: Race, /*participant: ParticipantApiModel, */gender: Gender) {
         this.id = id;
         this.idNumber = IdNumber;
         this.name = Name;
@@ -23,7 +24,7 @@ export class MemberApiModel {
         this.nationality = nationality;
         this.age = age;
         this.race = race;
-        this.participant = participant;
+       // this.participant = participant;
         this.gender = gender;
     }
 
