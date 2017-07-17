@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 // Events
-import { TalentChangedEvent } from '../../events/TalentChangedEvent';
+import { TalentChangedEvent } from '../../shared';
 
 // Models
-import { CreateTalent } from '../../models/CreateTalent';
-import { Talent } from '../../models/Talent';
+import { CreateTalent } from '../../shared/';
+import { Talent } from '../../shared/';
 //import { TalentTypeApiModel } from '../models/TalentTypeApiModel';
 
 @Component({

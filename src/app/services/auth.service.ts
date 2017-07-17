@@ -4,7 +4,7 @@ import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
 
 // Models
-import { LoginApiModel } from '../models/LoginApiModel';
+import { LoginApiModel } from '../shared';
 
 // Services
 import { AuthProxyService } from '../services/auth-proxy.service';

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 // Events
-import { TalentChangedEvent } from './../../events/TalentChangedEvent';
-import { ParticipantChangedEvent } from './../../events/ParticipantChangedEvent';
+import { TalentChangedEvent } from './../../shared';
+import { ParticipantChangedEvent } from './../../shared';
 
 // Services
 import { TalentProxyService } from './../../services/talent-proxy.service';
@@ -14,11 +14,11 @@ import { NationalityService } from './../../services/nationality.service';
 import { GenderService } from './../../services/gender.service';
 
 // models
-import { ParticipantApiModel } from './.././../models/ParticipantApiModel';
-import { MemberApiModel } from './../../models/MemberApiModel';
-import { CreateTalent } from './../../models/CreateTalent';
-import { CreateParticipant } from './../../models/CreateParticipant';
-import { TalentApiModel } from './../../models/TalentApiModel';
+import { ParticipantApiModel } from './.././../shared';
+import { MemberApiModel } from './../../shared';
+import { CreateTalent } from './../../shared';
+import { CreateParticipant } from './../../shared';
+import { TalentApiModel } from './../../shared';
 
 @Component({
   selector: 'app-create-individual',

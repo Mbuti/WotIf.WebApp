@@ -6,8 +6,8 @@ import { Router } from "@angular/router";
 import { AuthService } from '../services/auth.service';
 
 //Models
-import { LoginApiModel } from '../models/LoginApiModel';
-import { LoginResponseModel } from '../models/LoginResponseModel';
+import { LoginApiModel } from '../shared';
+import { LoginResponseModel } from '../shared';
 
 @Component({
   selector: 'app-login',

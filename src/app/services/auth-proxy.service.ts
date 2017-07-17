@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
 
 // Models
-import { LoginApiModel } from '../models/LoginApiModel';
+import { LoginApiModel } from '../shared';
 import { Subscription } from "rxjs/Subscription";
 
 @Injectable()
@@ -18,9 +18,8 @@ export class AuthProxyService {
     this.headers.append("Content-Type", "application/json");
     this.headers.append("Accept", "application/json");
 
-    if (!environment.production) {
-      this.endpointUrl = "http://localhost:33333";
-    }
+    this.endpointUrl = environment.apiAddress;
+    console.log("Getting environment api address as: " + environment.apiAddress);
   }
 
   getToken(loginModel: LoginApiModel): Observable<any> {

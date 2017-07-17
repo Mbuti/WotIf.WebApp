@@ -1,4 +1,4 @@
-export default class QuestionTypes {
+export class QuestionTypes {
     public readonly Integer: string = "Integer";
     public readonly Decimal: string = "Decimal";
     public readonly Money: string = "Money";

@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 import { HttpModule, Http, RequestOptions } from '@angular/http';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { provideAuth, AUTH_PROVIDERS, AuthHttp, AuthConfig } from 'angular2-jwt';
 import * as jQuery from 'jquery';
 import * as bootstrap from 'bootstrap';
+
+import { SharedModule } from './shared';
 
 // Components
 import { AppComponent } from './app.component';
@@ -20,7 +22,10 @@ import { AuthProxyService } from './services/auth-proxy.service';
 import { MemberProxyService } from './services/member-proxy.service';
 
 // Components
-import { NavComponent } from './nav/nav.component';
+import { ContainerComponent } from './infrastructure';
+import { NavComponent } from './infrastructure';
+import { FooterComponent } from './infrastructure';
+
 import { IndividualDashboardComponent } from './individuals/individual-dashboard.component';
 import { CreateIndividualComponent } from './individuals/create-individual/create-individual.component';
 import { EditIndividualComponent } from './individuals/edit-individual/edit-individual.component';
@@ -29,21 +34,21 @@ import { GeneralComponent } from './general/general.component';
 import { ParticipantsComponent } from './participants/participants.component';
 import { TalentsComponent } from './talents/talents.component';
 import { SurveysComponent } from './surveys/surveys.component';
-import { AdminComponent } from './admin/admin.component';
+import { AdminComponent } from './admin/components/admin.component';
 import { QuestionCreateToggleComponent } from './surveys/question-create-toggle.component';
-import { TalentCreateToggleComponent } from './individuals/individual talent/talent-create-toggle.component';
+import { TalentCreateToggleComponent } from './individuals/individual-talent/talent-create-toggle.component';
 import { ParticipantCreateToggleComponent } from './individuals/individual-participant/participant-create-toggle.component';
-import { DynamicTalentComponent } from './individuals/individual talent/dynamic-talent.component';
+import { DynamicTalentComponent } from './individuals/individual-talent/dynamic-talent.component';
 import { DynamicQuestionComponent } from './surveys/dynamic-question.component';
+import { DynamicParticipantComponent } from './individuals/individual-participant/dynamic-participant.component';
 import { CreateSurveyComponent } from './surveys/create-survey.component';
 import { DeleteindividualComponent } from './individuals/delete-individual/deleteindividual.component';
 import { SearchIndividualComponent } from './individuals/search-individual/search-individual.component'
 
 // Pipes
-import { NationalityEnumFilterPipe } from './pipes/nationality-enum-filter.pipe';
-import { RaceEnumFilterPipe } from './pipes/race-enum-filter.pipe';
-import { GenderEnumFilterPipe } from './pipes/gender-enum-filter.pipe';
-import { FooterComponent } from './footer/footer.component';
+import { NationalityEnumFilterPipe } from './shared';
+import { RaceEnumFilterPipe } from './shared';
+import { GenderEnumFilterPipe } from './shared';
 
 
 // AuthHttp should be used instead of Http when endpoints have authorization added to them.
@@ -65,6 +70,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 @NgModule({
   declarations: [
     AppComponent,
+    ContainerComponent,
     LoginComponent,
     HomeComponent,
     NavComponent,
@@ -81,6 +87,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     ParticipantCreateToggleComponent,
     DynamicTalentComponent,
     DynamicQuestionComponent,
+    DynamicParticipantComponent,
     CreateSurveyComponent,
     DeleteindividualComponent,
     RaceEnumFilterPipe,
@@ -92,11 +99,11 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   imports: [
     AppRoutingModule,
     BrowserModule,
-    FormsModule,
     HttpModule,
     ReactiveFormsModule,
     Ng2AutoCompleteModule,
     BrowserModule,
+    SharedModule
   ],
   providers: [
     {

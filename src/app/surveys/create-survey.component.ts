@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 // Models
-import { CreateQuestion } from '../models/CreateQuestion';
-import { QuestionTypeApiModel } from '../models/QuestionTypeApiModel';
-import { CreateSurveyApiModel } from '../models/CreateSurveyApiModel';
-import { AddQuestionApiModel } from '../models/AddQuestionApiModel';
+import { CreateQuestion } from '../shared/';
+import { QuestionTypeApiModel } from '../shared/';
+import { CreateSurveyApiModel } from '../shared/';
+import { AddQuestionApiModel } from '../shared/';
 
 // Services
 import { QuestionProxyService } from '../services/question-proxy.service';

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MemberProxyService } from '../services/member-proxy.service';
-import { MemberApiModel } from '../models/MemberApiModel';
+import { MemberApiModel } from '../shared';
 import { Router } from '@angular/router';
 import { DeleteindividualComponent } from './delete-individual/deleteindividual.component';
 import { CreateIndividualComponent } from './create-individual/create-individual.component'
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Race } from '../models/MemberApiModel';
-import { Nationality } from '../models/MemberApiModel';
+import { Race } from '../shared';
+import { Nationality } from '../shared';
 
 @Component({
   selector: 'app-individual-dashboard',
@@ -16,8 +16,9 @@ import { Nationality } from '../models/MemberApiModel';
 })
 export class IndividualDashboardComponent implements OnInit {
 
-  private members: MemberApiModel[] = [];
-  private SelectedId: number;
+  members: MemberApiModel[] = [];
+  SelectedId: number;
+  SelectedUsername: any = '';
 
 
   constructor(private MemberProxy: MemberProxyService, private router: Router, private route: ActivatedRoute) {

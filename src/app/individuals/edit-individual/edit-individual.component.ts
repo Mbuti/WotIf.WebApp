@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 // Events
-import { TalentChangedEvent } from '../../events/TalentChangedEvent';
+import { TalentChangedEvent } from '../../shared';
 
 //Services 
 import { RaceService } from '../../services/race.service';
@@ -13,10 +13,10 @@ import { MemberProxyService } from '../../services/member-proxy.service';
 import { CreateIndividualComponent } from '../create-individual/create-individual.component';
 
 // Models
-import { MemberApiModel } from '../../models/MemberApiModel';
-import { ParticipantApiModel } from '../../models/ParticipantApiModel';
-import { CreateTalent } from '../../models/CreateTalent';
-import { TalentApiModel } from '../../models/TalentApiModel';
+import { MemberApiModel } from '../../shared';
+import { ParticipantApiModel } from '../../shared';
+import { CreateTalent } from '../../shared';
+import { TalentApiModel } from '../../shared';
 
 
 @Component({

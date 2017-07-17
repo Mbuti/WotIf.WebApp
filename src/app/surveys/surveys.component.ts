@@ -2,11 +2,11 @@
 import { Router } from '@angular/router';
 
 //Models
-import { SurveyApiModel } from '../models/SurveyApiModel';
-import { QuestionApiModel } from '../models/QuestionApiModel';
-import { Question } from '../models/Question';
-import { AnsweredQuestionApiModel, SubmitSurveyApiModel } from '../models/SubmitSurveyApiModel';
-import { AnswerModel } from '../models/AnswerModel';
+import { SurveyApiModel } from '../shared';
+import { QuestionApiModel } from '../shared';
+import { Question } from '../shared';
+import { AnsweredQuestionApiModel, SubmitSurveyApiModel } from '../shared';
+import { AnswerModel } from '../shared';
 
 // Services
 import { SurveyProxyService } from '../services/survey-proxy.service';

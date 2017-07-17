@@ -5,9 +5,9 @@ import { environment } from '../../environments/environment';
 import "rxjs/Rx";
 
 // Models
-import { CreateSurveyApiModel } from '../models/CreateSurveyApiModel';
-import { SurveyApiModel } from '../models/SurveyApiModel';
-import { SubmitSurveyApiModel } from '../models/SubmitSurveyApiModel';
+import { CreateSurveyApiModel } from '../shared';
+import { SurveyApiModel } from '../shared';
+import { SubmitSurveyApiModel } from '../shared';
 
 @Injectable()
 export class SurveyProxyService {

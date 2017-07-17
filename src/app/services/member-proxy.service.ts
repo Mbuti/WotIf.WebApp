@@ -5,8 +5,8 @@ import { environment } from '../../environments/environment';
 import "rxjs/Rx";
 
 // Api Models
-import { MemberApiModel } from '../models/MemberApiModel';
-import { CreateTalent } from '../models/CreateTalent';
+import { MemberApiModel } from '../shared';
+import { CreateTalent } from '../shared';
 
 @Injectable()
 export class MemberProxyService {

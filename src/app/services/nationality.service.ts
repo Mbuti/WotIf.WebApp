@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Nationality } from './../models/MemberApiModel';
+import { Nationality } from './../shared';
 
 @Injectable()
 export class NationalityService {

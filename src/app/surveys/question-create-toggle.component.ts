@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { CreateQuestion } from '../models/CreateQuestion';
-import { Question } from '../models/Question';
-import { QuestionTypeApiModel } from '../models/QuestionTypeApiModel';
+import { CreateQuestion } from '../shared';
+import { Question } from '../shared';
+import { QuestionTypeApiModel } from '../shared';
 
 @Component({
   selector: 'app-question-create-toggle',

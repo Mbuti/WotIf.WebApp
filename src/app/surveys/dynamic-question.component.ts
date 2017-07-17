@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 // Models
-import { Question } from '../models/Question';
+import { Question } from '../shared';
 
 @Component({
   selector: 'app-dynamic-question',

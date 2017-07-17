@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 // Models
-import { Participant } from './../../models/Participant';
+import { Participant } from '../../shared';
 
 @Component({
   selector: 'app-dynamic-participant',
@@ -9,6 +9,8 @@ import { Participant } from './../../models/Participant';
 })
 export class DynamicParticipantComponent implements OnInit {
   @Input() question: Participant;
+  participant: any = {};
+  talent: any;
 
   constructor() { }
 

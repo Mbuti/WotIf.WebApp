@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiAddress: 'http://wot-if.dariel.co.za:33333'
 };

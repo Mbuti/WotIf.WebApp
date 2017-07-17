@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 // Models
-import { Talent } from './../../models/Talent';
+import { Talent } from './../../shared/';
 
 @Component({
   selector: 'app-dynamic-talent',

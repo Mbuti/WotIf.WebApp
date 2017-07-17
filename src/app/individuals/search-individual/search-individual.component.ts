@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MemberApiModel } from '../../models/MemberApiModel';
+import { MemberApiModel } from '../../shared';
 import { MemberProxyService } from '../../services/member-proxy.service';
 
 @Component({
@@ -12,6 +12,7 @@ export class SearchIndividualComponent implements OnInit {
   public members: MemberApiModel[] = [];
   public SelectedUsername: MemberApiModel;
    member: MemberApiModel = new MemberApiModel();
+   username: any = '';
 
   constructor(private MemberProxy: MemberProxyService) {
   }

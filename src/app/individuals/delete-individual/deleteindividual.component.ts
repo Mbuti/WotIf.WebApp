@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MemberApiModel } from './../../models/MemberApiModel';
+import { MemberApiModel } from './../../shared';
 import { MemberProxyService } from './../../services/member-proxy.service';
 import { IndividualDashboardComponent } from '../individual-dashboard.component';
 import { Router } from '@angular/router';

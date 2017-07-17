@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 // Events
-import { ParticipantChangedEvent } from '../../events/ParticipantChangedEvent';
+import { ParticipantChangedEvent } from '../../shared';
 
 // Models
-import { CreateParticipant } from '../../models/CreateParticipant';
-import { Participant } from '../../models/Participant';
+import { CreateParticipant } from '../../shared/';
+import { Participant } from '../../shared/';
 
 @Component({
   selector: 'app-participant-create-toggle',
