@@ -1,0 +1,9 @@
+export { IndividualDashboardComponent } from './individual-dashboard.component';
+export { CreateIndividualComponent } from './create-individual/create-individual.component';
+export { DeleteIndividualComponent } from './delete-individual/delete-individual.component';
+export { EditIndividualComponent } from './edit-individual/edit-individual.component';
+export { SearchIndividualComponent } from './search-individual/search-individual.component';
+export { DynamicParticipantComponent } from './individual-participant/dynamic-participant.component';
+export { ParticipantCreateToggleComponent } from './individual-participant/participant-create-toggle.component';
+export { DynamicTalentComponent } from './individual-talent/dynamic-talent.component';
+export { TalentCreateToggleComponent } from './individual-talent/talent-create-toggle.component';

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Nationality } from './../shared';
+
+import { Nationality } from '../models';
 
 @Injectable()
 export class NationalityService {

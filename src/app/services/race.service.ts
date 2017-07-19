@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Race } from './../shared';
+
+import { Race } from '../models';
 
 
 @Injectable()

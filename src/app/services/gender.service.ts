@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Gender } from './../shared';
+
+import { Gender } from './../models';
 
 @Injectable()
 export class GenderService {

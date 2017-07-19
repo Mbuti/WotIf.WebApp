@@ -3,22 +3,22 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 // Components
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { IndividualDashboardComponent } from './individuals/individual-dashboard.component';
-import { CreateIndividualComponent } from './individuals/create-individual/create-individual.component';
-import { EditIndividualComponent } from './individuals/edit-individual/edit-individual.component';
-import { GeneralComponent } from './general/general.component';
-import { ParticipantsComponent } from './participants/participants.component';
-import { TalentsComponent } from './talents/talents.component';
-import { SurveysComponent } from './surveys/surveys.component';
-import { CreateSurveyComponent } from './surveys/create-survey.component';
-import { AdminComponent } from './admin/components/admin.component';
-import { DeleteindividualComponent } from './individuals/delete-individual/deleteindividual.component';
-import { SearchIndividualComponent } from './individuals/search-individual/search-individual.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { IndividualDashboardComponent } from './components/individuals/individual-dashboard.component';
+import { CreateIndividualComponent } from './components/individuals/create-individual/create-individual.component';
+import { EditIndividualComponent } from './components/individuals/edit-individual/edit-individual.component';
+import { GeneralComponent } from './components/general/general.component';
+import { ParticipantsComponent } from './components/participants/participants.component';
+import { TalentsComponent } from './components/talents/talents.component';
+import { SurveysComponent } from './components/surveys/surveys.component';
+import { CreateSurveyComponent } from './components/surveys/create-survey.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { DeleteIndividualComponent } from './components/individuals/delete-individual/delete-individual.component';
+import { SearchIndividualComponent } from './components/individuals/search-individual/search-individual.component';
 
 // Services
-import { AuthGuardService } from './services/auth-guard.service';
+import { AuthGuardService } from './core';
 
 
 const appRoutes: Routes = [
@@ -34,7 +34,7 @@ const appRoutes: Routes = [
     { path: 'surveys', component: SurveysComponent, canActivate: [AuthGuardService] },
     { path: 'survey-create', component: CreateSurveyComponent, canActivate: [AuthGuardService] },
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuardService] },
-    { path: 'deleteindividual/:id', component: DeleteindividualComponent, canActivate: [AuthGuardService] },
+    { path: 'deleteindividual/:id', component: DeleteIndividualComponent, canActivate: [AuthGuardService] },
     { path: '**', component: HomeComponent, canActivate: [AuthGuardService] }    
 ];
 

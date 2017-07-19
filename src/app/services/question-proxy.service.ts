@@ -5,7 +5,7 @@ import { environment } from '../../environments/environment';
 import "rxjs/Rx";
 
 // Models
-import { QuestionTypeApiModel } from '../shared';
+import { QuestionTypeApiModel } from '../models';
 
 @Injectable()
 export class QuestionProxyService {

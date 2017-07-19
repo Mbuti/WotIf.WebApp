@@ -1,54 +1,52 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpModule, Http, RequestOptions } from '@angular/http';
+
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { provideAuth, AUTH_PROVIDERS, AuthHttp, AuthConfig } from 'angular2-jwt';
+
 import * as jQuery from 'jquery';
 import * as bootstrap from 'bootstrap';
 
-import { SharedModule } from './shared';
+import { CoreModule } from './core';
 
 // Components
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 
 // Services
-import { AuthService } from './services/auth.service';
-import { AuthGuardService } from './services/auth-guard.service';
-import { AuthProxyService } from './services/auth-proxy.service';
 import { MemberProxyService } from './services/member-proxy.service';
 
 // Components
-import { ContainerComponent } from './infrastructure';
-import { NavComponent } from './infrastructure';
-import { FooterComponent } from './infrastructure';
 
-import { IndividualDashboardComponent } from './individuals/individual-dashboard.component';
-import { CreateIndividualComponent } from './individuals/create-individual/create-individual.component';
-import { EditIndividualComponent } from './individuals/edit-individual/edit-individual.component';
+import { IndividualDashboardComponent } from './components';
+import { CreateIndividualComponent } from './components';
+import { EditIndividualComponent } from './components';
 
-import { GeneralComponent } from './general/general.component';
-import { ParticipantsComponent } from './participants/participants.component';
-import { TalentsComponent } from './talents/talents.component';
-import { SurveysComponent } from './surveys/surveys.component';
-import { AdminComponent } from './admin/components/admin.component';
-import { QuestionCreateToggleComponent } from './surveys/question-create-toggle.component';
-import { TalentCreateToggleComponent } from './individuals/individual-talent/talent-create-toggle.component';
-import { ParticipantCreateToggleComponent } from './individuals/individual-participant/participant-create-toggle.component';
-import { DynamicTalentComponent } from './individuals/individual-talent/dynamic-talent.component';
-import { DynamicQuestionComponent } from './surveys/dynamic-question.component';
-import { DynamicParticipantComponent } from './individuals/individual-participant/dynamic-participant.component';
-import { CreateSurveyComponent } from './surveys/create-survey.component';
-import { DeleteindividualComponent } from './individuals/delete-individual/deleteindividual.component';
-import { SearchIndividualComponent } from './individuals/search-individual/search-individual.component'
+import { GeneralComponent } from './components';
+import { ParticipantsComponent } from './components';
+import { TalentsComponent } from './components';
+import { SurveysComponent } from './components';
+import { AdminComponent } from './components';
+import { QuestionCreateToggleComponent } from './components';
+import { TalentCreateToggleComponent } from './components';
+import { ParticipantCreateToggleComponent } from './components';
+import { DynamicTalentComponent } from './components';
+import { DynamicQuestionComponent } from './components';
+import { DynamicParticipantComponent } from './components';
+import { CreateSurveyComponent } from './components';
+import { DeleteIndividualComponent } from './components';
+import { SearchIndividualComponent } from './components'
 
 // Pipes
-import { NationalityEnumFilterPipe } from './shared';
-import { RaceEnumFilterPipe } from './shared';
-import { GenderEnumFilterPipe } from './shared';
+import { NationalityEnumFilterPipe } from './pipes';
+import { RaceEnumFilterPipe } from './pipes';
+import { GenderEnumFilterPipe } from './pipes';
 
 
 // AuthHttp should be used instead of Http when endpoints have authorization added to them.
@@ -68,12 +66,19 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 }
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    HttpModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    Ng2AutoCompleteModule,
+    AppRoutingModule,
+    CoreModule
+  ],
   declarations: [
     AppComponent,
-    ContainerComponent,
-    LoginComponent,
     HomeComponent,
-    NavComponent,
     IndividualDashboardComponent,
     CreateIndividualComponent,
     EditIndividualComponent,
@@ -89,21 +94,12 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     DynamicQuestionComponent,
     DynamicParticipantComponent,
     CreateSurveyComponent,
-    DeleteindividualComponent,
+    DeleteIndividualComponent,
     RaceEnumFilterPipe,
     NationalityEnumFilterPipe,
     GenderEnumFilterPipe,
-    FooterComponent,
     SearchIndividualComponent,
-  ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    HttpModule,
-    ReactiveFormsModule,
-    Ng2AutoCompleteModule,
-    BrowserModule,
-    SharedModule
+    LoginComponent
   ],
   providers: [
     {
@@ -111,8 +107,10 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
       useFactory: authHttpServiceFactory,
       deps: [Http, RequestOptions]
     },
-    AuthService, AuthGuardService, AuthProxyService, MemberProxyService
+    MemberProxyService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
